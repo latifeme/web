@@ -8,7 +8,7 @@
     "server_link": "https://api.mojy.xyz/gitblog/gh-oauth-server.php",
     "filter": {
         "creator": "all",
-        "state": "open"
+        "state": "all"
     },
     "menu": {
         "首页":"./"
