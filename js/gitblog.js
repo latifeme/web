@@ -92,7 +92,7 @@ var gitblog = function(config) {
         show: function() {
             var menu = this;
             for(var name in config.menu) {
-                document.getElementById("menu").innerHTML += '<li><a href=' + config.menu[name] + '><span>' + name + '</span></a></li>';
+                document.getElementById("menu").innerHTML += '<li class="nav-item"><a href="' + config.menu[name] + '" class="nav-link"><i class="ni ni-book-bookmark d-lg-none"></i><span class="nav-link-inner--text">' + name + '</span></a></li>';
             }
             if (Object.keys(config.friends).length != 0) {
                 var menu_friend = document.getElementById("friends");
