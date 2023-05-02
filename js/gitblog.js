@@ -769,7 +769,7 @@ var gitblog = function(config) {
             $('.search-input').bind('keypress',
             function(event) {
                 if (event.keyCode == "13" && $('.search-input').val() != "") {
-                    window.location.href = 'issue_per_label.html?q=' + $('.search-input').val();
+                    window.location.href = '/?q=' + $('.search-input').val();
                 }
             })
 
