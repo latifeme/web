@@ -1,5 +1,5 @@
 {
-    "name": "latife",
+    "name": "latifeme",
     "repo": "web",
     "client_id": "1051da1727e02f5dc248",
     "client_secret": "1d3b72c0446bc61903b6c4839cde70ee4097a9fc",
@@ -19,7 +19,7 @@
     "icons": {
         "Github" : {
             "icon_src" : "images/github.svg",
-            "href" : "https://github.com/imuncle/gitblog",
+            "href" : "https://github.com/latifeme/web",
             "hidden_img" : null,
             "width" : 0
         }
