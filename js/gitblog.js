@@ -801,7 +801,7 @@ var gitblog = function(config) {
         self.button.init();
     }
 
-    console.log('\n' + ' %c Gitblog' + ' %c https://github.com/imuncle/gitblog \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
+    console.log('\n' + ' %c Gitblog' + ' %c https://github.com/latifeme/web \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 }
 
 $.ajax({
