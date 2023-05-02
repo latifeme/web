@@ -11,7 +11,8 @@
         "state": "all"
     },
     "menu": {
-        "首页":"./"
+        "社区":"https://github.com/latifeme/web/discussions",
+        "聊天":"https://github.com/latifeme/web/discussions/categories/%E8%81%8A%E5%A4%A9"
     },
     "friends": {
         "imuncle" : "https://imuncle.github.io"
