@@ -583,7 +583,7 @@ var gitblog = function(config) {
                     document.getElementById('content').innerHTML = data.body_html;
                     var labels = document.getElementById('labels');
                     for (var i in data.labels) {
-                        labels.innerHTML += '<a href="issue_per_label.html?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
+                        labels.innerHTML += '<a href="/?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
                     }
                     labels.innerHTML += '<div style="float:right;cursor:pointer" id="' + self.options.id + '"></div>';
                     article.comments.init();
