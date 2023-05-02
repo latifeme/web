@@ -610,7 +610,7 @@ var gitblog = function(config) {
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
                 success: function(data) {
                     for (var i in data) {
-                        document.getElementById('tags').innerHTML += '<a href="/?label=' + data[i].name + '">' + data[i].name + '</a>';
+                        document.getElementById('tags').innerHTML += '<a href="/?label=' + data[i].name + '" class="nav-link"><i class="ni ni-book-bookmark d-lg-none"></i><span class="nav-link-inner--text">' + data[i].name + '</span></a>';
                     }
                 },
             });
