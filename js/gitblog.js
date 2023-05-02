@@ -610,7 +610,7 @@ var gitblog = function(config) {
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
                 success: function(data) {
                     for (var i in data) {
-                        document.getElementById('tags').innerHTML += '<a href="issue_per_label.html?label=' + data[i].name + '">' + data[i].name + '</a>';
+                        document.getElementById('tags').innerHTML += '<a href="/?label=' + data[i].name + '">' + data[i].name + '</a>';
                     }
                 },
             });
@@ -620,7 +620,7 @@ var gitblog = function(config) {
             for (var i in data) {
                 var labels_content = '';
                 for (var j in data[i].labels) {
-                    labels_content += '<li><a href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</a></li>';
+                    labels_content += '<li><a href=/?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</a></li>';
                 }
                 data[i].body = data[i].body.replace(/<.*?>/g, "");
                 data[i].created_at = self.utc2localTime(data[i].created_at);
