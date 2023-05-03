@@ -213,7 +213,1703 @@
         </nav>
       </header>
     </div>
- 
+    <div class="modal fade" id="argon_search_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">搜索</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+          <div class="modal-body">
+            <form id="argon_serach_form" method="get" action="/">
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div>
+                  <input name="s" class="form-control search-input" placeholder="回车搜索喵..." type="text" autocomplete="off">
+                </div>
+              </div>
+              <div class="text-center">
+                <button onclick="if (!window.__cfRLUnblockHandlers) return false; if($('#argon_serach_form input[name=\'s\']').val() != '') {document.getElementById('argon_serach_form').submit();}" type="button" class="btn btn-primary">搜索</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="banner" class="banner section section-lg section-shaped">
+      <div class="shape shape-style-1 bg-gradient-info">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div id="banner_container" class="banner-container container text-center">
+        <div class="banner-title text-white">
+          <span class="banner-title-inner">欢迎来到蓝天粉梦</span>
+          <span class="banner-subtitle d-block name" id="instruction"></span></div>
+</div>
+</section>
+
+<style>
+		#banner:after {
+			content: '';
+			width: 100vw;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 120px;
+			background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 35%, rgba(0,0,0,0) 100%);
+			display: block;
+			z-index: -1;
+		}
+		.banner-title {
+			text-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+		}
+	</style>
+
+<div id="float_action_buttons" class="float-action-buttons">
+
+<button id="fabtn_toggle_sides" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-hidden="true" tooltip-move-to-left="移至左侧" tooltip-move-to-right="移至右侧">
+
+<span class="btn-inner--icon fabtn-show-on-right">
+<i class="fa fa-caret-left"></i></span>
+
+<span class="btn-inner--icon fabtn-show-on-left">
+<i class="fa fa-caret-right"></i></span>
+</button>
+
+<button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm fabtn-hidden" type="button" aria-label="Back To Top" tooltip="回到顶部">
+
+<span class="btn-inner--icon">
+<i class="fa fa-angle-up"></i></span>
+</button>
+
+<button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" style="display: none;" aria-label="Comment" tooltip="评论">
+
+<span class="btn-inner--icon">
+<i class="fa fa-comment-o"></i></span>
+</button>
+
+<button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" style="display: none;" aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式">
+
+<span class="btn-inner--icon">
+<i class="fa fa-moon-o"></i>
+<i class="fa fa-lightbulb-o"></i></span>
+</button>
+
+<button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Blog Settings Menu" tooltip="设置">
+
+<span class="btn-inner--icon">
+<i class="fa fa-cog"></i></span>
+</button>
+
+<div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
+
+<div id="close_blog_settings">
+<i class="fa fa-close"></i></div>
+
+<div class="blog-setting-item mt-3">
+
+<div style="transform: translateY(-4px);">
+<div id="blog_setting_toggle_darkmode_and_amoledarkmode" tooltip-switch-to-darkmode="切换到夜间模式" tooltip-switch-to-blackmode="切换到暗黑模式">
+<span>夜间模式</span>
+<span>暗黑模式</span></div></div>
+
+<div style="flex: 1;"></div>
+
+<label id="blog_setting_darkmode_switch" class="custom-toggle">
+
+<span class="custom-toggle-slider rounded-circle"></span>
+</label>
+</div>
+
+<div class="blog-setting-item mt-3">
+
+<div style="flex: 1;">字体</div>
+
+<div>
+
+<button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button>
+<button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
+</div>
+</div>
+
+<div class="blog-setting-item mt-3">
+
+<div style="flex: 1;">阴影</div>
+
+<div>
+
+<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button>
+<button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+</div>
+</div>
+
+<div class="blog-setting-item mt-3 mb-3">
+
+<div style="flex: 1;">滤镜</div>
+
+<div id="blog_setting_filters" class="ml-3">
+
+<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0 active" filter-name="off">关闭</button>
+
+<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+
+<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+
+<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
+</div>
+</div>
+
+<div class="blog-setting-item mb-3">
+
+<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+
+<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+
+<div id="blog_setting_card_radius" class="noUi-target noUi-ltr noUi-horizontal">
+<div class="noUi-base">
+<div class="noUi-connects">
+<div class="noUi-connect" style="transform: translate(0%) scale(0.133333, 1);"></div></div>
+<div class="noUi-origin" style="transform: translate(-86.666667%, 0px); z-index: 4;">
+<div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="30.0" aria-valuenow="4.0" aria-valuetext="4.00">
+<div class="noUi-touch-area"></div></div></div></div></div>
+</div>
+</div>
+
+<div class="blog-setting-item mt-1 mb-3">
+
+<div style="flex: 1;">主题色</div>
+
+<div class="pickr">
+
+        
+<button type="button" class="pcr-button" style="transition: none; color: rgb(250, 114, 152);" role="button" aria-label="toggle color picker dialog"></button>
+
+        
+      </div>
+</div>
+</div>
+
+<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm fabtn-hidden" type="button" aria-hidden="true" tooltip="阅读进度">
+
+<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
+
+<span id="fabtn_reading_progress_details">0%</span>
+</button>
+</div>
+
+<div id="content" class="site-content">
+
+<div class="page-information-card-container"></div>
+
+<div id="sidebar_mask"></div>
+
+<aside id="leftbar" class="leftbar widget-area" role="complementary">
+
+<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+
+<div class="leftbar-banner card-body">
+
+<span class="leftbar-banner-title text-white">蓝天粉梦</span>
+
+<span class="leftbar-banner-subtitle text-white">
+<span class="hitokoto">人于浮世，独来独往，独生独死，苦乐自当，无有代者。</span></span>
+</div>
+
+<ul id="leftbar_part1_menu" class="leftbar-menu">
+
+<li class="leftbar-menu-item">
+
+<a href="https://www.latife.me/account" target="">账户中心</a></li>
+
+<li class="leftbar-menu-item">
+
+<a href="https://www.latife.me/users" target="">用户名录</a></li>
+
+<li class="leftbar-menu-item">
+
+<a href="https://www.latife.me/terms-of-service" target="">用户协议</a></li>
+
+<li class="leftbar-menu-item">
+
+<a href="https://www.latife.me/changelog" target="">更新日志</a></li></ul> 
+<div class="card-body text-center leftbar-search-button">
+
+<button id="leftbar_search_container" class="btn btn-secondary btn-lg active btn-sm btn-block border-0" role="button">
+
+<i class="menu-item-icon fa fa-search mr-0"></i> 搜索 
+<input id="leftbar_search_input" type="text" placeholder="搜索什么..." class="form-control form-control-alternative" autocomplete="off" readonly="readonly">
+</button>
+</div>
+</div>
+
+<div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
+
+<div id="leftbar_part2_inner" class="card-body">
+
+<div class="nav-wrapper" style="padding-top: 5px;">
+
+<ul class="nav nav-pills nav-fill" role="tablist">
+
+<li class="nav-item sidebar-tab-switcher">
+
+<a class="active show" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax="">站点概览</a>
+</li>
+
+<li class="nav-item sidebar-tab-switcher">
+
+<a class="" id="leftbar_tab_tools_btn" data-toggle="tab" href="#leftbar_tab_tools" role="tab" aria-controls="leftbar_tab_tools" no-pjax="">功能</a>
+</li>
+</ul>
+</div>
+
+<div>
+
+<div class="tab-content" style="padding: 10px 10px 0 10px;">
+
+<div class="tab-pane fade text-center active show" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
+
+<div id="leftbar_overview_author_image" style="background-image: url(https://misakanetwork.site:9001/ltfm/2022-12-27/1672125217-835400-wwwalltoallnet-0fe3c2cc-78aa-4aee-9a5c-edc962a49d93-i9fngnk6cd.webp)" class="rounded-circle shadow-sm" alt="avatar"></div>
+
+<h6 id="leftbar_overview_author_name">蓝天粉梦</h6>
+
+<h6 id="leftbar_overview_author_description">蓝粉白作品网</h6> 
+<nav class="site-state">
+
+<div class="site-state-item site-state-posts">
+
+<a style="cursor: default;">
+
+<span class="site-state-item-count">15</span>
+
+<span class="site-state-item-name">文章</span>
+</a>
+</div>
+
+<div class="site-state-item site-state-categories">
+
+<a data-toggle="modal" data-target="#blog_categories">
+
+<span class="site-state-item-count">14</span>
+
+<span class="site-state-item-name">分类</span>
+</a>
+</div>
+
+<div class="site-state-item site-state-tags">
+
+<a data-toggle="modal" data-target="#blog_tags">
+
+<span class="site-state-item-count">0</span>
+
+<span class="site-state-item-name">标签</span>
+</a>
+</div>
+</nav>
+
+<div style="height: 20px;"></div> </div>
+
+<div class="tab-pane fade" id="leftbar_tab_tools" role="tabpanel" aria-labelledby="leftbar_tab_tools_btn">
+
+<div id="block-13" class="widget widget_block card bg-white border-0">
+<div class="logged-out wp-block-loginout">
+<a href="https://www.latife.me/login?redirect_to=https%3A%2F%2Fwww.latife.me%2F">登录</a></div></div> </div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+
+<div class="modal fade" id="blog_categories" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5 class="modal-title">分类</h5>
+
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+<span aria-hidden="true">×</span>
+</button>
+</div>
+
+<div class="modal-body">
+
+<a href="https://www.latife.me/t/projects" class="badge badge-secondary tag">作品 
+<span class="tag-num">2</span></a>
+<a href="https://www.latife.me/t/announcement" class="badge badge-secondary tag">公告 
+<span class="tag-num">0</span></a>
+<a href="https://www.latife.me/t/projects/qitazuopin" class="badge badge-secondary tag">其他作品 
+<span class="tag-num">1</span></a>
+<a href="https://www.latife.me/t/technologies" class="badge badge-secondary tag">技术 
+<span class="tag-num">2</span></a>
+<a href="https://www.latife.me/t/projects/literature" class="badge badge-secondary tag">文学 
+<span class="tag-num">2</span></a>
+<a href="https://www.latife.me/t/daily-life" class="badge badge-secondary tag">日常 
+<span class="tag-num">4</span></a>
+<a href="https://www.latife.me/t/daily-life/tree-hole" class="badge badge-secondary tag">树洞 
+<span class="tag-num">0</span></a>
+<a href="https://www.latife.me/t/help" class="badge badge-secondary tag">求助 
+<span class="tag-num">1</span></a>
+<a href="https://www.latife.me/t/knowledge-base" class="badge badge-secondary tag">知识库 
+<span class="tag-num">1</span></a>
+<a href="https://www.latife.me/t/technologies/depot" class="badge badge-secondary tag">站务 
+<span class="tag-num">1</span></a>
+<a href="https://www.latife.me/t/knowledge-base/wiki" class="badge badge-secondary tag">维基 
+<span class="tag-num">0</span></a>
+<a href="https://www.latife.me/t/projects/draw" class="badge badge-secondary tag">美术 
+<span class="tag-num">2</span></a>
+<a href="https://www.latife.me/t/daily-life/leisure" class="badge badge-secondary tag">茶余饭后 
+<span class="tag-num">0</span></a>
+<a href="https://www.latife.me/t/projects/music" class="badge badge-secondary tag">音乐 
+<span class="tag-num">2</span></a> </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="blog_tags" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5 class="modal-title">标签</h5>
+
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+<span aria-hidden="true">×</span>
+</button>
+</div>
+
+<div class="modal-body">
+</div>
+</div>
+</div>
+</div>
+
+<aside id="rightbar" class="rightbar widget-area" role="complementary">
+<div id="block-3" class="widget widget_block card shadow-sm bg-white border-0">
+<div class="wp-block-group is-layout-flow">
+<div class="wp-block-group__inner-container">
+<h2 class="wp-block-heading">近期文章</h2>
+<ul class="wp-block-latest-posts__list wp-block-latest-posts">
+<li>
+<a class="wp-block-latest-posts__post-title" href="https://www.latife.me/projects/music/5016-guichugequndaquan.html">鬼畜歌曲大全</a></li>
+
+<li>
+<a class="wp-block-latest-posts__post-title" href="https://www.latife.me/knowledge-base/2439-estradiolspray.html">雌二醇喷雾自制指南</a></li>
+
+<li>
+<a class="wp-block-latest-posts__post-title" href="https://www.latife.me/daily-life/2434-aboutnearby.html">关于对最近某些情况的个人见解</a></li>
+
+<li>
+<a class="wp-block-latest-posts__post-title" href="https://www.latife.me/projects/2321-fangsikeaiyinyuanshiting.html">《放肆可愛》音源試聽</a></li>
+
+<li>
+<a class="wp-block-latest-posts__post-title" href="https://www.latife.me/technologies/depot/2310-wentifankui.html">问题反馈</a></li>
+</ul></div></div></div>
+<div id="block-4" class="widget widget_block card shadow-sm bg-white border-0">
+<div class="wp-block-group is-layout-flow">
+<div class="wp-block-group__inner-container">
+<h2 class="wp-block-heading">近期评论</h2>
+<ol class="wp-block-latest-comments">
+<li class="wp-block-latest-comments__comment">
+<article>
+<footer class="wp-block-latest-comments__comment-meta">
+<a class="wp-block-latest-comments__comment-author" href="https://www.latife.me/profile/functionsir">FunctionSir</a>发表在
+<a class="wp-block-latest-comments__comment-link" href="https://www.latife.me/daily-life/2434-aboutnearby.html#comment-58">关于对最近某些情况的个人见解</a></footer></article></li>
+<li class="wp-block-latest-comments__comment">
+<article>
+<footer class="wp-block-latest-comments__comment-meta">
+<a class="wp-block-latest-comments__comment-author" href="https://www.latife.me/profile/chihiro">浅羽萌喵</a>发表在
+<a class="wp-block-latest-comments__comment-link" href="https://www.latife.me/technologies/depot/2310-wentifankui.html#comment-57">问题反馈</a></footer></article></li>
+<li class="wp-block-latest-comments__comment">
+<article>
+<footer class="wp-block-latest-comments__comment-meta">
+<a class="wp-block-latest-comments__comment-author" href="https://www.latife.me/profile/lgbt-album">LGBT.ALBUM</a>发表在
+<a class="wp-block-latest-comments__comment-link" href="https://www.latife.me/daily-life/2434-aboutnearby.html#comment-56">关于对最近某些情况的个人见解</a></footer></article></li>
+<li class="wp-block-latest-comments__comment">
+<article>
+<footer class="wp-block-latest-comments__comment-meta">
+<a class="wp-block-latest-comments__comment-author" href="https://www.latife.me/profile/chihiro">浅羽萌喵</a>发表在
+<a class="wp-block-latest-comments__comment-link" href="https://www.latife.me/help/2411-woxianzaideqingkuang.html#comment-55">我现在的情况</a></footer></article></li>
+<li class="wp-block-latest-comments__comment">
+<article>
+<footer class="wp-block-latest-comments__comment-meta">
+<a class="wp-block-latest-comments__comment-author" href="https://blog.misakanetwork.site/">御坂20002号</a>发表在
+<a class="wp-block-latest-comments__comment-link" href="https://www.latife.me/help/2411-woxianzaideqingkuang.html#comment-54">我现在的情况</a></footer></article></li></ol></div></div></div>
+<div id="wp_statistics_widget-5" class="widget widget_wp_statistics_widget card shadow-sm bg-white border-0">
+<h6 class="font-weight-bold text-black">今日数据</h6>
+<ul>
+<li>
+<label>在线用户:&nbsp;</label>0</li>
+<li>
+<label>今日访问:&nbsp;</label>3</li>
+<li>
+<label>今日访客:&nbsp;</label>3</li></ul></div></aside>
+
+<div id="primary" class="content-area waterflow" style="transition: none;">
+
+<main id="main" class="site-main article-list article-list-home" role="main">
+<div class="waterflow-placeholder" style="height: 0px;"></div>
+
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2310">
+
+<header class="post-header ">
+</header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/technologies/depot/2310-wentifankui.html">问题反馈</a>
+
+<div class="post-content">
+如果有遇到使用问题的，请在此处反馈。 </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-stickey">
+
+<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+置顶
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 14:33:53 | 编辑于 2022-12-29 12:08:37">2022-12-28 14:33
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 14:33:53 | 编辑于 2022-12-29 12:08:37">2022-12-29 12:08
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/misaka20002" target="_blank">御坂 20002 号🍥</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 88</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 4</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/technologies/depot" target="_blank" class="post-meta-detail-catagory-link">站务</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 18 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+几秒读完
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-5016">
+
+<header class="post-header ">
+</header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/projects/music/5016-guichugequndaquan.html">鬼畜歌曲大全</a>
+
+<div class="post-content">
+《外婆家的澎湖鸡》 &nbsp; 《鸡 - Wake》 &nbsp; 《听我说谢谢鸡》 &nbsp; 《外婆的 Q 币湾》 &nbsp; 《当鸡老了》版《起风了》 &nbsp; 《你总是鸡太软》 &nbsp; 《本草鸡目》 &nbsp; 《最伟大的鸡》 </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2023-1-02 23:02:09 | 编辑于 2023-1-02 23:19:59">2023-1-02 23:02
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2023-1-02 23:02:09 | 编辑于 2023-1-02 23:19:59">2023-1-02 23:19
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/chihiro" target="_blank">浅羽萌喵</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 71</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/projects/music" target="_blank" class="post-meta-detail-catagory-link">音乐</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 55 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+几秒读完
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2439">
+
+<header class="post-header ">
+</header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/knowledge-base/2439-estradiolspray.html">雌二醇喷雾自制指南</a>
+
+<div class="post-content">
+写在前面 正式实施前请确保您已有初三以上学历，最起码进过化学实验室，懂得实验安全规定和常见仪器的使用，否则容易出错 好处 自制雌二醇喷雾对于难以购买药物的情况下是不错的选择，对非家长党而言有很好的隐蔽性和经济性 坏处 未知的副作用（放心肯定比兽用药安全 准备工作 材料清单 1.ß- 雌二醇 (CAS:50-28-2) 价格：155CNY/10g 2. 水… </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 20:53:16 | 编辑于 2022-12-28 20:53:43">2022-12-28 20:53
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 20:53:16 | 编辑于 2022-12-28 20:53:43">2022-12-28 20:53
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/misaka10042" target="_blank">Misaka10042 🍥</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 921</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/projects" target="_blank" class="post-meta-detail-catagory-link">作品</a>
+<span class="post-meta-detail-catagory-space"> , </span>
+<a href="https://www.latife.me/t/projects/qitazuopin" target="_blank" class="post-meta-detail-catagory-link">其他作品</a>
+<span class="post-meta-detail-catagory-space"> , </span>
+<a href="https://www.latife.me/t/knowledge-base" target="_blank" class="post-meta-detail-catagory-link">知识库</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 1108 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+5 分钟
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2434">
+
+<header class="post-header post-header-with-thumbnail">
+
+<img class="post-thumbnail lazyload lazyload-loaded" src="https://i0.wp.com/s2.loli.net/2022/12/02/DJLzVhKnySfu27x.png?ssl=1" data-original="https://i0.wp.com/s2.loli.net/2022/12/02/DJLzVhKnySfu27x.png?ssl=1" alt="thumbnail" style="opacity: 0;"> </header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/daily-life/2434-aboutnearby.html">关于对最近某些情况的个人见解</a>
+
+<div class="post-content">
+写在前面 就在这篇文章发布之前不久，我仿造国内某些媒体的文章仿造了一篇关于 Jetbrains 的 IDE 的文章，首先在此声明本站对 Jetbrains 绝无任何恶意，该文章的所有内容均不属实，以 Jetbrains 为题材只是因为个人对计算机的喜好和对某媒体的反串黑 关于这次事件的看法 只能说最近真是多灾多难，前有💊 监 橘 禁售 CAS:57-91-0 后有姐… </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 20:48:03 | 编辑于 2022-12-28 20:48:03">2022-12-28 20:48
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 20:48:03 | 编辑于 2022-12-28 20:48:03">2022-12-28 20:48
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/misaka10042" target="_blank">Misaka10042 🍥</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 178</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 2</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/daily-life" target="_blank" class="post-meta-detail-catagory-link">日常</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 1511 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+6 分钟
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2321">
+
+<header class="post-header ">
+</header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/projects/2321-fangsikeaiyinyuanshiting.html">《放肆可愛》音源試聽</a>
+
+<div class="post-content">
+[audio mp3="https://misakanetwork.site:9001/ltfm/2022/12/ZND9_Demo3.mp3"][/audio] Comp. BakerKZ Lrcs. 糖媌 第 3 版 Demo Demo 音源不代表最終品質 </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 16:03:33 | 编辑于 2022-12-28 16:03:39">2022-12-28 16:03
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-28 16:03:33 | 编辑于 2022-12-28 16:03:39">2022-12-28 16:03
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/lgbt-album" target="_blank">LGBT.ALBUM</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 316</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/projects" target="_blank" class="post-meta-detail-catagory-link">作品</a>
+<span class="post-meta-detail-catagory-space"> , </span>
+<a href="https://www.latife.me/t/projects/music" target="_blank" class="post-meta-detail-catagory-link">音乐</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 24 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+几秒读完
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-4635">
+
+<header class="post-header  post-header-with-thumbnail">
+
+<img class="post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="https://old.latife.me/api/fof/secure-https?imgurl=https%3A%2F%2Fmisakanetwork.site%3A9001%2Fltfm%2F2022-12-22%2F1671677538-623385-aibashinan.png" alt="thumbnail" style="opacity: 0;"> </header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/projects/draw/4635-lanyuzhinan-wodehuihuashijieguan.html">藍羽指南 – 我的繪畫世界觀</a>
+
+<div class="post-content">
+藍羽指南 - 我的繪畫世界觀 I - 繪畫是一項技能 人類早已把自己送上月球，卻還沒有搞清楚如何學習一項技能。 初次見面，我是藍羽。 了解我的人，都明白我學習繪畫的路十分曲折 - 2016 年開始我在畫室學畫，當時我花了大概 3 年的時間去學素描。時間快轉到 2019 年，我開始在「Drawabox」學習，畫掉了大約 550 張 A4 打印紙。後來，我開始自己練習「… </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-25 8:41:33 | 编辑于 2022-12-29 12:06:26">2022-12-25 8:41
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-25 8:41:33 | 编辑于 2022-12-29 12:06:26">2022-12-29 12:06
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/chihiro" target="_blank">浅羽萌喵</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 29</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/projects/draw" target="_blank" class="post-meta-detail-catagory-link">美术</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 3024 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+12 分钟
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2113">
+
+<header class="post-header  post-header-with-thumbnail">
+
+<img class="post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="https://i0.wp.com/misakanetwork.site/ltfm/2022-12-21/1671618536-751616-45fa3a2b-cc5e-4bee-b37f-2694be1b73a4.jpg?ssl=1" alt="thumbnail" style="opacity: 0;"> </header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/technologies/2113-cihuaningjiaozhizuozhinan.html">磁化凝胶制作指南</a>
+
+<div class="post-content">
+𥔵化凝胶教程来喽～磁化粉末奈酱送检啦 需要的可以呼叫奈酱 W 如果可以的话 给奈酱支持几块钱经费？ 自己制作的话 大概 180r 可以用 3 年 （纯公益项目，本人自费的） (奈酱是家长党自己可以合规买糖的，研 究这个纯粹是帮助买不起糖的 xyn） [video url="https://misakanetwork.site:9001/ltfm/2022… </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-21 12:00:42 | 编辑于 2022-12-28 14:58:20">2022-12-21 12:00
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-21 12:00:42 | 编辑于 2022-12-28 14:58:20">2022-12-28 14:58
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/nateovo" target="_blank">nateovo</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 257</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/technologies" target="_blank" class="post-meta-detail-catagory-link">技术</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 110 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+1 分钟内
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2323">
+
+<header class="post-header  post-header-with-thumbnail">
+
+<img class="post-thumbnail lazyload" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABBJREFUeNpi+P//PwNAgAEACPwC/tuiTRYAAAAASUVORK5CYII=" data-original="https://i0.wp.com/misakanetwork.site/ltfm/2022-12-20/1671501446-217797-fc26a6375f5d642c1034fc71d49aaa1.jpg?ssl=1" alt="thumbnail" style="opacity: 0;"> </header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/projects/draw/2323-zhuoliedemofangwww.html">拙劣的模仿 www</a>
+
+<div class="post-content">
+似乎是今年国际跨性别纪念日上的作品！原推：https://twitter.com/Chunqiu523/status/1594427223834087424 于是自己搞了一份差不多的收藏起来～还…… 还可以吧……（苦笑 没有荧光笔只好用蜡笔代替了（可是颜色相差有些大捏 w </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-20 14:58:32 | 编辑于 2022-12-28 15:00:30">2022-12-20 14:58
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-20 14:58:32 | 编辑于 2022-12-28 15:00:30">2022-12-28 15:00
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/chihiro" target="_blank">浅羽萌喵</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 36</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 1</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/projects/draw" target="_blank" class="post-meta-detail-catagory-link">美术</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 80 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+1 分钟内
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-4633">
+
+<header class="post-header ">
+</header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/projects/literature/4633-taiwankuaxingbiemanhuapeibannijienazijijinjuxuan.html">台湾跨性别漫画《陪伴你，接纳自己》金句选</a>
+
+<div class="post-content">
+跨性别作品摘抄系列 —2 （台湾行政院卫生福利部的多元性别医疗主题漫画） 毕竟医院是照顾大家的地方，要排除先入为主的刻板印象，才能好好照顾病人对吧？ 这不是任何人的错。虽然身为独子对父母很抱歉，但我真的是灵魂装错身体，而且跟以前勉强的自己比起来，我更喜欢现在的自己。 如果大家都能选择自己被生下来的样子就好了，这样子或许每个人都会幸福一点吧？ 因为觉得… </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-18 17:04:27 | 编辑于 2022-12-29 12:03:18">2022-12-18 17:04
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-18 17:04:27 | 编辑于 2022-12-29 12:03:18">2022-12-29 12:03
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/candymeaw" target="_blank">糖媌</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 35</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 0</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/projects/literature" target="_blank" class="post-meta-detail-catagory-link">文学</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 537 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+2 分钟
+</div>
+</div>
+</div>
+</article>
+<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="post-2411">
+
+<header class="post-header ">
+</header>
+
+<div class="post-content-container">
+
+<a class="post-title" href="https://www.latife.me/help/2411-woxianzaideqingkuang.html">我现在的情况</a>
+
+<div class="post-content">
+我还在老家那儿还没走，我爸妈准备一直看着我，我爸妈把我 iPad 砸了手机收了，我现在用他们的设备偷偷发的消息。据他们说他们认为你们是骗子，要报警，要把你们尤其是凛凛抓起来…… 我不想让凛凛牵涉到这件事中，但是我也没有办法，我爸我妈认为我鬼迷心窍了，被卖药的骗子骗了…… 他们坚持这么想我也没什么办法，我连逃都逃不出去，除非有人直接上门来把我带走，但这样我… </div>
+
+<div class="post-meta">
+
+<div class="post-meta-detail post-meta-detail-time">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-18 17:02:12 | 编辑于 2022-12-18 17:02:12">2022-12-18 17:02
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-edittime">
+
+<i class="fa fa-clock-o" aria-hidden="true"></i>
+
+<time title="发布于 2022-12-18 17:02:12 | 编辑于 2022-12-18 17:02:12">2022-12-18 17:02
+</time>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-author">
+
+<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/profile/reliquiase" target="_blank">Reliquiase</a>
+</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-views">
+
+<i class="fa fa-eye" aria-hidden="true"></i> 281</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-comments">
+
+<i class="fa fa-comments-o" aria-hidden="true"></i> 45</div> 
+<div class="post-meta-devide">|</div> 
+<div class="post-meta-detail post-meta-detail-categories">
+
+<i class="fa fa-bookmark-o" aria-hidden="true"></i> 
+<a href="https://www.latife.me/t/help" target="_blank" class="post-meta-detail-catagory-link">求助</a></div> 
+<br>
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-file-word-o" aria-hidden="true"></i>
+<span> 326 字</span>
+</div>
+
+<div class="post-meta-devide">|</div>
+
+<div class="post-meta-detail post-meta-detail-words">
+
+<i class="fa fa-hourglass-end" aria-hidden="true"></i>
+2 分钟
+</div>
+</div>
+</div>
+</article> 
+<nav>
+<ul class="pagination">
+<li class="page-item active">
+<span class="page-link" style="cursor: default;">1</span></li>
+<li class="page-item">
+<a class="page-link" href="https://www.latife.me/page/2">2</a></li>
+<li class="page-item">
+<a aria-label="Next Page" class="page-link" href="https://www.latife.me/page/2">
+<i class="fa fa-angle-right" aria-hidden="true"></i></a></li></ul></nav>
+<nav>
+<ul class="pagination pagination-mobile">
+<li class="page-item active">
+<span class="page-link" style="cursor: default;">1</span></li>
+<li class="page-item">
+<a class="page-link" href="https://www.latife.me/page/2">2</a></li>
+<li class="page-item">
+<a aria-label="Next Page" class="page-link" href="https://www.latife.me/page/2">
+<i class="fa fa-angle-right" aria-hidden="true"></i></a></li></ul></nav>
+
+<footer id="footer" class="site-footer card shadow-sm border-0">
+
+<div>From SANYIMOE.
+<br>Theme 
+<a href="https://github.com/solstice23/argon-theme" target="_blank">
+<strong>Argon</strong></a></div>
+</footer>
+</main>
+</div>
+</div>
+
+<link rel="stylesheet" href="//testingcf.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/highlight/styles/github.css">
+
+
+
+<style>html{font-size:16px;}</style>
+
+<script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/argon_js_merged.js" id="argon_js_merged-js"></script>
+<script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/js/argon.min.js" id="argonjs-js"></script>
+<script type="text/javascript" id="cookie-law-info-js-extra">
+/* 
+<![CDATA[ */
+var _ckyConfig = {"_ipData":[],"_assetsURL":"https:\/\/www.latife.me\/wp-content\/plugins\/cookie-law-info\/lite\/frontend\/images\/","_publicURL":"https:\/\/www.latife.me","_expiry":"365","_categories":[{"name":"Necessary","slug":"necessary","isNecessary":true,"ccpaDoNotSell":true,"cookies":[],"active":true,"defaultConsent":{"gdpr":true,"ccpa":true}},{"name":"Functional","slug":"functional","isNecessary":false,"ccpaDoNotSell":true,"cookies":[],"active":true,"defaultConsent":{"gdpr":false,"ccpa":false}},{"name":"Analytics","slug":"analytics","isNecessary":false,"ccpaDoNotSell":true,"cookies":[],"active":true,"defaultConsent":{"gdpr":false,"ccpa":false}},{"name":"Performance","slug":"performance","isNecessary":false,"ccpaDoNotSell":true,"cookies":[],"active":true,"defaultConsent":{"gdpr":false,"ccpa":false}},{"name":"Advertisement","slug":"advertisement","isNecessary":false,"ccpaDoNotSell":true,"cookies":[],"active":true,"defaultConsent":{"gdpr":false,"ccpa":false}}],"_activeLaw":"gdpr","_rootDomain":"","_block":"1","_showBanner":"1","_bannerConfig":{"settings":{"type":"banner","position":"bottom","applicableLaw":"gdpr"},"behaviours":{"reloadBannerOnAccept":false,"loadAnalyticsByDefault":false,"animations":{"onLoad":"animate","onHide":"sticky"}},"config":{"revisitConsent":{"status":true,"tag":"revisit-consent","position":"bottom-left","meta":{"url":"#"},"styles":{"background-color":"#0056A7"},"elements":{"title":{"type":"text","tag":"revisit-consent-title","status":true,"styles":{"color":"#0056a7"}}}},"preferenceCenter":{"toggle":{"status":true,"tag":"detail-category-toggle","type":"toggle","states":{"active":{"styles":{"background-color":"#1863DC"}},"inactive":{"styles":{"background-color":"#D0D5D2"}}}}},"categoryPreview":{"status":false,"toggle":{"status":true,"tag":"detail-category-preview-toggle","type":"toggle","states":{"active":{"styles":{"background-color":"#1863DC"}},"inactive":{"styles":{"background-color":"#D0D5D2"}}}}},"videoPlaceholder":{"status":true,"styles":{"background-color":"#000000","border-color":"#000000","color":"#ffffff"}},"readMore":{"status":true,"tag":"readmore-button","type":"link","meta":{"noFollow":true,"newTab":true},"styles":{"color":"#1863DC","background-color":"transparent","border-color":"transparent"}},"auditTable":{"status":true},"optOption":{"status":true,"toggle":{"status":true,"tag":"optout-option-toggle","type":"toggle","states":{"active":{"styles":{"background-color":"#1863dc"}},"inactive":{"styles":{"background-color":"#FFFFFF"}}}}}}},"_version":"3.0.9","_logConsent":"1","_tags":[{"tag":"accept-button","styles":{"color":"#FFFFFF","background-color":"#1863DC","border-color":"#1863DC"}},{"tag":"reject-button","styles":{"color":"#1863DC","background-color":"transparent","border-color":"#1863DC"}},{"tag":"settings-button","styles":{"color":"#1863DC","background-color":"transparent","border-color":"#1863DC"}},{"tag":"readmore-button","styles":{"color":"#1863DC","background-color":"transparent","border-color":"transparent"}},{"tag":"donotsell-button","styles":{"color":"#1863DC","background-color":"transparent","border-color":"transparent"}},{"tag":"accept-button","styles":{"color":"#FFFFFF","background-color":"#1863DC","border-color":"#1863DC"}},{"tag":"revisit-consent","styles":{"background-color":"#0056A7"}}],"_shortCodes":[{"key":"cky_readmore","content":"
+<a href=\"\/terms-of-service#header-id-40\" class=\"cky-policy\" aria-label=\"Cookie\u653f\u7b56\" target=\"_blank\" rel=\"noopener\" data-cky-tag=\"readmore-button\">Cookie\u653f\u7b56
+<\/a>","tag":"readmore-button","status":true,"attributes":{"rel":"nofollow","target":"_blank"}},{"key":"cky_show_desc","content":"
+<button class=\"cky-show-desc-btn\" data-cky-tag=\"show-desc-button\" aria-label=\"Show more\">Show more
+<\/button>","tag":"show-desc-button","status":true,"attributes":[]},{"key":"cky_hide_desc","content":"
+<button class=\"cky-show-desc-btn\" data-cky-tag=\"hide-desc-button\" aria-label=\"Show less\">Show less
+<\/button>","tag":"hide-desc-button","status":true,"attributes":[]},{"key":"cky_category_toggle_label","content":"[cky_{{status}}_category_label] [cky_preference_{{category_slug}}_title]","tag":"","status":true,"attributes":[]},{"key":"cky_enable_category_label","content":"Enable","tag":"","status":true,"attributes":[]},{"key":"cky_disable_category_label","content":"Disable","tag":"","status":true,"attributes":[]},{"key":"cky_video_placeholder","content":"
+<div class=\"video-placeholder-normal\" data-cky-tag=\"video-placeholder\" id=\"[UNIQUEID]\">
+<p class=\"video-placeholder-text-normal\" data-cky-tag=\"placeholder-title\">\u8bf7\u63a5\u53d7cookie\u4ee5\u8bbf\u95ee\u6b64\u5185\u5bb9
+<\/p>
+<\/div>","tag":"","status":true,"attributes":[]},{"key":"cky_enable_optout_label","content":"Enable","tag":"","status":true,"attributes":[]},{"key":"cky_disable_optout_label","content":"Disable","tag":"","status":true,"attributes":[]},{"key":"cky_optout_toggle_label","content":"[cky_{{status}}_optout_label] [cky_optout_option_title]","tag":"","status":true,"attributes":[]},{"key":"cky_optout_option_title","content":"Do Not Sell My Personal Information","tag":"","status":true,"attributes":[]},{"key":"cky_optout_close_label","content":"Close","tag":"","status":true,"attributes":[]}],"_rtl":"","_providersToBlock":[]};
+var _ckyStyles = {"css":".cky-overlay{background: #000000; opacity: 0.4; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999999;}.cky-hide{display: none;}.cky-btn-revisit-wrapper{display: flex; align-items: center; justify-content: center; background: #0056a7; width: 45px; height: 45px; border-radius: 50%; position: fixed; z-index: 999999; cursor: pointer;}.cky-revisit-bottom-left{bottom: 15px; left: 15px;}.cky-revisit-bottom-right{bottom: 15px; right: 15px;}.cky-btn-revisit-wrapper .cky-btn-revisit{display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; position: relative; margin: 0; padding: 0;}.cky-btn-revisit-wrapper .cky-btn-revisit img{max-width: fit-content; margin: 0; height: 30px; width: 30px;}.cky-revisit-bottom-left:hover::before{content: attr(data-tooltip); position: absolute; background: #4e4b66; color: #ffffff; left: calc(100% + 7px); font-size: 12px; line-height: 16px; width: max-content; padding: 4px 8px; border-radius: 4px;}.cky-revisit-bottom-left:hover::after{position: absolute; content: \"\"; border: 5px solid transparent; left: calc(100% + 2px); border-left-width: 0; border-right-color: #4e4b66;}.cky-revisit-bottom-right:hover::before{content: attr(data-tooltip); position: absolute; background: #4e4b66; color: #ffffff; right: calc(100% + 7px); font-size: 12px; line-height: 16px; width: max-content; padding: 4px 8px; border-radius: 4px;}.cky-revisit-bottom-right:hover::after{position: absolute; content: \"\"; border: 5px solid transparent; right: calc(100% + 2px); border-right-width: 0; border-left-color: #4e4b66;}.cky-revisit-hide{display: none;}.cky-consent-container{position: fixed; width: 100%; box-sizing: border-box; z-index: 9999999;}.cky-consent-container .cky-consent-bar{background: #ffffff; border: 1px solid; padding: 16.5px 24px; box-shadow: 0 -1px 10px 0 #acabab4d;}.cky-banner-bottom{bottom: 0; left: 0;}.cky-banner-top{top: 0; left: 0;}.cky-custom-brand-logo-wrapper .cky-custom-brand-logo{width: 100px; height: auto; margin: 0 0 12px 0;}.cky-notice .cky-title{color: #212121; font-weight: 700; font-size: 18px; line-height: 24px; margin: 0 0 12px 0;}.cky-notice-group{display: flex; justify-content: space-between; align-items: center; font-size: 14px; line-height: 24px; font-weight: 400;}.cky-notice-des *,.cky-preference-content-wrapper *,.cky-accordion-header-des *,.cky-gpc-wrapper .cky-gpc-desc *{font-size: 14px;}.cky-notice-des{color: #212121; font-size: 14px; line-height: 24px; font-weight: 400;}.cky-notice-des img{height: 25px; width: 25px;}.cky-consent-bar .cky-notice-des p,.cky-gpc-wrapper .cky-gpc-desc p,.cky-preference-body-wrapper .cky-preference-content-wrapper p,.cky-accordion-header-wrapper .cky-accordion-header-des p,.cky-cookie-des-table li div:last-child p{color: inherit; margin-top: 0;}.cky-notice-des P:last-child,.cky-preference-content-wrapper p:last-child,.cky-cookie-des-table li div:last-child p:last-child,.cky-gpc-wrapper .cky-gpc-desc p:last-child{margin-bottom: 0;}.cky-notice-des a.cky-policy,.cky-notice-des button.cky-policy{font-size: 14px; color: #1863dc; white-space: nowrap; cursor: pointer; background: transparent; border: 1px solid; text-decoration: underline;}.cky-notice-des button.cky-policy{padding: 0;}.cky-notice-des a.cky-policy:focus-visible,.cky-notice-des button.cky-policy:focus-visible,.cky-preference-content-wrapper .cky-show-desc-btn:focus-visible,.cky-accordion-header .cky-accordion-btn:focus-visible,.cky-preference-header .cky-btn-close:focus-visible,.cky-switch input[type=\"checkbox\"]:focus-visible,.cky-footer-wrapper a:focus-visible,.cky-btn:focus-visible{outline: 2px solid #1863dc; outline-offset: 2px;}.cky-btn:focus:not(:focus-visible),.cky-accordion-header .cky-accordion-btn:focus:not(:focus-visible),.cky-preference-content-wrapper .cky-show-desc-btn:focus:not(:focus-visible),.cky-btn-revisit-wrapper .cky-btn-revisit:focus:not(:focus-visible),.cky-preference-header .cky-btn-close:focus:not(:focus-visible),.cky-consent-bar .cky-banner-btn-close:focus:not(:focus-visible){outline: 0;}button.cky-show-desc-btn:not(:hover):not(:active){color: #1863dc; background: transparent;}button.cky-accordion-btn:not(:hover):not(:active),button.cky-banner-btn-close:not(:hover):not(:active),button.cky-btn-close:not(:hover):not(:active),button.cky-btn-revisit:not(:hover):not(:active){background: transparent;}.cky-consent-bar button:hover,.cky-modal.cky-modal-open button:hover,.cky-consent-bar button:focus,.cky-modal.cky-modal-open button:focus{text-decoration: none;}.cky-notice-btn-wrapper{display: flex; justify-content: center; align-items: center; margin-left: 15px;}.cky-notice-btn-wrapper .cky-btn{text-shadow: none; box-shadow: none;}.cky-btn{font-size: 14px; font-family: inherit; line-height: 24px; padding: 8px 27px; font-weight: 500; margin: 0 8px 0 0; border-radius: 2px; white-space: nowrap; cursor: pointer; text-align: center; text-transform: none; min-height: 0;}.cky-btn:hover{opacity: 0.8;}.cky-btn-customize{color: #1863dc; background: transparent; border: 2px solid #1863dc;}.cky-btn-reject{color: #1863dc; background: transparent; border: 2px solid #1863dc;}.cky-btn-accept{background: #1863dc; color: #ffffff; border: 2px solid #1863dc;}.cky-btn:last-child{margin-right: 0;}@media (max-width: 768px){.cky-notice-group{display: block;}.cky-notice-btn-wrapper{margin-left: 0;}.cky-notice-btn-wrapper .cky-btn{flex: auto; max-width: 100%; margin-top: 10px; white-space: unset;}}@media (max-width: 576px){.cky-notice-btn-wrapper{flex-direction: column;}.cky-custom-brand-logo-wrapper, .cky-notice .cky-title, .cky-notice-des, .cky-notice-btn-wrapper{padding: 0 28px;}.cky-consent-container .cky-consent-bar{padding: 16.5px 0;}.cky-notice-des{max-height: 40vh; overflow-y: scroll;}.cky-notice-btn-wrapper .cky-btn{width: 100%; padding: 8px; margin-right: 0;}.cky-notice-btn-wrapper .cky-btn-accept{order: 1;}.cky-notice-btn-wrapper .cky-btn-reject{order: 3;}.cky-notice-btn-wrapper .cky-btn-customize{order: 2;}}@media (max-width: 425px){.cky-custom-brand-logo-wrapper, .cky-notice .cky-title, .cky-notice-des, .cky-notice-btn-wrapper{padding: 0 24px;}.cky-notice-btn-wrapper{flex-direction: column;}.cky-btn{width: 100%; margin: 10px 0 0 0;}.cky-notice-btn-wrapper .cky-btn-customize{order: 2;}.cky-notice-btn-wrapper .cky-btn-reject{order: 3;}.cky-notice-btn-wrapper .cky-btn-accept{order: 1; margin-top: 16px;}}@media (max-width: 352px){.cky-notice .cky-title{font-size: 16px;}.cky-notice-des *{font-size: 12px;}.cky-notice-des, .cky-btn{font-size: 12px;}}.cky-modal.cky-modal-open{display: flex; visibility: visible; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); top: 50%; left: 50%; transition: all 1s ease;}.cky-modal{box-shadow: 0 32px 68px rgba(0, 0, 0, 0.3); margin: 0 auto; position: fixed; max-width: 100%; background: #ffffff; top: 50%; box-sizing: border-box; border-radius: 6px; z-index: 999999999; color: #212121; -webkit-transform: translate(-50%, 100%); -moz-transform: translate(-50%, 100%); -ms-transform: translate(-50%, 100%); -o-transform: translate(-50%, 100%); transform: translate(-50%, 100%); visibility: hidden; transition: all 0s ease;}.cky-preference-center{max-height: 79vh; overflow: hidden; width: 845px; overflow: hidden; flex: 1 1 0; display: flex; flex-direction: column; border-radius: 6px;}.cky-preference-header{display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid;}.cky-preference-header .cky-preference-title{font-size: 18px; font-weight: 700; line-height: 24px;}.cky-preference-header .cky-btn-close{margin: 0; cursor: pointer; vertical-align: middle; padding: 0; background: none; border: none; width: auto; height: auto; min-height: 0; line-height: 0; text-shadow: none; box-shadow: none;}.cky-preference-header .cky-btn-close img{margin: 0; height: 10px; width: 10px;}.cky-preference-body-wrapper{padding: 0 24px; flex: 1; overflow: auto; box-sizing: border-box;}.cky-preference-content-wrapper,.cky-gpc-wrapper .cky-gpc-desc{font-size: 14px; line-height: 24px; font-weight: 400; padding: 12px 0;}.cky-preference-content-wrapper{border-bottom: 1px solid;}.cky-preference-content-wrapper img{height: 25px; width: 25px;}.cky-preference-content-wrapper .cky-show-desc-btn{font-size: 14px; font-family: inherit; color: #1863dc; text-decoration: none; line-height: 24px; padding: 0; margin: 0; white-space: nowrap; cursor: pointer; background: transparent; border-color: transparent; text-transform: none; min-height: 0; text-shadow: none; box-shadow: none;}.cky-accordion-wrapper{margin-bottom: 10px;}.cky-accordion{border-bottom: 1px solid;}.cky-accordion:last-child{border-bottom: none;}.cky-accordion .cky-accordion-item{display: flex; margin-top: 10px;}.cky-accordion .cky-accordion-body{display: none;}.cky-accordion.cky-accordion-active .cky-accordion-body{display: block; padding: 0 22px; margin-bottom: 16px;}.cky-accordion-header-wrapper{cursor: pointer; width: 100%;}.cky-accordion-item .cky-accordion-header{display: flex; justify-content: space-between; align-items: center;}.cky-accordion-header .cky-accordion-btn{font-size: 16px; font-family: inherit; color: #212121; line-height: 24px; background: none; border: none; font-weight: 700; padding: 0; margin: 0; cursor: pointer; text-transform: none; min-height: 0; text-shadow: none; box-shadow: none;}.cky-accordion-header .cky-always-active{color: #008000; font-weight: 600; line-height: 24px; font-size: 14px;}.cky-accordion-header-des{font-size: 14px; line-height: 24px; margin: 10px 0 16px 0;}.cky-accordion-chevron{margin-right: 22px; position: relative; cursor: pointer;}.cky-accordion-chevron-hide{display: none;}.cky-accordion .cky-accordion-chevron i::before{content: \"\"; position: absolute; border-right: 1.4px solid; border-bottom: 1.4px solid; border-color: inherit; height: 6px; width: 6px; -webkit-transform: rotate(-45deg); -moz-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg); transition: all 0.2s ease-in-out; top: 8px;}.cky-accordion.cky-accordion-active .cky-accordion-chevron i::before{-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);}.cky-audit-table{background: #f4f4f4; border-radius: 6px;}.cky-audit-table .cky-empty-cookies-text{color: inherit; font-size: 12px; line-height: 24px; margin: 0; padding: 10px;}.cky-audit-table .cky-cookie-des-table{font-size: 12px; line-height: 24px; font-weight: normal; padding: 15px 10px; border-bottom: 1px solid; border-bottom-color: inherit; margin: 0;}.cky-audit-table .cky-cookie-des-table:last-child{border-bottom: none;}.cky-audit-table .cky-cookie-des-table li{list-style-type: none; display: flex; padding: 3px 0;}.cky-audit-table .cky-cookie-des-table li:first-child{padding-top: 0;}.cky-cookie-des-table li div:first-child{width: 100px; font-weight: 600; word-break: break-word; word-wrap: break-word;}.cky-cookie-des-table li div:last-child{flex: 1; word-break: break-word; word-wrap: break-word; margin-left: 8px;}.cky-footer-shadow{display: block; width: 100%; height: 40px; background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%); position: absolute; bottom: calc(100% - 1px);}.cky-footer-wrapper{position: relative;}.cky-prefrence-btn-wrapper{display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 22px 24px; border-top: 1px solid;}.cky-prefrence-btn-wrapper .cky-btn{flex: auto; max-width: 100%; text-shadow: none; box-shadow: none;}.cky-btn-preferences{color: #1863dc; background: transparent; border: 2px solid #1863dc;}.cky-preference-header,.cky-preference-body-wrapper,.cky-preference-content-wrapper,.cky-accordion-wrapper,.cky-accordion,.cky-accordion-wrapper,.cky-footer-wrapper,.cky-prefrence-btn-wrapper{border-color: inherit;}@media (max-width: 845px){.cky-modal{max-width: calc(100% - 16px);}}@media (max-width: 576px){.cky-modal{max-width: 100%;}.cky-preference-center{max-height: 100vh;}.cky-prefrence-btn-wrapper{flex-direction: column;}.cky-accordion.cky-accordion-active .cky-accordion-body{padding-right: 0;}.cky-prefrence-btn-wrapper .cky-btn{width: 100%; margin: 10px 0 0 0;}.cky-prefrence-btn-wrapper .cky-btn-reject{order: 3;}.cky-prefrence-btn-wrapper .cky-btn-accept{order: 1; margin-top: 0;}.cky-prefrence-btn-wrapper .cky-btn-preferences{order: 2;}}@media (max-width: 425px){.cky-accordion-chevron{margin-right: 15px;}.cky-notice-btn-wrapper{margin-top: 0;}.cky-accordion.cky-accordion-active .cky-accordion-body{padding: 0 15px;}}@media (max-width: 352px){.cky-preference-header .cky-preference-title{font-size: 16px;}.cky-preference-header{padding: 16px 24px;}.cky-preference-content-wrapper *, .cky-accordion-header-des *{font-size: 12px;}.cky-preference-content-wrapper, .cky-preference-content-wrapper .cky-show-more, .cky-accordion-header .cky-always-active, .cky-accordion-header-des, .cky-preference-content-wrapper .cky-show-desc-btn, .cky-notice-des a.cky-policy{font-size: 12px;}.cky-accordion-header .cky-accordion-btn{font-size: 14px;}}.cky-switch{display: flex;}.cky-switch input[type=\"checkbox\"]{position: relative; width: 44px; height: 24px; margin: 0; background: #d0d5d2; -webkit-appearance: none; border-radius: 50px; cursor: pointer; outline: 0; border: none; top: 0;}.cky-switch input[type=\"checkbox\"]:checked{background: #1863dc;}.cky-switch input[type=\"checkbox\"]:before{position: absolute; content: \"\"; height: 20px; width: 20px; left: 2px; bottom: 2px; border-radius: 50%; background-color: white; -webkit-transition: 0.4s; transition: 0.4s; margin: 0;}.cky-switch input[type=\"checkbox\"]:after{display: none;}.cky-switch input[type=\"checkbox\"]:checked:before{-webkit-transform: translateX(20px); -ms-transform: translateX(20px); transform: translateX(20px);}@media (max-width: 425px){.cky-switch input[type=\"checkbox\"]{width: 38px; height: 21px;}.cky-switch input[type=\"checkbox\"]:before{height: 17px; width: 17px;}.cky-switch input[type=\"checkbox\"]:checked:before{-webkit-transform: translateX(17px); -ms-transform: translateX(17px); transform: translateX(17px);}}.cky-consent-bar .cky-banner-btn-close{position: absolute; right: 9px; top: 5px; background: none; border: none; cursor: pointer; padding: 0; margin: 0; min-height: 0; line-height: 0; height: auto; width: auto; text-shadow: none; box-shadow: none;}.cky-consent-bar .cky-banner-btn-close img{height: 9px; width: 9px; margin: 0;}.cky-notice-btn-wrapper .cky-btn-do-not-sell{font-size: 14px; line-height: 24px; padding: 6px 0; margin: 0; font-weight: 500; background: none; border-radius: 2px; border: none; white-space: nowrap; cursor: pointer; text-align: left; color: #1863dc; background: transparent; border-color: transparent; box-shadow: none; text-shadow: none;}.cky-consent-bar .cky-banner-btn-close:focus-visible,.cky-notice-btn-wrapper .cky-btn-do-not-sell:focus-visible,.cky-opt-out-btn-wrapper .cky-btn:focus-visible,.cky-opt-out-checkbox-wrapper input[type=\"checkbox\"].cky-opt-out-checkbox:focus-visible{outline: 2px solid #1863dc; outline-offset: 2px;}@media (max-width: 768px){.cky-notice-btn-wrapper{margin-left: 0; margin-top: 10px; justify-content: left;}.cky-notice-btn-wrapper .cky-btn-do-not-sell{padding: 0;}}@media (max-width: 352px){.cky-notice-btn-wrapper .cky-btn-do-not-sell, .cky-notice-des a.cky-policy{font-size: 12px;}}.cky-opt-out-wrapper{padding: 12px 0;}.cky-opt-out-wrapper .cky-opt-out-checkbox-wrapper{display: flex; align-items: center;}.cky-opt-out-checkbox-wrapper .cky-opt-out-checkbox-label{font-size: 16px; font-weight: 700; line-height: 24px; margin: 0 0 0 12px; cursor: pointer;}.cky-opt-out-checkbox-wrapper input[type=\"checkbox\"].cky-opt-out-checkbox{background-color: #ffffff; border: 1px solid black; width: 20px; height: 18.5px; margin: 0; -webkit-appearance: none; position: relative; display: flex; align-items: center; justify-content: center; border-radius: 2px; cursor: pointer;}.cky-opt-out-checkbox-wrapper input[type=\"checkbox\"].cky-opt-out-checkbox:checked{background-color: #1863dc; border: none;}.cky-opt-out-checkbox-wrapper input[type=\"checkbox\"].cky-opt-out-checkbox:checked::after{left: 6px; bottom: 4px; width: 7px; height: 13px; border: solid #ffffff; border-width: 0 3px 3px 0; border-radius: 2px; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); content: \"\"; position: absolute; box-sizing: border-box;}.cky-opt-out-checkbox-wrapper.cky-disabled .cky-opt-out-checkbox-label,.cky-opt-out-checkbox-wrapper.cky-disabled input[type=\"checkbox\"].cky-opt-out-checkbox{cursor: no-drop;}.cky-gpc-wrapper{margin: 0 0 0 32px;}.cky-footer-wrapper .cky-opt-out-btn-wrapper{display: flex; flex-wrap: wrap; align-items: center; justify-content: center; padding: 22px 24px;}.cky-opt-out-btn-wrapper .cky-btn{flex: auto; max-width: 100%; text-shadow: none; box-shadow: none;}.cky-opt-out-btn-wrapper .cky-btn-cancel{border: 1px solid #dedfe0; background: transparent; color: #858585;}.cky-opt-out-btn-wrapper .cky-btn-confirm{background: #1863dc; color: #ffffff; border: 1px solid #1863dc;}@media (max-width: 352px){.cky-opt-out-checkbox-wrapper .cky-opt-out-checkbox-label{font-size: 14px;}.cky-gpc-wrapper .cky-gpc-desc, .cky-gpc-wrapper .cky-gpc-desc *{font-size: 12px;}.cky-opt-out-checkbox-wrapper input[type=\"checkbox\"].cky-opt-out-checkbox{width: 16px; height: 16px;}.cky-opt-out-checkbox-wrapper input[type=\"checkbox\"].cky-opt-out-checkbox:checked::after{left: 5px; bottom: 4px; width: 3px; height: 9px;}.cky-gpc-wrapper{margin: 0 0 0 28px;}}.video-placeholder-youtube{background-size: 100% 100%; background-position: center; background-repeat: no-repeat; background-color: #b2b0b059; position: relative; display: flex; align-items: center; justify-content: center; max-width: 100%;}.video-placeholder-text-youtube{text-align: center; align-items: center; padding: 10px 16px; background-color: #000000cc; color: #ffffff; border: 1px solid; border-radius: 2px; cursor: pointer;}.video-placeholder-normal{background-image: url(\"\/wp-content\/plugins\/cookie-law-info\/lite\/frontend\/images\/placeholder.svg\"); background-size: 80px; background-position: center; background-repeat: no-repeat; background-color: #b2b0b059; position: relative; display: flex; align-items: flex-end; justify-content: center; max-width: 100%;}.video-placeholder-text-normal{align-items: center; padding: 10px 16px; text-align: center; border: 1px solid; border-radius: 2px; cursor: pointer;}.cky-rtl{direction: rtl; text-align: right;}.cky-rtl .cky-banner-btn-close{left: 9px; right: auto;}.cky-rtl .cky-notice-btn-wrapper .cky-btn:last-child{margin-right: 8px;}.cky-rtl .cky-notice-btn-wrapper .cky-btn:first-child{margin-right: 0;}.cky-rtl .cky-notice-btn-wrapper{margin-left: 0; margin-right: 15px;}.cky-rtl .cky-prefrence-btn-wrapper .cky-btn{margin-right: 8px;}.cky-rtl .cky-prefrence-btn-wrapper .cky-btn:first-child{margin-right: 0;}.cky-rtl .cky-accordion .cky-accordion-chevron i::before{border: none; border-left: 1.4px solid; border-top: 1.4px solid; left: 12px;}.cky-rtl .cky-accordion.cky-accordion-active .cky-accordion-chevron i::before{-webkit-transform: rotate(-135deg); -moz-transform: rotate(-135deg); -ms-transform: rotate(-135deg); -o-transform: rotate(-135deg); transform: rotate(-135deg);}@media (max-width: 768px){.cky-rtl .cky-notice-btn-wrapper{margin-right: 0;}}@media (max-width: 576px){.cky-rtl .cky-notice-btn-wrapper .cky-btn:last-child{margin-right: 0;}.cky-rtl .cky-prefrence-btn-wrapper .cky-btn{margin-right: 0;}.cky-rtl .cky-accordion.cky-accordion-active .cky-accordion-body{padding: 0 22px 0 0;}}@media (max-width: 425px){.cky-rtl .cky-accordion.cky-accordion-active .cky-accordion-body{padding: 0 15px 0 0;}}.cky-rtl .cky-opt-out-btn-wrapper .cky-btn{margin-right: 12px;}.cky-rtl .cky-opt-out-btn-wrapper .cky-btn:first-child{margin-right: 0;}.cky-rtl .cky-opt-out-checkbox-wrapper .cky-opt-out-checkbox-label{margin: 0 12px 0 0;}"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.latife.me/wp-content/plugins/cookie-law-info/lite/frontend/js/script.min.js" id="cookie-law-info-js"></script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.2/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.2/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="wphb-2-js-extra">
+/* 
+<![CDATA[ */
+var uwp_localize_data = {"uwp_more_char_limit":"100","uwp_more_text":"more","uwp_less_text":"less","error":"Something went wrong.","error_retry":"Something went wrong, please retry.","uwp_more_ellipses_text":"...","ajaxurl":"https:\/\/www.latife.me\/wp-admin\/admin-ajax.php","login_modal":"","register_modal":"","forgot_modal":"1","uwp_pass_strength":"","default_banner":"https:\/\/www.latife.me\/wp-content\/plugins\/userswp\/assets\/images\/banner.png"};;;var videopressAjax = {"ajaxUrl":"https:\/\/www.latife.me\/wp-admin\/admin-ajax.php","bridgeUrl":"https:\/\/www.latife.me\/wp-content\/plugins\/jetpack\/jetpack_vendor\/automattic\/jetpack-videopress\/src\/..\/build\/lib\/token-bridge.js","post_id":"2310"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.latife.me/wp-content/uploads/hummingbird-assets/d8398bf78121537b88504cc4239b29ed.js" id="wphb-2-js"></script>
+<script type="text/javascript" id="wphb-2-js-after">
+function aui_init_greedy_nav(){jQuery('nav.greedy').each(function(i,obj){if(jQuery(this).hasClass("being-greedy")){return true}jQuery(this).addClass('navbar-expand');var $vlinks='';var $dDownClass='';if(jQuery(this).find('.navbar-nav').length){if(jQuery(this).find('.navbar-nav').hasClass("being-greedy")){return true}$vlinks=jQuery(this).find('.navbar-nav').addClass("being-greedy w-100").removeClass('overflow-hidden')}else if(jQuery(this).find('.nav').length){if(jQuery(this).find('.nav').hasClass("being-greedy")){return true}$vlinks=jQuery(this).find('.nav').addClass("being-greedy w-100").removeClass('overflow-hidden');$dDownClass=' mt-2 '}else{return false}jQuery($vlinks).append('
+<li class="nav-item list-unstyled ml-auto greedy-btn d-none dropdown ">'+'
+<a href="javascript:void(0)" data-toggle="dropdown" class="nav-link">
+<i class="fas fa-ellipsis-h"></i> 
+<span class="greedy-count badge badge-dark badge-pill"></span></a>'+'
+<ul class="greedy-links dropdown-menu  dropdown-menu-right '+$dDownClass+'"></ul>'+'</li>');var $hlinks=jQuery(this).find('.greedy-links');var $btn=jQuery(this).find('.greedy-btn');var numOfItems=0;var totalSpace=0;var closingTime=1000;var breakWidths=[];$vlinks.children().outerWidth(function(i,w){totalSpace+=w;numOfItems+=1;breakWidths.push(totalSpace)});var availableSpace,numOfVisibleItems,requiredSpace,buttonSpace,timer;function check(){buttonSpace=$btn.width();availableSpace=$vlinks.width()-10;numOfVisibleItems=$vlinks.children().length;requiredSpace=breakWidths[numOfVisibleItems-1];if(numOfVisibleItems>1&&requiredSpace>availableSpace){$vlinks.children().last().prev().prependTo($hlinks);numOfVisibleItems-=1;check()}else if(availableSpace>breakWidths[numOfVisibleItems]){$hlinks.children().first().insertBefore($btn);numOfVisibleItems+=1;check()}jQuery($btn).find(".greedy-count").html(numOfItems-numOfVisibleItems);if(numOfVisibleItems===numOfItems){$btn.addClass('d-none')}else $btn.removeClass('d-none')}jQuery(window).on("resize",function(){check()});check()})}function aui_select2_locale(){var aui_select2_params={"i18n_select_state_text":"Select an option\u2026","i18n_no_matches":"No matches found","i18n_ajax_error":"Loading failed","i18n_input_too_short_1":"Please enter 1 or more characters","i18n_input_too_short_n":"Please enter %item% or more characters","i18n_input_too_long_1":"Please delete 1 character","i18n_input_too_long_n":"Please delete %item% characters","i18n_selection_too_long_1":"You can only select 1 item","i18n_selection_too_long_n":"You can only select %item% items","i18n_load_more":"Loading more results\u2026","i18n_searching":"Searching\u2026"};return{language:{errorLoading:function(){return aui_select2_params.i18n_searching},inputTooLong:function(args){var overChars=args.input.length-args.maximum;if(1===overChars){return aui_select2_params.i18n_input_too_long_1}return aui_select2_params.i18n_input_too_long_n.replace('%item%',overChars)},inputTooShort:function(args){var remainingChars=args.minimum-args.input.length;if(1===remainingChars){return aui_select2_params.i18n_input_too_short_1}return aui_select2_params.i18n_input_too_short_n.replace('%item%',remainingChars)},loadingMore:function(){return aui_select2_params.i18n_load_more},maximumSelected:function(args){if(args.maximum===1){return aui_select2_params.i18n_selection_too_long_1}return aui_select2_params.i18n_selection_too_long_n.replace('%item%',args.maximum)},noResults:function(){return aui_select2_params.i18n_no_matches},searching:function(){return aui_select2_params.i18n_searching}}}}function aui_init_select2(){var select2_args=jQuery.extend({},aui_select2_locale());jQuery("select.aui-select2").each(function(){if(!jQuery(this).hasClass("select2-hidden-accessible")){jQuery(this).select2(select2_args)}})}function aui_time_ago(selector){var aui_timeago_params={"prefix_ago":"","suffix_ago":" ago","prefix_after":"after ","suffix_after":"","seconds":"less than a minute","minute":"about a minute","minutes":"%d minutes","hour":"about an hour","hours":"about %d hours","day":"a day","days":"%d days","month":"about a month","months":"%d months","year":"about a year","years":"%d years"};var templates={prefix:aui_timeago_params.prefix_ago,suffix:aui_timeago_params.suffix_ago,seconds:aui_timeago_params.seconds,minute:aui_timeago_params.minute,minutes:aui_timeago_params.minutes,hour:aui_timeago_params.hour,hours:aui_timeago_params.hours,day:aui_timeago_params.day,days:aui_timeago_params.days,month:aui_timeago_params.month,months:aui_timeago_params.months,year:aui_timeago_params.year,years:aui_timeago_params.years};var template=function(t,n){return templates[t]&&templates[t].replace(/%d/i,Math.abs(Math.round(n)))};var timer=function(time){if(!time)return;time=time.replace(/\.\d+/,"");time=time.replace(/-/,"/").replace(/-/,"/");time=time.replace(/T/," ").replace(/Z/," UTC");time=time.replace(/([\+\-]\d\d)\:?(\d\d)/," $1$2");time=new Date(time*1000||time);var now=new Date();var seconds=((now.getTime()-time)*.001)>>0;var minutes=seconds/60;var hours=minutes/60;var days=hours/24;var years=days/365;return templates.prefix+(seconds
+<45&&template('seconds',seconds)||seconds
+<90&&template('minute',1)||minutes
+<45&&template('minutes',minutes)||minutes
+<90&&template('hour',1)||hours
+<24&&template('hours',hours)||hours
+<42&&template('day',1)||days
+<30&&template('days',days)||days
+<45&&template('month',1)||days
+<365&&template('months',days/30)||years
+<1.5&&template('year',1)||template('years',years))+templates.suffix};var elements=document.getElementsByClassName(selector);if(selector&&elements&&elements.length){for(var i in elements){var $el=elements[i];if(typeof $el==='object'){$el.innerHTML='
+<i class="far fa-clock"></i> '+timer($el.getAttribute('title')||$el.getAttribute('datetime'))}}}setTimeout(function(){aui_time_ago(selector)},60000)}function aui_init_tooltips(){jQuery('[data-toggle="tooltip"]').tooltip();jQuery('[data-toggle="popover"]').popover();jQuery('[data-toggle="popover-html"]').popover({html:true});jQuery('[data-toggle="popover"],[data-toggle="popover-html"]').on('inserted.bs.popover',function(){jQuery('body > .popover').wrapAll("
+<div class='bsui' />")})}$aui_doing_init_flatpickr=false;function aui_init_flatpickr(){if(typeof jQuery.fn.flatpickr==="function"&&!$aui_doing_init_flatpickr){$aui_doing_init_flatpickr=true;try{flatpickr.localize({weekdays:{shorthand:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],longhand:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],},months:{shorthand:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],longhand:['January','February','March','April','May','June','July','August','September','October','November','December'],},daysInMonth:[31,28,31,30,31,30,31,31,30,31,30,31],firstDayOfWeek:1,ordinal:function(nth){var s=nth%100;if(s>3&&s
+<21)return"th";switch(s%10){case 1:return"st";case 2:return"nd";case 3:return"rd";default:return"th"}},rangeSeparator:' to ',weekAbbreviation:'Wk',scrollTitle:'Scroll to increment',toggleTitle:'Click to toggle',amPM:['AM','PM'],yearAriaLabel:'Year',hourAriaLabel:'Hour',minuteAriaLabel:'Minute',time_24hr:false})}catch(err){console.log(err.message)}jQuery('input[data-aui-init="flatpickr"]:not(.flatpickr-input)').flatpickr()}$aui_doing_init_flatpickr=false}$aui_doing_init_iconpicker=false;function aui_init_iconpicker(){if(typeof jQuery.fn.iconpicker==="function"&&!$aui_doing_init_iconpicker){$aui_doing_init_iconpicker=true;jQuery('input[data-aui-init="iconpicker"]:not(.iconpicker-input)').iconpicker()}$aui_doing_init_iconpicker=false}function aui_modal_iframe($title,$url,$footer,$dismissible,$class,$dialog_class,$body_class,responsive){if(!$body_class){$body_class='p-0'}var wClass='text-center position-absolute w-100 text-dark overlay overlay-white p-0 m-0 d-none d-flex justify-content-center align-items-center';var $body="",sClass="w-100 p-0 m-0";if(responsive){$body+='
+<div class="embed-responsive embed-responsive-16by9">';wClass+=' h-100';sClass+=' embed-responsive-item'}else{wClass+=' vh-100';sClass+=' vh-100'}$body+='
+<div class="ac-preview-loading '+wClass+'" style="left:0;top:0">
+<div class="spinner-border" role="status"></div></div>';$body+='
+<iframe id="embedModal-iframe" class="'+sClass+'" src="" width="100%" height="100%" frameborder="0" allowtransparency="true"></iframe>';if(responsive){$body+='</div>'}$m=aui_modal($title,$body,$footer,$dismissible,$class,$dialog_class,$body_class);jQuery($m).on('shown.bs.modal',function(e){iFrame=jQuery('#embedModal-iframe');jQuery('.ac-preview-loading').addClass('d-flex');iFrame.attr({src:$url});iFrame.load(function(){jQuery('.ac-preview-loading').removeClass('d-flex')})});return $m}function aui_modal($title,$body,$footer,$dismissible,$class,$dialog_class,$body_class){if(!$class){$class=''}if(!$dialog_class){$dialog_class=''}if(!$body){$body='
+<div class="text-center">
+<div class="spinner-border" role="status"></div></div>'}jQuery('.aui-modal').modal('hide').modal('dispose').remove();jQuery('.modal-backdrop').remove();var $modal='';$modal+='
+<div class="modal aui-modal fade shadow bsui '+$class+'" tabindex="-1">'+'
+<div class="modal-dialog modal-dialog-centered '+$dialog_class+'">'+'
+<div class="modal-content border-0 shadow">';if($title){$modal+='
+<div class="modal-header">'+'
+<h5 class="modal-title">'+$title+'</h5>';if($dismissible){$modal+='
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+'
+<span aria-hidden="true">&times;</span>'+'</button>'}$modal+='</div>'}$modal+='
+<div class="modal-body '+$body_class+'">'+$body+'</div>';if($footer){$modal+='
+<div class="modal-footer">'+$footer+'</div>'}$modal+='</div>'+'</div>'+'</div>';jQuery('body').append($modal);return jQuery('.aui-modal').modal('hide').modal({})}function aui_conditional_fields(form){jQuery(form).find(".aui-conditional-field").each(function(){var $element_require=jQuery(this).data('element-require');if($element_require){$element_require=$element_require.replace("&#039;","'");$element_require=$element_require.replace("&quot;",'"');if(aui_check_form_condition($element_require,form)){jQuery(this).removeClass('d-none')}else{jQuery(this).addClass('d-none')}}})}function aui_check_form_condition(condition,form){if(form){condition=condition.replace(/\(form\)/g,"('"+form+"')")}return new Function("return "+condition+";")()}jQuery.fn.aui_isOnScreen=function(){var win=jQuery(window);var viewport={top:win.scrollTop(),left:win.scrollLeft()};viewport.right=viewport.left+win.width();viewport.bottom=viewport.top+win.height();var bounds=this.offset();bounds.right=bounds.left+this.outerWidth();bounds.bottom=bounds.top+this.outerHeight();return(!(viewport.right
+<bounds.left||viewport.left>bounds.right||viewport.bottom
+<bounds.top||viewport.top>bounds.bottom))};function aui_carousel_maybe_show_multiple_items($carousel){var $items={};var $item_count=0;if(!jQuery($carousel).find('.carousel-inner-original').length){jQuery($carousel).append('
+<div class="carousel-inner-original d-none">'+jQuery($carousel).find('.carousel-inner').html()+'</div>')}jQuery($carousel).find('.carousel-inner-original .carousel-item').each(function(){$items[$item_count]=jQuery(this).html();$item_count++});if(!$item_count){return}if(jQuery(window).width()
+<=576){if(jQuery($carousel).find('.carousel-inner').hasClass('aui-multiple-items')&&jQuery($carousel).find('.carousel-inner-original').length){jQuery($carousel).find('.carousel-inner').removeClass('aui-multiple-items').html(jQuery($carousel).find('.carousel-inner-original').html());jQuery($carousel).find(".carousel-indicators li").removeClass("d-none")}}else{var $md_count=jQuery($carousel).data('limit_show');var $new_items='';var $new_items_count=0;var $new_item_count=0;var $closed=true;Object.keys($items).forEach(function(key,index){if(index!=0&&Number.isInteger(index/$md_count)){$new_items+='</div></div>';$closed=true}if(index==0||Number.isInteger(index/$md_count)){$active=index==0?'active':'';$new_items+='
+<div class="carousel-item '+$active+'">
+<div class="row m-0">';$closed=false;$new_items_count++;$new_item_count=0}$new_items+='
+<div class="col pr-1 pl-0">'+$items[index]+'</div>';$new_item_count++});if(!$closed){if($md_count-$new_item_count>0){$placeholder_count=$md_count-$new_item_count;while($placeholder_count>0){$new_items+='
+<div class="col pr-1 pl-0"></div>';$placeholder_count--}}$new_items+='</div></div>'}jQuery($carousel).find('.carousel-inner').addClass('aui-multiple-items').html($new_items);jQuery($carousel).find('.carousel-item.active img').each(function(){if(real_srcset=jQuery(this).attr("data-srcset")){if(!jQuery(this).attr("srcset"))jQuery(this).attr("srcset",real_srcset)}if(real_src=jQuery(this).attr("data-src")){if(!jQuery(this).attr("srcset"))jQuery(this).attr("src",real_src)}});$hide_count=$new_items_count-1;jQuery($carousel).find(".carousel-indicators li:gt("+$hide_count+")").addClass("d-none")}jQuery(window).trigger("aui_carousel_multiple")}function aui_init_carousel_multiple_items(){jQuery(window).on("resize",function(){jQuery('.carousel-multiple-items').each(function(){aui_carousel_maybe_show_multiple_items(this)})});jQuery('.carousel-multiple-items').each(function(){aui_carousel_maybe_show_multiple_items(this)})}function init_nav_sub_menus(){jQuery('.navbar-multi-sub-menus').each(function(i,obj){if(jQuery(this).hasClass("has-sub-sub-menus")){return true}jQuery(this).addClass('has-sub-sub-menus');jQuery(this).find('.dropdown-menu a.dropdown-toggle').on('click',function(e){var $el=jQuery(this);$el.toggleClass('active-dropdown');var $parent=jQuery(this).offsetParent(".dropdown-menu");if(!jQuery(this).next().hasClass('show')){jQuery(this).parents('.dropdown-menu').first().find('.show').removeClass("show")}var $subMenu=jQuery(this).next(".dropdown-menu");$subMenu.toggleClass('show');jQuery(this).parent("li").toggleClass('show');jQuery(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown',function(e){jQuery('.dropdown-menu .show').removeClass("show");$el.removeClass('active-dropdown')});if(!$parent.parent().hasClass('navbar-nav')){$el.next().addClass('position-relative border-top border-bottom')}return false})})}function aui_lightbox_embed($link,ele){ele.preventDefault();jQuery('.aui-carousel-modal').remove();var $modal='
+<div class="modal fade aui-carousel-modal bsui" tabindex="-1" role="dialog" aria-labelledby="aui-modal-title" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-xl mw-100">
+<div class="modal-content bg-transparent border-0">
+<div class="modal-header">
+<h5 class="modal-title" id="aui-modal-title"></h5></div>
+<div class="modal-body text-center">
+<i class="fas fa-circle-notch fa-spin fa-3x"></i></div></div></div></div>';jQuery('body').append($modal);jQuery('.aui-carousel-modal').modal({});jQuery('.aui-carousel-modal').on('hidden.bs.modal',function(e){jQuery("iframe").attr('src','')});$container=jQuery($link).closest('.aui-gallery');$clicked_href=jQuery($link).attr('href');$images=[];$container.find('.aui-lightbox-image').each(function(){var a=this;var href=jQuery(a).attr('href');if(href){$images.push(href)}});if($images.length){var $carousel='
+<div id="aui-embed-slider-modal" class="carousel slide" >';if($images.length>1){$i=0;$carousel+='
+<ol class="carousel-indicators position-fixed">';$container.find('.aui-lightbox-image').each(function(){$active=$clicked_href==jQuery(this).attr('href')?'active':'';$carousel+='
+<li data-target="#aui-embed-slider-modal" data-slide-to="'+$i+'" class="'+$active+'"></li>';$i++});$carousel+='</ol>'}$i=0;$carousel+='
+<div class="carousel-inner">';$container.find('.aui-lightbox-image').each(function(){var a=this;$active=$clicked_href==jQuery(this).attr('href')?'active':'';$carousel+='
+<div class="carousel-item '+$active+'">
+<div>';var css_height=window.innerWidth>window.innerHeight?'90vh':'auto';var img=jQuery(a).find('img').clone().removeClass().addClass('mx-auto d-block w-auto mw-100 rounded').css('max-height',css_height).get(0).outerHTML;$carousel+=img;if(jQuery(a).parent().find('.carousel-caption').length){$carousel+=jQuery(a).parent().find('.carousel-caption').clone().removeClass('sr-only').get(0).outerHTML}else if(jQuery(a).parent().find('.figure-caption').length){$carousel+=jQuery(a).parent().find('.figure-caption').clone().removeClass('sr-only').addClass('carousel-caption').get(0).outerHTML}$carousel+='</div></div>';$i++});$container.find('.aui-lightbox-iframe').each(function(){var a=this;$active=$clicked_href==jQuery(this).attr('href')?'active':'';$carousel+='
+<div class="carousel-item '+$active+'">
+<div class="modal-xl mx-auto embed-responsive embed-responsive-16by9">';var css_height=window.innerWidth>window.innerHeight?'95vh':'auto';var url=jQuery(a).attr('href');var iframe='
+<iframe class="embed-responsive-item" style="height:'+css_height+'" src="'+url+'?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;autoplay=1" id="video" allow="autoplay"></iframe>';var img=iframe;$carousel+=img;$carousel+='</div></div>';$i++});$carousel+='</div>';if($images.length>1){$carousel+='
+<a class="carousel-control-prev" href="#aui-embed-slider-modal" role="button" data-slide="prev">';$carousel+='
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>';$carousel+=' 
+<a class="carousel-control-next" href="#aui-embed-slider-modal" role="button" data-slide="next">';$carousel+='
+<span class="carousel-control-next-icon" aria-hidden="true"></span>';$carousel+='</a>'}$carousel+='</div>';var $close='
+<button type="button" class="close text-white text-right position-fixed" style="font-size: 2.5em;right: 20px;top: 10px; z-index: 1055;" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span></button>';jQuery('.aui-carousel-modal .modal-content').html($carousel).prepend($close)}}function aui_init_lightbox_embed(){jQuery('.aui-lightbox-image, .aui-lightbox-iframe').off('click').on("click",function(ele){aui_lightbox_embed(this,ele)})}function aui_init_modal_iframe(){jQuery('.aui-has-embed, [data-aui-embed="iframe"]').each(function(e){if(!jQuery(this).hasClass('aui-modal-iframed')&&jQuery(this).data('embed-url')){jQuery(this).addClass('aui-modal-iframed');jQuery(this).on("click",function(e1){aui_modal_iframe('',jQuery(this).data('embed-url'),'',true,'','modal-lg','aui-modal-iframe p-0',true);return false})}})}$aui_doing_toast=false;function aui_toast($id,$type,$title,$title_small,$body,$time,$can_close){if($aui_doing_toast){setTimeout(function(){aui_toast($id,$type,$title,$title_small,$body,$time,$can_close)},500);return}$aui_doing_toast=true;if($can_close==null){$can_close=false}if($time==''||$time==null){$time=3000}if(document.getElementById($id)){jQuery('#'+$id).toast('show');setTimeout(function(){$aui_doing_toast=false},500);return}var uniqid=Date.now();if($id){uniqid=$id}$op="";$tClass='';$thClass='';$icon="";if($type=='success'){$op="opacity:.92;";$tClass='alert alert-success';$thClass='bg-transparent border-0 alert-success';$icon="
+<div class='h5 m-0 p-0'>
+<i class='fas fa-check-circle mr-2'></i></div>"}else if($type=='error'||$type=='danger'){$op="opacity:.92;";$tClass='alert alert-danger';$thClass='bg-transparent border-0 alert-danger';$icon="
+<div class='h5 m-0 p-0'>
+<i class='far fa-times-circle mr-2'></i></div>"}else if($type=='info'){$op="opacity:.92;";$tClass='alert alert-info';$thClass='bg-transparent border-0 alert-info';$icon="
+<div class='h5 m-0 p-0'>
+<i class='fas fa-info-circle mr-2'></i></div>"}else if($type=='warning'){$op="opacity:.92;";$tClass='alert alert-warning';$thClass='bg-transparent border-0 alert-warning';$icon="
+<div class='h5 m-0 p-0'>
+<i class='fas fa-exclamation-triangle mr-2'></i></div>"}if(!document.getElementById("aui-toasts")){jQuery('body').append('
+<div class="bsui" id="aui-toasts">
+<div class="position-fixed aui-toast-bottom-right pr-3 mb-1" style="z-index: 500000;right: 0;bottom: 0;'+$op+'"></div></div>')}$toast='
+<div id="'+uniqid+'" class="toast fade hide shadow hover-shadow '+$tClass+'" style="" role="alert" aria-live="assertive" aria-atomic="true" data-delay="'+$time+'">';if($type||$title||$title_small){$toast+='
+<div class="toast-header '+$thClass+'">';if($icon){$toast+=$icon}if($title){$toast+='
+<strong class="mr-auto">'+$title+'</strong>'}if($title_small){$toast+='
+<small>'+$title_small+'</small>'}if($can_close){$toast+='
+<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+<span aria-hidden="true">×</span></button>'}$toast+='</div>'}if($body){$toast+='
+<div class="toast-body">'+$body+'</div>'}$toast+='</div>';jQuery('.aui-toast-bottom-right').prepend($toast);jQuery('#'+uniqid).toast('show');setTimeout(function(){$aui_doing_toast=false},500)}function aui_init_counters(){const animNum=(EL)=>{if(EL._isAnimated)return;EL._isAnimated=true;let end=EL.dataset.auiend;let start=EL.dataset.auistart;let duration=EL.dataset.auiduration?EL.dataset.auiduration:2000;let seperator=EL.dataset.auisep?EL.dataset.auisep:'';jQuery(EL).prop('Counter',start).animate({Counter:end},{duration:Math.abs(duration),easing:'swing',step:function(now){const text=seperator?(Math.ceil(now)).toLocaleString('en-US'):Math.ceil(now);const html=seperator?text.split(",").map(n=>`
+<span class="count">${n}</span>`).join(","):text;if(seperator&&seperator!=','){html.replace(',',seperator)}jQuery(this).html(html)}})};const inViewport=(entries,observer)=>{entries.forEach(entry=>{if(entry.isIntersecting)animNum(entry.target)})};jQuery("[data-auicounter]").each((i,EL)=>{const observer=new IntersectionObserver(inViewport);observer.observe(EL)})}function aui_init(){aui_init_counters();init_nav_sub_menus();aui_init_tooltips();aui_init_select2();aui_init_flatpickr();aui_init_iconpicker();aui_init_greedy_nav();aui_time_ago('timeago');aui_init_carousel_multiple_items();aui_init_lightbox_embed();aui_init_modal_iframe()}jQuery(window).on("load",function(){aui_init()});jQuery(function($){var ua=navigator.userAgent.toLowerCase();var isiOS=ua.match(/(iphone|ipod|ipad)/);if(isiOS){var pS=0;pM=parseFloat($('body').css('marginTop'));$(document).on('show.bs.modal',function(){pS=window.scrollY;$('body').css({marginTop:-pS,overflow:'hidden',position:'fixed',})}).on('hidden.bs.modal',function(){$('body').css({marginTop:pM,overflow:'visible',position:'inherit',});window.scrollTo(0,pS)})}});var aui_confirm=function(message,okButtonText,cancelButtonText,isDelete,large){okButtonText=okButtonText||'Yes';cancelButtonText=cancelButtonText||'Cancel';message=message||'Are you sure?';sizeClass=large?'':'modal-sm';btnClass=isDelete?'btn-danger':'btn-primary';deferred=jQuery.Deferred();var $body="";$body+="
+<h3 class='h4 py-3 text-center text-dark'>"+message+"</h3>";$body+="
+<div class='d-flex'>";$body+="
+<button class='btn btn-outline-secondary w-50 btn-round' data-dismiss='modal'  onclick='deferred.resolve(false);'>"+cancelButtonText+"</button>";$body+="
+<button class='btn "+btnClass+" ml-2 w-50 btn-round' data-dismiss='modal'  onclick='deferred.resolve(true);'>"+okButtonText+"</button>";$body+="</div>";$modal=aui_modal('',$body,'',false,'',sizeClass);return deferred.promise()};function aui_flip_color_scheme_on_scroll($value,$iframe){if(!$value)$value=window.scrollY;var navbar=$iframe?$iframe.querySelector('.color-scheme-flip-on-scroll'):document.querySelector('.color-scheme-flip-on-scroll');if(navbar==null)return;let cs_original=navbar.dataset.cso;let cs_scroll=navbar.dataset.css;if(!cs_scroll&&!cs_original){if(navbar.classList.contains('navbar-light')){cs_original='navbar-light';cs_scroll='navbar-dark'}else if(navbar.classList.contains('navbar-dark')){cs_original='navbar-dark';cs_scroll='navbar-light'}navbar.dataset.cso=cs_original
+            navbar.dataset.css=cs_scroll}if($value>0){navbar.classList.remove(cs_original);navbar.classList.add(cs_scroll)}else{navbar.classList.remove(cs_scroll);navbar.classList.add(cs_original)}}window.onscroll=function(){aui_set_data_scroll()};function aui_set_data_scroll(){document.documentElement.dataset.scroll=window.scrollY}aui_set_data_scroll();aui_flip_color_scheme_on_scroll();
+</script>
+<script type="text/javascript">
+           var ajaxurl = "https://www.latife.me/wp-admin/admin-ajax.php";
+         </script>
+<script type="text/javascript">
+            var WP_Statistics_http = new XMLHttpRequest();
+        WP_Statistics_http.open("GET", "https://www.latife.me/wp-json/wp-statistics/v2/hit?wp_statistics_hit_rest=yes&track_all=1&current_page_type=home&current_page_id=0&search_query&page_uri=Lw=" + "&referred=" + encodeURIComponent(document.referrer) + "&_=" + Date.now(), true);
+        WP_Statistics_http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        WP_Statistics_http.send(null);
+        </script>
+<script type="text/javascript">
+				document.documentElement.classList.add(
+					'jetpack-lazy-images-js-enabled'
+				);
+			</script>
+<script type="text/javascript">
+		document.documentElement.classList.remove("no-js");
+		var argonConfig = {
+			wp_path: "/",
+			language: "zh_CN",
+			dateFormat: "YMD",
+							zoomify: false,
+						pangu: "article|shuoshuo|comment",
+							lazyload: {
+					threshold: 800,
+					effect: "fadeIn"
+				},
+						fold_long_comments: true,
+			fold_long_shuoshuo: true,
+			disable_pjax: false,
+			pjax_animation_durtion: 600,
+			headroom: "absolute",
+			waterflow_columns: "2and3",
+			code_highlight: {
+				enable: true,
+				hide_linenumber: false,
+				transparent_linenumber: false,
+				break_line: true			}
+		}
+	</script>
+<script type="text/javascript">
+		var darkmodeAutoSwitch = "system";
+		function setDarkmode(enable){
+			if (enable == true){
+				$("html").addClass("darkmode");
+			}else{
+				$("html").removeClass("darkmode");
+			}
+			$(window).trigger("scroll");
+		}
+		function toggleDarkmode(){
+			if ($("html").hasClass("darkmode")){
+				setDarkmode(false);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "false");
+			}else{
+				setDarkmode(true);
+				sessionStorage.setItem("Argon_Enable_Dark_Mode", "true");
+			}
+		}
+		if (sessionStorage.getItem("Argon_Enable_Dark_Mode") == "true"){
+			setDarkmode(true);
+		}
+		function toggleDarkmodeByPrefersColorScheme(media){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			if (media.matches){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		function toggleDarkmodeByTime(){
+			if (sessionStorage.getItem('Argon_Enable_Dark_Mode') == "false" || sessionStorage.getItem('Argon_Enable_Dark_Mode') == "true"){
+				return;
+			}
+			let hour = new Date().getHours();
+			if (hour 
+< 7 || hour >= 22){
+				setDarkmode(true);
+			}else{
+				setDarkmode(false);
+			}
+		}
+		if (darkmodeAutoSwitch == 'system'){
+			var darkmodeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+			darkmodeMediaQuery.addListener(toggleDarkmodeByPrefersColorScheme);
+			toggleDarkmodeByPrefersColorScheme(darkmodeMediaQuery);
+		}
+		if (darkmodeAutoSwitch == 'time'){
+			toggleDarkmodeByTime();
+		}
+		if (darkmodeAutoSwitch == 'alwayson'){
+			setDarkmode(true);
+		}
+
+		function toggleAmoledDarkMode(){
+			$("html").toggleClass("amoled-dark");
+			if ($("html").hasClass("amoled-dark")){
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "true");
+			}else{
+				localStorage.setItem("Argon_Enable_Amoled_Dark_Mode", "false");
+			}
+		}
+		if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "true"){
+			$("html").addClass("amoled-dark");
+		}else if (localStorage.getItem("Argon_Enable_Amoled_Dark_Mode") == "false"){
+			$("html").removeClass("amoled-dark");
+		}
+	</script>
+<script type="text/javascript">
+		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
+			$("html").addClass("using-safari");
+		}
+	</script>
+<script src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/smoothscroll/smoothscroll1_pulse.js" type="text/javascript"></script>
+<script src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/argontheme.js?v1.3.5" type="text/javascript"></script>
+<script src="//testingcf.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" type="text/javascript"></script>
+<script src="//testingcf.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+				document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body,{
+						delimiters: [
+							{left: "$$", right: "$$", display: true},
+							{left: "$", right: "$", display: false},
+							{left: "\\(", right: "\\)", display: false}
+						]
+					});
+				});
+			</script>
+<script id="ckyBannerTemplate" type="text/template">
+<div class="cky-overlay cky-hide"></div>
+<div class="cky-btn-revisit-wrapper cky-revisit-hide" data-cky-tag="revisit-consent" data-tooltip="Cookie偏好设置" style="background-color:#0056a7"> 
+<button class="cky-btn-revisit" aria-label="Cookie偏好设置"> 
+<img src="/wp-content/plugins/cookie-law-info/lite/frontend/images/revisit.svg" alt="Revisit consent button"> </button></div>
+<div class="cky-consent-container cky-hide"> 
+<div class="cky-consent-bar" data-cky-tag="notice" style="background-color:#FFFFFF;border-color:#f4f4f4;color:#212121"> 
+<button class="cky-banner-btn-close" data-cky-tag="close-button" aria-label="Close"> 
+<img src="/wp-content/plugins/cookie-law-info/lite/frontend/images/close.svg" alt="Close"> </button> 
+<div class="cky-notice"> 
+<p class="cky-title" data-cky-tag="title" style="color:#212121">我们重视您的隐私</p>
+<div class="cky-notice-group"> 
+<div class="cky-notice-des" data-cky-tag="description" style="color:#212121"> 
+<p>我们使用cookie来增强您的浏览体验，提供个性化广告或内容，并分析我们的流量。单击“接受全部”即表示您同意我们使用cookie。</p> </div>
+<div class="cky-notice-btn-wrapper" data-cky-tag="notice-buttons"> 
+<button class="cky-btn cky-btn-customize" aria-label="自定义" data-cky-tag="settings-button" style="color:#1863dc;background-color:transparent;border-color:#1863dc">自定义</button> 
+<button class="cky-btn cky-btn-reject" aria-label="拦截全部" data-cky-tag="reject-button" style="color:#1863dc;background-color:transparent;border-color:#1863dc">拦截全部</button> 
+<button class="cky-btn cky-btn-accept" aria-label="接受全部" data-cky-tag="accept-button" style="color:#FFFFFF;background-color:#1863dc;border-color:#1863dc">接受全部</button>  </div></div></div></div></div>
+<div class="cky-modal"> 
+<div class="cky-preference-center" data-cky-tag="detail" style="color:#212121;background-color:#FFFFFF;border-color:#F4F4F4"> 
+<div class="cky-preference-header"> 
+<span class="cky-preference-title" data-cky-tag="detail-title" style="color:#212121">自定义Cookie偏好设置</span> 
+<button class="cky-btn-close" aria-label="[cky_preference_close_label]" data-cky-tag="detail-close"> 
+<img src="/wp-content/plugins/cookie-law-info/lite/frontend/images/close.svg" alt="Close"> </button> </div>
+<div class="cky-preference-body-wrapper"> 
+<div class="cky-preference-content-wrapper" data-cky-tag="detail-description" style="color:#212121"> 
+<p>我们使用cookie帮助您高效导航并执行某些功能。您将在下面找到有关每个许可类别下所有cookie的详细信息。
+<br>归类为“必要”的cookie存储在您的浏览器中，因为它们对于启用网站的基本功能至关重要。
+<br>我们还使用第三方cookie来帮助我们分析您如何使用本网站，存储您的偏好，并提供与您相关的内容和广告。这些cookie仅在您事先同意的情况下存储在您的浏览器中。
+<br>您可以选择启用或禁用这些cookie中的部分或全部，但禁用某些cookie可能会影响您的浏览体验。</p> </div>
+<div class="cky-accordion-wrapper" data-cky-tag="detail-categories"> 
+<div class="cky-accordion" id="ckyDetailCategorynecessary"> 
+<div class="cky-accordion-item"> 
+<div class="cky-accordion-chevron">
+<i class="cky-chevron-right"></i></div> 
+<div class="cky-accordion-header-wrapper"> 
+<div class="cky-accordion-header">
+<button class="cky-accordion-btn" aria-label="Necessary" data-cky-tag="detail-category-title" style="color:#212121">Necessary</button>
+<span class="cky-always-active">始终活动</span> 
+<div class="cky-switch" data-cky-tag="detail-category-toggle">
+<input type="checkbox" id="ckySwitchnecessary"></div> </div> 
+<div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#212121"> 
+<p>Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.</p></div> </div> </div> 
+<div class="cky-accordion-body"> 
+<div class="cky-audit-table" data-cky-tag="audit-table" style="color:#212121;background-color:#f4f4f4;border-color:#ebebeb">
+<p class="cky-empty-cookies-text">没有要显示的cookie</p></div> </div> </div>
+<div class="cky-accordion" id="ckyDetailCategoryfunctional"> 
+<div class="cky-accordion-item"> 
+<div class="cky-accordion-chevron">
+<i class="cky-chevron-right"></i></div> 
+<div class="cky-accordion-header-wrapper"> 
+<div class="cky-accordion-header">
+<button class="cky-accordion-btn" aria-label="Functional" data-cky-tag="detail-category-title" style="color:#212121">Functional</button>
+<span class="cky-always-active">始终活动</span> 
+<div class="cky-switch" data-cky-tag="detail-category-toggle">
+<input type="checkbox" id="ckySwitchfunctional"></div> </div> 
+<div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#212121"> 
+<p>Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.</p></div> </div> </div> 
+<div class="cky-accordion-body"> 
+<div class="cky-audit-table" data-cky-tag="audit-table" style="color:#212121;background-color:#f4f4f4;border-color:#ebebeb">
+<p class="cky-empty-cookies-text">没有要显示的cookie</p></div> </div> </div>
+<div class="cky-accordion" id="ckyDetailCategoryanalytics"> 
+<div class="cky-accordion-item"> 
+<div class="cky-accordion-chevron">
+<i class="cky-chevron-right"></i></div> 
+<div class="cky-accordion-header-wrapper"> 
+<div class="cky-accordion-header">
+<button class="cky-accordion-btn" aria-label="Analytics" data-cky-tag="detail-category-title" style="color:#212121">Analytics</button>
+<span class="cky-always-active">始终活动</span> 
+<div class="cky-switch" data-cky-tag="detail-category-toggle">
+<input type="checkbox" id="ckySwitchanalytics"></div> </div> 
+<div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#212121"> 
+<p>Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.</p></div> </div> </div> 
+<div class="cky-accordion-body"> 
+<div class="cky-audit-table" data-cky-tag="audit-table" style="color:#212121;background-color:#f4f4f4;border-color:#ebebeb">
+<p class="cky-empty-cookies-text">没有要显示的cookie</p></div> </div> </div>
+<div class="cky-accordion" id="ckyDetailCategoryperformance"> 
+<div class="cky-accordion-item"> 
+<div class="cky-accordion-chevron">
+<i class="cky-chevron-right"></i></div> 
+<div class="cky-accordion-header-wrapper"> 
+<div class="cky-accordion-header">
+<button class="cky-accordion-btn" aria-label="Performance" data-cky-tag="detail-category-title" style="color:#212121">Performance</button>
+<span class="cky-always-active">始终活动</span> 
+<div class="cky-switch" data-cky-tag="detail-category-toggle">
+<input type="checkbox" id="ckySwitchperformance"></div> </div> 
+<div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#212121"> 
+<p>Performance cookies are used to understand and analyze the key performance indexes of the website which helps in delivering a better user experience for the visitors.</p></div> </div> </div> 
+<div class="cky-accordion-body"> 
+<div class="cky-audit-table" data-cky-tag="audit-table" style="color:#212121;background-color:#f4f4f4;border-color:#ebebeb">
+<p class="cky-empty-cookies-text">没有要显示的cookie</p></div> </div> </div>
+<div class="cky-accordion" id="ckyDetailCategoryadvertisement"> 
+<div class="cky-accordion-item"> 
+<div class="cky-accordion-chevron">
+<i class="cky-chevron-right"></i></div> 
+<div class="cky-accordion-header-wrapper"> 
+<div class="cky-accordion-header">
+<button class="cky-accordion-btn" aria-label="Advertisement" data-cky-tag="detail-category-title" style="color:#212121">Advertisement</button>
+<span class="cky-always-active">始终活动</span> 
+<div class="cky-switch" data-cky-tag="detail-category-toggle">
+<input type="checkbox" id="ckySwitchadvertisement"></div> </div> 
+<div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#212121"> 
+<p>Advertisement cookies are used to provide visitors with customized advertisements based on the pages you visited previously and to analyze the effectiveness of the ad campaigns.</p></div> </div> </div> 
+<div class="cky-accordion-body"> 
+<div class="cky-audit-table" data-cky-tag="audit-table" style="color:#212121;background-color:#f4f4f4;border-color:#ebebeb">
+<p class="cky-empty-cookies-text">没有要显示的cookie</p></div> </div> </div> </div></div>
+<div class="cky-footer-wrapper"> 
+<span class="cky-footer-shadow"></span> 
+<div class="cky-prefrence-btn-wrapper" data-cky-tag="detail-buttons"> 
+<button class="cky-btn cky-btn-reject" aria-label="拦截全部" data-cky-tag="detail-reject-button" style="color:#1863dc;background-color:transparent;border-color:#1863dc"> 拦截全部 </button> 
+<button class="cky-btn cky-btn-preferences" aria-label="存储我的设置" data-cky-tag="detail-save-button" style="color:#1863dc;background-color:transparent;border-color:#1863dc"> 存储我的设置 </button> 
+<button class="cky-btn cky-btn-accept" aria-label="接受全部" data-cky-tag="detail-accept-button" style="color:#ffffff;background-color:#1863dc;border-color:#1863dc"> 接受全部 </button> </div>
+<div style="padding: 8px 24px;font-size: 12px;font-weight: 400;line-height: 20px;text-align: right;border-radius: 0 0 6px 6px;direction: ltr;justify-content: flex-end;align-items: center;background-color:#EDEDED;color:#293C5B" data-cky-tag="detail-powered-by"> Powered by 
+<a target="_blank" rel="noopener" href="https://www.cookieyes.com/product/cookie-consent" style="margin-left: 5px;line-height: 0">
+<img src="/wp-content/plugins/cookie-law-info/lite/frontend/images/poweredbtcky.svg" alt="Cookieyes logo" style="width: 78px;height: 13px;margin: 0"></a> </div></div></div></div></script>
+<script type="text/javascript">
+        (function( $, window, undefined ) {
+        jQuery(document).ready(function () {
+            jQuery(document).on('click', '.uwp_follow_btn', function(e){
+                e.preventDefault();
+                var el = jQuery(this);
+                var type = jQuery(this).data('type');
+                var nonce = jQuery(this).data('nonce');
+                var leader_id = jQuery(this).data('leader');
+                var $uwp_in_user_loop = jQuery(this).hasClass('btn-block');
+
+                var data = {
+                    'action': 'uwp_process_follow',
+                    'leader_id': leader_id,
+                    'type': type,
+                    'nonce': nonce,
+                    'in_user_loop': $uwp_in_user_loop
+                };
+
+                jQuery.post(ajaxurl, data, function(response) {
+                    el.replaceWith(response);
+                });
+            });
+            });
+        }( jQuery, window ));
+    </script>
+<script type="text/javascript">window.addEventListener( 'load', function() {
+				document.querySelectorAll( 'link' ).forEach( function( e ) {'not all' === e.media && e.dataset.media && ( e.media = e.dataset.media, delete e.dataset.media );} );
+				var e = document.getElementById( 'jetpack-boost-critical-css' );
+				e && ( e.media = 'not all' );
+			} );</script>
+<script type="text/javascript" src="https://www.latife.me/wp-content/plugins/jetpack-boost/jetpack_vendor/automattic/jetpack-image-cdn/src/js/photon.js" id="jetpack-photon-js"></script>
+<script type="text/javascript" id="uwp_recaptcha_js_api-js-extra">
+/* 
+<![CDATA[ */
+var uwp_recaptcha_data = {"site_key":"6LfjxEQjAAAAADvyftHk37xzE4OxCsETi4VdjkAj","captcha_version":"default","captcha_theme":"light","ajaxurl":"https:\/\/www.latife.me\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.recaptcha.net/recaptcha/api.js?onload=uwp_init_recaptcha&amp;hl=zh&amp;render=explicit&amp;ver=1.3.18" id="uwp_recaptcha_js_api-js"></script>
+<script type="text/javascript" id="uwp_recaptcha_js_api-js-after">
+            
+                function uwp_init_recaptcha() {
+                    if ( jQuery('.uwp-captcha-render').length) {
+                        jQuery('.uwp-captcha-render').each(function() {
+                            if(jQuery(this).html()==''){
+                                var container = jQuery(this).attr('id');
+                                if (container) {
+                                    try {
+                                        eval(container + '()');
+                                    } catch(err) {
+                                        console.log(err);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+                function uwp_reset_captcha(element){
+                    if(uwp_recaptcha_data.captcha_version == 'v3') {
+                        if (typeof grecaptcha != 'undefined') {
+                            holderId = grecaptcha.execute(uwp_recaptcha_data.site_key, {action: 'uwp_captcha'}).then(function (token) {
+                                document.getElementById(element).value = token;
+                            });
+                        }
+
+                    } else {
+                        if (typeof grecaptcha != 'undefined') {
+                            grecaptcha.reset();
+                        }
+                    }
+                }
+            
+            
+</script>
+<script type="text/javascript" src="https://www.latife.me/wp-content/uploads/hummingbird-assets/7d13eaf7a1b1f283b34061593e61916f.js" id="jetpack-lazy-images-polyfill-intersectionobserver-js"></script>
+<script type="text/javascript" id="jetpack-lazy-images-js-extra">
+/* 
+<![CDATA[ */
+var jetpackLazyImagesL10n = {"loading_warning":"Images are still loading. Please cancel your print and try again."};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.latife.me/wp-content/plugins/jetpack-boost/jetpack_vendor/automattic/jetpack-lazy-images/dist/lazy-images.js?minify=false&amp;ver=2e29137590434abf5fbe" id="jetpack-lazy-images-js"></script>
+<script type="text/javascript" id="wphb-3-js-before">
+var mejsL10n = {"language":"zh","strings":{"mejs.download-file":"\u4e0b\u8f7d\u6587\u4ef6","mejs.install-flash":"\u60a8\u6b63\u5728\u4f7f\u7528\u7684\u6d4f\u89c8\u5668\u672a\u5b89\u88c5\u6216\u542f\u7528Flash\u64ad\u653e\u5668\uff0c\u8bf7\u542f\u7528\u60a8\u7684Flash\u64ad\u653e\u5668\u63d2\u4ef6\uff0c\u6216\u4ece https:\/\/get.adobe.com\/flashplayer\/ \u4e0b\u8f7d\u6700\u65b0\u7248\u3002","mejs.fullscreen":"\u5168\u5c4f","mejs.play":"\u64ad\u653e","mejs.pause":"\u6682\u505c","mejs.time-slider":"\u65f6\u95f4\u8f74","mejs.time-help-text":"\u4f7f\u7528\u5de6\/\u53f3\u7bad\u5934\u952e\u6765\u524d\u8fdb\u4e00\u79d2\uff0c\u4e0a\/\u4e0b\u7bad\u5934\u952e\u6765\u524d\u8fdb\u5341\u79d2\u3002","mejs.live-broadcast":"\u73b0\u573a\u76f4\u64ad","mejs.volume-help-text":"\u4f7f\u7528\u4e0a\/\u4e0b\u7bad\u5934\u952e\u6765\u589e\u9ad8\u6216\u964d\u4f4e\u97f3\u91cf\u3002","mejs.unmute":"\u53d6\u6d88\u9759\u97f3","mejs.mute":"\u9759\u97f3","mejs.volume-slider":"\u97f3\u91cf","mejs.video-player":"\u89c6\u9891\u64ad\u653e\u5668","mejs.audio-player":"\u97f3\u9891\u64ad\u653e\u5668","mejs.captions-subtitles":"\u8bf4\u660e\u6587\u5b57\u6216\u5b57\u5e55","mejs.captions-chapters":"\u7ae0\u8282","mejs.none":"\u65e0","mejs.afrikaans":"\u5357\u975e\u8377\u5170\u8bed","mejs.albanian":"\u963f\u5c14\u5df4\u5c3c\u4e9a\u8bed","mejs.arabic":"\u963f\u62c9\u4f2f\u8bed","mejs.belarusian":"\u767d\u4fc4\u7f57\u65af\u8bed","mejs.bulgarian":"\u4fdd\u52a0\u5229\u4e9a\u8bed","mejs.catalan":"\u52a0\u6cf0\u7f57\u5c3c\u4e9a\u8bed","mejs.chinese":"\u4e2d\u6587","mejs.chinese-simplified":"\u4e2d\u6587\uff08\u7b80\u4f53\uff09","mejs.chinese-traditional":"\u4e2d\u6587(\uff08\u7e41\u4f53\uff09","mejs.croatian":"\u514b\u7f57\u5730\u4e9a\u8bed","mejs.czech":"\u6377\u514b\u8bed","mejs.danish":"\u4e39\u9ea6\u8bed","mejs.dutch":"\u8377\u5170\u8bed","mejs.english":"\u82f1\u8bed","mejs.estonian":"\u7231\u6c99\u5c3c\u4e9a\u8bed","mejs.filipino":"\u83f2\u5f8b\u5bbe\u8bed","mejs.finnish":"\u82ac\u5170\u8bed","mejs.french":"\u6cd5\u8bed","mejs.galician":"\u52a0\u5229\u897f\u4e9a\u8bed","mejs.german":"\u5fb7\u8bed","mejs.greek":"\u5e0c\u814a\u8bed","mejs.haitian-creole":"\u6d77\u5730\u514b\u91cc\u5965\u5c14\u8bed","mejs.hebrew":"\u5e0c\u4f2f\u6765\u8bed","mejs.hindi":"\u5370\u5730\u8bed","mejs.hungarian":"\u5308\u7259\u5229\u8bed","mejs.icelandic":"\u51b0\u5c9b\u8bed","mejs.indonesian":"\u5370\u5ea6\u5c3c\u897f\u4e9a\u8bed","mejs.irish":"\u7231\u5c14\u5170\u8bed","mejs.italian":"\u610f\u5927\u5229\u8bed","mejs.japanese":"\u65e5\u8bed","mejs.korean":"\u97e9\u8bed","mejs.latvian":"\u62c9\u8131\u7ef4\u4e9a\u8bed","mejs.lithuanian":"\u7acb\u9676\u5b9b\u8bed","mejs.macedonian":"\u9a6c\u5176\u987f\u8bed","mejs.malay":"\u9a6c\u6765\u8bed","mejs.maltese":"\u9a6c\u8033\u4ed6\u8bed","mejs.norwegian":"\u632a\u5a01\u8bed","mejs.persian":"\u6ce2\u65af\u8bed","mejs.polish":"\u6ce2\u5170\u8bed","mejs.portuguese":"\u8461\u8404\u7259\u8bed","mejs.romanian":"\u7f57\u9a6c\u5c3c\u4e9a\u8bed","mejs.russian":"\u4fc4\u8bed","mejs.serbian":"\u585e\u5c14\u7ef4\u4e9a\u8bed","mejs.slovak":"\u65af\u6d1b\u4f10\u514b\u8bed","mejs.slovenian":"\u65af\u6d1b\u6587\u5c3c\u4e9a\u8bed","mejs.spanish":"\u897f\u73ed\u7259\u8bed","mejs.swahili":"\u65af\u74e6\u5e0c\u91cc\u8bed","mejs.swedish":"\u745e\u5178\u8bed","mejs.tagalog":"\u4ed6\u52a0\u7984\u8bed","mejs.thai":"\u6cf0\u8bed","mejs.turkish":"\u571f\u8033\u5176\u8bed","mejs.ukrainian":"\u4e4c\u514b\u5170\u8bed","mejs.vietnamese":"\u8d8a\u5357\u8bed","mejs.welsh":"\u5a01\u5c14\u58eb\u8bed","mejs.yiddish":"\u610f\u7b2c\u7eea\u8bed"}};
+</script>
+<script type="text/javascript" src="https://www.latife.me/wp-content/uploads/hummingbird-assets/47ef658bc0a13f87c66b11ff06a8a9f3.js" id="wphb-3-js"></script>
+<script type="text/javascript" id="mediaelement-js-extra">
+/* 
+<![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive","audioShortcodeLibrary":"mediaelement","videoShortcodeLibrary":"mediaelement"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://c0.wp.com/c/6.2/wp-includes/js/mediaelement/wp-mediaelement.min.js" id="wp-mediaelement-js"></script>
+<script src="https://stats.wp.com/e-202317.js" defer="" type="text/javascript"></script>
+<script type="text/javascript">
+		_stq = window._stq || [];
+		_stq.push([ 'view', {v:'ext',blog:'213787031',post:'0',tz:'8',srv:'www.latife.me',j:'1:12.0'} ]);
+		_stq.push([ 'clickTrackerInit', '213787031', '0' ]);
+	</script>
+<script>(function(){var js = "window['__CF$cv$params']={r:'7c165b4dabb6050c',m:'F5K2r_8rfp_liBLIyaa281POuTukM5gaj_9pcwN_dtU-1683094391-0-ARC4LJH0P40snXe/ZHKV0Y8pN6eHXn0Yrp89YWo+in8P',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script>
+<iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
+
+
+<div class="pcr-app theme-color-picker-box" data-theme="monolith" aria-label="color picker dialog" role="form" style="left: 865px; top: 249.84375px;">
+          
+<div class="pcr-selection">
+            
+<div class="pcr-color-preview">
+              
+<button type="button" class="pcr-last-color" aria-label="use previous color" style="transition: none; color: rgb(250, 114, 152);"></button>
+              
+<div class="pcr-current-color" style="color: rgb(250, 114, 152);"></div>
+            </div>
+
+            
+<div class="pcr-color-palette">
+              
+<div class="pcr-picker" style="left: calc(54.4% - 9px); top: calc(1.960784% - 9px); background: rgb(250, 114, 152);"></div>
+              
+<div class="pcr-palette" tabindex="0" aria-label="color selection area" role="listbox" style="background: linear-gradient(to top, rgb(0, 0, 0), transparent), linear-gradient(to left, rgb(255, 0, 71), rgb(255, 255, 255));"></div>
+            </div>
+
+            
+<div class="pcr-color-chooser">
+              
+<div class="pcr-picker" style="left: calc(95.343137% - 9px); background-color: rgb(255, 0, 71);"></div>
+              
+<div class="pcr-hue pcr-slider" tabindex="0" aria-label="hue selection slider" role="slider"></div>
+            </div>
+
+            
+<div class="pcr-color-opacity" style="display:none" hidden="">
+              
+<div class="pcr-picker"></div>
+              
+<div class="pcr-opacity pcr-slider" tabindex="0" aria-label="opacity selection slider" role="slider"></div>
+            </div>
+          </div>
+
+          
+<div class="pcr-swatches ">
+<button type="button" style="color: rgba(94, 114, 228, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(250, 114, 152, 1)" aria-label="color swatch" class="pcr-active"></button>
+<button type="button" style="color: rgba(0, 150, 136, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(96, 125, 139, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(33, 150, 243, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(63, 81, 181, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(255, 151, 0, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(16, 157, 88, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(220, 68, 55, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(103, 59, 183, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(33, 33, 33, 1)" aria-label="color swatch"></button>
+<button type="button" style="color: rgba(121, 85, 71, 1)" aria-label="color swatch"></button></div> 
+
+          
+<div class="pcr-interaction">
+            
+<input class="pcr-result" type="text" spellcheck="false">
+
+            
+<input class="pcr-type active" data-type="HEXA" value="HEX" type="button">
+            
+<input class="pcr-type" data-type="RGBA" value="RGB" type="button">
+            
+<input class="pcr-type" data-type="HSLA" value="HSL" type="button" style="display:none" hidden="">
+            
+<input class="pcr-type" data-type="HSVA" value="HSV" type="button" style="display:none" hidden="">
+            
+<input class="pcr-type" data-type="CMYK" value="CMYK" type="button" style="display:none" hidden="">
+
+            
+<input class="pcr-save" value="确定" type="button" aria-label="save and exit">
+            
+<input class="pcr-cancel" value="恢复博客默认" type="button" aria-label="cancel and exit">
+            
+<input class="pcr-clear" value="清除" type="button" style="display:none" hidden="" aria-label="clear and exit">
+          </div>
+        </div></body>
+<style id="A_T_S">*{-webkit-user-select:auto !important;}</style></html>
  
     <ul class="main-navication">
       <hr>
