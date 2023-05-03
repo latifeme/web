@@ -157,30 +157,6 @@ var gitblog = function(config) {
         this.content = '';
     }
 
-    Footer.prototype = {
-        showIcon: function() {
-            var footer = this;
-            for (var i in config.icons) {
-                if (config.icons[i].icon_src != undefined && config.icons[i].icon_src != null) {
-                    document.getElementById('icon').innerHTML += '<div style="padding-inline-start: 0;margin: 0" id="div_'+i+'"></div>';
-                }
-            }
-            for (var i in config.icons) {
-                if (config.icons[i].icon_src != undefined && config.icons[i].icon_src != null) {
-                    var left = Object.keys(config.icons).length * 35 - 70 * footer.icon_num + config.icons[i].width / 2 - 35;
-                    var icon = new Icon(config.icons[i], i, left);
-                    icon.init();
-                    footer.icons.push(icon);
-                    footer.icon_num++;
-                }
-            }
-        },
-        show: function() {
-            document.getElementById('footer').innerHTML += this.content;
-            this.showIcon();
-        }
-    }
-
     var Pages = function() {
         this.page = 1;
         this.pages = 1;
