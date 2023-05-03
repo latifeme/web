@@ -178,7 +178,7 @@
         <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light bg-primary headroom--not-bottom headroom--not-top headroom--pinned navbar-ontop">
           <div class="container">
             <button id="open_sidebar" class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle sidebar"><span class="navbar-toggler-icon"></span></button>
-            <div class="navbar-brand mr-0"><a class="navbar-brand navbar-title name" id="title_header" href="/"></a></div>
+            <div class="navbar-brand mr-0"><a class="navbar-brand navbar-title" id="title_header" href="/"></a></div>
             <div class="navbar-collapse collapse" id="navbar_global">
               <div class="navbar-collapse-header">
                 <div class="row" style="display: none;">
@@ -240,8 +240,8 @@
       <div class="shape shape-style-1 bg-gradient-info"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <div id="banner_container" class="banner-container container text-center">
         <div class="banner-title text-white">
-          <span class="banner-title-inner name" id="title"></span>
-          <span class="banner-subtitle d-block name" id="instruction"></span>
+          <span class="banner-title-inner" id="title"></span>
+          <span class="banner-subtitle d-block" id="instruction"></span>
 	</div>
       </div>
     </section>
@@ -283,81 +283,35 @@
       </div>
     </div>
     <div class="blog-setting-item mt-3"><div style="flex: 1;">阴影</div><div>
-<button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button>
-<button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
-</div>
-</div>
-
-<div class="blog-setting-item mt-3 mb-3">
-
-<div style="flex: 1;">滤镜</div>
-
-<div id="blog_setting_filters" class="ml-3">
-
-<button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0 active" filter-name="off">关闭</button>
-
-<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
-
-<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
-
-<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
-</div>
-</div>
-
-<div class="blog-setting-item mb-3">
-
-<div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
-
-<div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
-
-<div id="blog_setting_card_radius" class="noUi-target noUi-ltr noUi-horizontal">
-<div class="noUi-base">
-<div class="noUi-connects">
-<div class="noUi-connect" style="transform: translate(0%) scale(0.133333, 1);"></div></div>
-<div class="noUi-origin" style="transform: translate(-86.666667%, 0px); z-index: 4;">
-<div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="30.0" aria-valuenow="4.0" aria-valuetext="4.00">
-<div class="noUi-touch-area"></div></div></div></div></div>
-</div>
-</div>
-
-<div class="blog-setting-item mt-1 mb-3">
-
-<div style="flex: 1;">主题色</div>
-
-<div class="pickr">
-
-        
-<button type="button" class="pcr-button" style="transition: none; color: rgb(250, 114, 152);" role="button" aria-label="toggle color picker dialog"></button>
-
-        
+    <button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button>
+    <button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
+   </div>
+  </div>
+  <div class="blog-setting-item mt-3 mb-3">
+    <div style="flex: 1;">滤镜</div>
+      <div id="blog_setting_filters" class="ml-3">
+        <button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0 active" filter-name="off">关闭</button>
+	<button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
+	<button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
+	<button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
       </div>
-</div>
-</div>
-
-<button id="fabtn_reading_progress" class="btn btn-icon btn-neutral fabtn shadow-sm fabtn-hidden" type="button" aria-hidden="true" tooltip="阅读进度">
-
-<div id="fabtn_reading_progress_bar" style="width: 0%;"></div>
-
-<span id="fabtn_reading_progress_details">0%</span>
-</button>
-</div>
-
-<div id="content" class="site-content">
-
-<div class="page-information-card-container"></div>
-
-<div id="sidebar_mask"></div>
-
-<aside id="leftbar" class="leftbar widget-area" role="complementary">
-
-<div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
-
-<div class="leftbar-banner card-body">
-
-<span class="leftbar-banner-title text-white">蓝天粉梦</span>
-
-<span class="leftbar-banner-subtitle text-white">
-<span class="hitokoto">人于浮世，独来独往，独生独死，苦乐自当，无有代者。</span></span>
+    </div>
+    <div class="blog-setting-item mb-3">
+      <div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
+        <div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
+          <div id="blog_setting_card_radius" class="noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%) scale(0.133333, 1);"></div></div><div class="noUi-origin" style="transform: translate(-86.666667%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="30.0" aria-valuenow="4.0" aria-valuetext="4.00"><div class="noUi-touch-area"></div></div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="site-content">
+    <div class="page-information-card-container"></div>
+    <div id="sidebar_mask"></div>
+    <aside id="leftbar" class="leftbar widget-area" role="complementary">
+      <div id="leftbar_part1" class="widget widget_search card bg-white shadow-sm border-0">
+        <div class="leftbar-banner card-body">
+          <span class="leftbar-banner-title text-white name" id="title_header"></span>
+          <span class="leftbar-banner-subtitle text-white"><span class="hitokoto" id="hxm_text"></span></span>
 </div>
 
 <ul id="leftbar_part1_menu" class="leftbar-menu">
@@ -1888,23 +1842,5 @@ var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPr
   <script src = "js/jquery.min.js"></script>
   <script src = "js/typed.js"></script>
   <script src = "js/gitblog.js"></script>
-  <script>
-      $(function(){ 
-      　$('.head').css("opacity","1");
-        $('.head').css("transform","translateY(0)");
-        $('.name').css("opacity","1");
-        $('.name').css("transform","translateY(0)");
-        $('.main_content').css("opacity","1");
-        $('.main_content').css("transform","translateY(0)");
-        
-        $("#changerificwordspanid").typed({
-          strings: ["good", "happy", "healthy", "tall"],
-          typeSpeed: 100,
-          startDelay: 10,
-          showCursor: true,
-          shuffle: true,
-          loop:true
-        });
-      });
-    </script>
+  <script src="https://api.hanximeng.com/hitokoto/api.php?type=js" defer></script>
 </html>
