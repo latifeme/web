@@ -369,9 +369,9 @@ var gitblog = function(config) {
         show: function(type, id) {
             var reaction = this;
             if (reaction.isLike == false) {
-                document.getElementById(id).innerHTML = '<img src="images/heart.svg" style="height:20px;float:left">';
+                document.getElementById(id).innerHTML = '';
             } else if (reaction.isLike == true) {
-                document.getElementById(id).innerHTML = '❤️';
+                document.getElementById(id).innerHTML = '';
             }
             document.getElementById(id).innerHTML += reaction.num;
             document.getElementById(id).onclick = function() {
@@ -612,7 +612,7 @@ var gitblog = function(config) {
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
                 success: function(data) {
                     for (var i in data) {
-                        document.getElementById('tags').innerHTML += '<a href="issue_per_label.html?label=' + data[i].name + '">' + data[i].name + '</a>';
+                        document.getElementById('tags').innerHTML += '<li class="nav-item"><a href="/?label=' + data[i].name + '" class="nav-link"><i class="ni ni-book-bookmark d-lg-none"></i><span class="nav-link-inner--text">' + data[i].name + '</span></a></li>';
                     }
                 },
             });
@@ -622,11 +622,11 @@ var gitblog = function(config) {
             for (var i in data) {
                 var labels_content = '';
                 for (var j in data[i].labels) {
-                    labels_content += '<li><a href=issue_per_label.html?label=' + data[i].labels[j].name + '>' + data[i].labels[j].name + '</a></li>';
+                    labels_content += '<i class="fa fa-bookmark-o" aria-hidden="true"></i><a href=/?label=' + data[i].labels[j].name + ' class="post-meta-detail-catagory-link">' + data[i].labels[j].name + '</a>';
                 }
                 data[i].body = data[i].body.replace(/<.*?>/g, "");
                 data[i].created_at = self.utc2localTime(data[i].created_at);
-                document.getElementById('issue-list').innerHTML += '<li><p class="date">' + data[i].created_at + '</p><h4 class="title"><a href="content.html?id=' + data[i].number + '">' + data[i].title + '</a></h4><div class="excerpt"><p class="issue">' + data[i].body + '</p></div>' + '<ul class="meta"><li>' + data[i].user.login + '</li>' + labels_content + '</ul></li>';
+                document.getElementById('issue-list').innerHTML += '<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="' + data[i].number + '"><header class="post-header "></header><div class="post-content-container"><a class="post-title" href="content.html?id=' + data[i].number + '">' + data[i].title + '</a><div class="post-content">' + data[i].body + '</div><div class="post-meta"><div class="post-meta-detail post-meta-detail-time"><i class="fa fa-clock-o" aria-hidden="true"></i><time>' + data[i].created_at + '</time></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-author"><i class="fa fa-user-circle-o" aria-hidden="true"></i><a href="https://github.com/' + data[i].user.login + '" target="_blank">' + data[i].user.login + '</a></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-categories">' + labels_content + '</div></div></div></article>';
             }
         },
         show: function(request_url) {
