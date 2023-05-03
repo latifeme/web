@@ -601,7 +601,7 @@ var gitblog = function(config) {
                 success: function(data) {
                     if (self.options.q == undefined || self.options.q == null) {
                         if (data.length == 0) {
-                            document.getElementById('issue-list').innerHTML = '这里什么都没有喵~';
+                            document.getElementById('issue-list').innerHTML = '<h4 class="title">这里什么都没有喵~</h4>';
                             $('.footer').css('position', 'absolute');
                         } else {
                             issue.addItem(data);
