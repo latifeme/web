@@ -718,19 +718,6 @@ var gitblog = function(config) {
                 }
             });
 
-            this.getByClass(document.getElementsByTagName("body")[0], "main")[0].addEventListener("mousedown",function(){
-                if($('.main').css("transform") != "matrix(1, 0, 0, 1, 0, 0)") {
-                    $('.main').css("transform", "translateX(0)");
-                    $('.main-navication span').css("opacity", "0");
-                    $('.main-navication').css("opacity", "0");
-                    $('.main-navication span').css("transform", "translateX(-50px)");
-                    $('.navi-button').css("transform", "translateX(0px)");
-                    $('.Totop').css("transform", "translateX(0px)");
-                    $('.search').css("transform", "translateX(0px)");
-                    $('.search-input').css("transform", "translateX(0px)");
-                }
-            },false);
-
             $('.Totop').click(function() {
                 $('html,body').animate({
                     scrollTop: '0px'
