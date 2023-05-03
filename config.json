@@ -16,13 +16,5 @@
     },
     "friends": {
         "跨性别导航" : "https://transnav.org/"
-    },
-    "icons": {
-        "Github" : {
-            "icon_src" : "images/github.svg",
-            "href" : "https://github.com/latifeme/web",
-            "hidden_img" : null,
-            "width" : 0
-        }
     }
 }
