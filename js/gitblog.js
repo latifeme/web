@@ -773,8 +773,6 @@ var gitblog = function(config) {
         }
         self.menu = new Menu();
         self.menu.show();
-        self.footer = new Footer();
-        self.footer.show();
         self.button = new Buttons();
         self.button.init();
     }
