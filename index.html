@@ -274,6 +274,8 @@
   <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
   <link rel="stylesheet" href="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/highlight/styles/github.css">
   <style>html{font-size:16px;}</style>
+  <script src = "/js/typed.js"></script>
+  <script src = "/js/gitblog.js"></script>
   <script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/argon_js_merged.js" id="argon_js_merged-js"></script>
   <script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/js/argon.min.js" id="argonjs-js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" id="jquery-core-js"></script>
@@ -367,32 +369,7 @@
 					});
 				});
   </script>
-  <script type="text/javascript">
-        (function( $, window, undefined ) {
-        jQuery(document).ready(function () {
-            jQuery(document).on('click', '.uwp_follow_btn', function(e){
-                e.preventDefault();
-                var el = jQuery(this);
-                var type = jQuery(this).data('type');
-                var nonce = jQuery(this).data('nonce');
-                var leader_id = jQuery(this).data('leader');
-                var $uwp_in_user_loop = jQuery(this).hasClass('btn-block');
-
-                var data = {
-                    'action': 'uwp_process_follow',
-                    'leader_id': leader_id,
-                    'type': type,
-                    'nonce': nonce,
-                    'in_user_loop': $uwp_in_user_loop
-                };
-
-                jQuery.post(ajaxurl, data, function(response) {
-                    el.replaceWith(response);
-                });
-            });
-            });
-        }( jQuery, window ));
-  </script>
+  <script src="https://api.hanximeng.com/hitokoto/api.php?type=js" defer></script>
   <iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
   <div class="pcr-app theme-color-picker-box" data-theme="monolith" aria-label="color picker dialog" role="form" style="left: 865px; top: 249.84375px;">
     <div class="pcr-selection">
@@ -409,55 +386,37 @@
       <div class="pcr-hue pcr-slider" tabindex="0" aria-label="hue selection slider" role="slider"></div>
     </div>
     <div class="pcr-color-opacity" style="display:none" hidden="">
-              
-<div class="pcr-picker"></div>
-              
-<div class="pcr-opacity pcr-slider" tabindex="0" aria-label="opacity selection slider" role="slider"></div>
-            </div>
-          </div>
-
-          
-<div class="pcr-swatches ">
-<button type="button" style="color: rgba(94, 114, 228, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(250, 114, 152, 1)" aria-label="color swatch" class="pcr-active"></button>
-<button type="button" style="color: rgba(0, 150, 136, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(96, 125, 139, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(33, 150, 243, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(63, 81, 181, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(255, 151, 0, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(16, 157, 88, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(220, 68, 55, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(103, 59, 183, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(33, 33, 33, 1)" aria-label="color swatch"></button>
-<button type="button" style="color: rgba(121, 85, 71, 1)" aria-label="color swatch"></button></div> 
-
-          
-<div class="pcr-interaction">
-            
-<input class="pcr-result" type="text" spellcheck="false">
-
-            
-<input class="pcr-type active" data-type="HEXA" value="HEX" type="button">
-            
-<input class="pcr-type" data-type="RGBA" value="RGB" type="button">
-            
-<input class="pcr-type" data-type="HSLA" value="HSL" type="button" style="display:none" hidden="">
-            
-<input class="pcr-type" data-type="HSVA" value="HSV" type="button" style="display:none" hidden="">
-            
-<input class="pcr-type" data-type="CMYK" value="CMYK" type="button" style="display:none" hidden="">
-
-            
-<input class="pcr-save" value="确定" type="button" aria-label="save and exit">
-            
-<input class="pcr-cancel" value="恢复博客默认" type="button" aria-label="cancel and exit">
-            
-<input class="pcr-clear" value="清除" type="button" style="display:none" hidden="" aria-label="clear and exit">
-          </div>
-        </div></body>
-  <script src = "/js/typed.js"></script>
-  <script src = "/js/gitblog.js"></script>
-  <script src="https://api.hanximeng.com/hitokoto/api.php?type=js" defer></script>
+      <div class="pcr-picker"></div>
+      <div class="pcr-opacity pcr-slider" tabindex="0" aria-label="opacity selection slider" role="slider"></div>
+    </div>
+  </div>
+  <div class="pcr-swatches ">
+    <button type="button" style="color: rgba(94, 114, 228, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(250, 114, 152, 1)" aria-label="color swatch" class="pcr-active"></button>
+    <button type="button" style="color: rgba(0, 150, 136, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(96, 125, 139, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(33, 150, 243, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(63, 81, 181, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(255, 151, 0, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(16, 157, 88, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(220, 68, 55, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(103, 59, 183, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(33, 33, 33, 1)" aria-label="color swatch"></button>
+    <button type="button" style="color: rgba(121, 85, 71, 1)" aria-label="color swatch"></button>
+  </div>
+  <div class="pcr-interaction">
+    <input class="pcr-result" type="text" spellcheck="false">
+    <input class="pcr-type active" data-type="HEXA" value="HEX" type="button">
+    <input class="pcr-type" data-type="RGBA" value="RGB" type="button">
+    <input class="pcr-type" data-type="HSLA" value="HSL" type="button" style="display:none" hidden="">
+    <input class="pcr-type" data-type="HSVA" value="HSV" type="button" style="display:none" hidden="">
+    <input class="pcr-type" data-type="CMYK" value="CMYK" type="button" style="display:none" hidden="">
+    <input class="pcr-save" value="确定" type="button" aria-label="save and exit">
+    <input class="pcr-cancel" value="恢复博客默认" type="button" aria-label="cancel and exit">
+    <input class="pcr-clear" value="清除" type="button" style="display:none" hidden="" aria-label="clear and exit">
+  </div>
+</div>
+</body>
 </html>
     
         <ul class="pagination" id="pages" style="display: none"></ul>
