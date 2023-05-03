@@ -4,7 +4,6 @@
     "client_id": "1051da1727e02f5dc248",
     "client_secret": "1d3b72c0446bc61903b6c4839cde70ee4097a9fc",
     "title": "蓝天粉梦",
-    "instruction_header": "欢迎来到蓝天粉梦",
     "instruction": "欢迎来到蓝天粉梦，蓝粉白创作者作品展示地，一个可爱的作品分享网站。",
     "server_link": "https://api.mojy.xyz/gitblog/gh-oauth-server.php",
     "filter": {
