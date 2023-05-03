@@ -635,7 +635,7 @@ var gitblog = function(config) {
                 success: function(data) {
                     if (self.options.q == undefined || self.options.q == null) {
                         if (data.length == 0) {
-                            document.getElementById('issue-list').innerHTML = '这个人很勤快但这里什么都还没写~';
+                            document.getElementById('issue-list').innerHTML = '这里什么都没有喵~';
                             $('.footer').css('position', 'absolute');
                         } else {
                             issue.addItem(data);
@@ -769,7 +769,7 @@ var gitblog = function(config) {
             $('.search-input').bind('keypress',
             function(event) {
                 if (event.keyCode == "13" && $('.search-input').val() != "") {
-                    window.location.href = 'issue_per_label.html?q=' + $('.search-input').val();
+                    window.location.href = '/?q=' + $('.search-input').val();
                 }
             })
 
@@ -800,8 +800,6 @@ var gitblog = function(config) {
         self.button = new Buttons();
         self.button.init();
     }
-
-    console.log('\n' + ' %c Gitblog' + ' %c https://github.com/imuncle/gitblog \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');
 }
 
 $.ajax({
