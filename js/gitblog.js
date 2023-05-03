@@ -342,18 +342,6 @@ var gitblog = function(config) {
                 }
             });
         },
-        show: function(type, id) {
-            var reaction = this;
-            if (reaction.isLike == false) {
-                document.getElementById(id).innerHTML = '<img src="images/heart.svg" style="height:20px;float:left">';
-            } else if (reaction.isLike == true) {
-                document.getElementById(id).innerHTML = '❤️';
-            }
-            document.getElementById(id).innerHTML += reaction.num;
-            document.getElementById(id).onclick = function() {
-                reaction.like(type, id);
-            };
-        }
     }
 
     var commentItem = function() {
@@ -613,7 +601,7 @@ var gitblog = function(config) {
                 success: function(data) {
                     if (self.options.q == undefined || self.options.q == null) {
                         if (data.length == 0) {
-                            document.getElementById('issue-list').innerHTML = '这个人很勤快但这里什么都还没写~';
+                            document.getElementById('issue-list').innerHTML = '这里什么都没有喵~';
                             $('.footer').css('position', 'absolute');
                         } else {
                             issue.addItem(data);
