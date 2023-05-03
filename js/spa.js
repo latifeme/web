@@ -25,6 +25,6 @@ class Router {
 // 使用 Router  
 window.miniRouter = new Router();  
 miniRouter.route('/', ()=> console.log('page1'))  
-miniRouter.route('/page2', ()=> console.log('page2'))  
+miniRouter.route('/#/index.html', ()=> console.log('page2'))  
 // 跳转  
-miniRouter.push('/page2')  // page2
+miniRouter.push('/#/index.html')  // page2
