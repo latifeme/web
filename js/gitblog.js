@@ -69,11 +69,13 @@ var gitblog = function(config) {
 
     var Info = function() {
         this.title = config.title;
+        this.title_header = config.title;
         this.instruction = config.instruction;
     }
 
     Info.prototype.init = function() {
         $('#title').text(this.title);
+        $('#title_header').text(this.title_header);
         $('#instruction').text(this.instruction);
         document.getElementsByTagName("title")[0].innerText = this.title;
     }
