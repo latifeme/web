@@ -147,33 +147,33 @@ var gitblog = function(config) {
         show: function() {
             var page = this;
             $('#pages').css('display', 'inline-block');
-            document.getElementById('pages').innerHTML = '<li id="last_page"><a id="last" style="cursor: pointer">«</a></li>';
+            document.getElementById('pages').innerHTML = '<li class="page-item" id="last_page"><a aria-label="Previous Page" class="page-link" id="last"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>';
             if (page.pages <= page.pageLimit) {
                 for (var i = 1; i <= page.pages; i++) {
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + i + '" style="cursor:pointer">' + i + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + i + '">' + i + '</a></li>';
                 }
             } else {
                 if (page.page >= 5) {
-                    document.getElementById('pages').innerHTML += '<li><a id="page1" style="cursor:pointer">1</a></li>';
-                    document.getElementById('pages').innerHTML += '<li><a style="cursor:pointer;pointer-events: none;">...</a></li>';
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + (page.page - 1) + '" style="cursor:pointer">' + (page.page - 1) + '</a></li>';
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + page.page + '" style="cursor:pointer">' + page.page + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page1">1</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" style="pointer-events: none;">...</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + (page.page - 1) + '">' + (page.page - 1) + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + page.page + '">' + page.page + '</a></li>';
                 } else {
                     for (var i = 1; i <= page.page; i++) {
-                        document.getElementById('pages').innerHTML += '<li><a id="page' + i + '" style="cursor:pointer">' + i + '</a></li>';
+                        document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + i + '">' + i + '</a></li>';
                     }
                 }
                 if (page.page <= page.pages - 4) {
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + (page.page + 1) + '" style="cursor:pointer">' + (page.page + 1) + '</a></li>';
-                    document.getElementById('pages').innerHTML += '<li><a style="cursor:pointer;pointer-events: none;">...</a></li>';
-                    document.getElementById('pages').innerHTML += '<li><a id="page' + page.pages + '" style="cursor:pointer">' + page.pages + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + (page.page + 1) + '">' + (page.page + 1) + '</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" style="pointer-events: none;">...</a></li>';
+                    document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + page.pages + '">' + page.pages + '</a></li>';
                 } else {
                     for (var i = page.page + 1; i <= page.pages; i++) {
-                        document.getElementById('pages').innerHTML += '<li><a id="page' + i + '" style="cursor:pointer">' + i + '</a></li>';
+                        document.getElementById('pages').innerHTML += '<li class="page-item"><a class="page-link" id="page' + i + '">' + i + '</a></li>';
                     }
                 }
             }
-            document.getElementById('pages').innerHTML += '<li id="next_page"><a id="next" style="cursor: pointer">»</a></li>';
+            document.getElementById('pages').innerHTML += '<li class="page-item" id="next_page"><a class="page-link" id="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>';
             for (var i = 1; i <= page.pages; i++) {
                 if (self.options.label != undefined) {
                     $('#page' + i).click(function() {
