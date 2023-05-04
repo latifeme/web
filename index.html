@@ -154,7 +154,6 @@
       <button id="fabtn_back_to_top" class="btn btn-icon btn-neutral fabtn shadow-sm fabtn-hidden" type="button" aria-label="Back To Top" tooltip="回到顶部"><span class="btn-inner--icon"><i class="fa fa-angle-up"></i></span></button>
       <button id="fabtn_go_to_comment" class="btn btn-icon btn-neutral fabtn shadow-sm d-none" type="button" style="display: none;" aria-label="Comment" tooltip="评论"><span class="btn-inner--icon"><i class="fa fa-comment-o"></i></span></button>
       <button id="fabtn_toggle_darkmode" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" style="display: none;" aria-label="Toggle Darkmode" tooltip-darkmode="夜间模式" tooltip-blackmode="暗黑模式" tooltip-lightmode="日间模式"><span class="btn-inner--icon"><i class="fa fa-moon-o"></i><i class="fa fa-lightbulb-o"></i></span></button>
-      <button id="fabtn_toggle_blog_settings_popup" class="btn btn-icon btn-neutral fabtn shadow-sm" type="button" aria-label="Open Blog Settings Menu" tooltip="设置"><span class="btn-inner--icon"><i class="fa fa-cog"></i></span></button>
       <div id="fabtn_blog_settings_popup" class="card shadow-sm" style="opacity: 0;" aria-hidden="true">
         <div id="close_blog_settings"><i class="fa fa-close"></i></div>
 	<div class="blog-setting-item mt-3">
@@ -162,33 +161,6 @@
           <div style="flex: 1;"></div>
           <label id="blog_setting_darkmode_switch" class="custom-toggle"><span class="custom-toggle-slider rounded-circle"></span></label>
 	</div>
-	<div class="blog-setting-item mt-3">
-          <div style="flex: 1;">字体</div>
-	  <div>
-            <button id="blog_setting_font_sans_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-left">Sans Serif</button>
-            <button id="blog_setting_font_serif" type="button" class="blog-setting-font btn btn-outline-primary blog-setting-selector-right">Serif</button>
-          </div>
-        </div>
-        <div class="blog-setting-item mt-3"><div style="flex: 1;">阴影</div><div>
-        <button id="blog_setting_shadow_small" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-left">浅阴影</button>
-        <button id="blog_setting_shadow_big" type="button" class="blog-setting-shadow btn btn-outline-primary blog-setting-selector-right">深阴影</button>
-      </div>
-    </div>
-    <div class="blog-setting-item mt-3 mb-3">
-      <div style="flex: 1;">滤镜</div>
-        <div id="blog_setting_filters" class="ml-3">
-          <button id="blog_setting_filter_off" type="button" class="blog-setting-filter-btn ml-0 active" filter-name="off">关闭</button>
-          <button id="blog_setting_filter_sunset" type="button" class="blog-setting-filter-btn" filter-name="sunset">日落</button>
-          <button id="blog_setting_filter_darkness" type="button" class="blog-setting-filter-btn" filter-name="darkness">暗化</button>
-          <button id="blog_setting_filter_grayscale" type="button" class="blog-setting-filter-btn" filter-name="grayscale">灰度</button>
-        </div>
-      </div>
-      <div class="blog-setting-item mb-3">
-        <div id="blog_setting_card_radius_to_default" style="cursor: pointer;" tooltip="恢复默认">圆角</div>
-          <div style="flex: 1;margin-left: 20px;margin-right: 8px;transform: translateY(2px);">
-            <div id="blog_setting_card_radius" class="noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%) scale(0.133333, 1);"></div></div><div class="noUi-origin" style="transform: translate(-86.666667%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="30.0" aria-valuenow="4.0" aria-valuetext="4.00"><div class="noUi-touch-area"></div></div></div></div></div>
-          </div>
-        </div>
       </div>
     </div>
     <div id="content" class="site-content">
@@ -354,63 +326,7 @@
     <script src="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/argontheme.js?v1.3.5" type="text/javascript"></script>
     <script src="https://testingcf.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" type="text/javascript"></script>
     <script src="https://testingcf.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-				document.addEventListener("DOMContentLoaded", function() {
-					renderMathInElement(document.body,{
-						delimiters: [
-							{left: "$$", right: "$$", display: true},
-							{left: "$", right: "$", display: false},
-							{left: "\\(", right: "\\)", display: false}
-						]
-					});
-				});
-    </script>
     <script src="https://api.hanximeng.com/hitokoto/api.php?type=js" defer></script>
-    <iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
-    <div class="pcr-app theme-color-picker-box" data-theme="monolith" aria-label="color picker dialog" role="form" style="left: 865px; top: 249.84375px;">
-      <div class="pcr-selection">
-        <div class="pcr-color-preview">
-          <button type="button" class="pcr-last-color" aria-label="use previous color" style="transition: none; color: rgb(250, 114, 152);"></button>
-          <div class="pcr-current-color" style="color: rgb(250, 114, 152);"></div>
-        </div>
-        <div class="pcr-color-palette">
-          <div class="pcr-picker" style="left: calc(54.4% - 9px); top: calc(1.960784% - 9px); background: rgb(250, 114, 152);"></div>
-          <div class="pcr-palette" tabindex="0" aria-label="color selection area" role="listbox" style="background: linear-gradient(to top, rgb(0, 0, 0), transparent), linear-gradient(to left, rgb(255, 0, 71), rgb(255, 255, 255));"></div>
-        </div>
-        <div class="pcr-color-chooser">
-        <div class="pcr-picker" style="left: calc(95.343137% - 9px); background-color: rgb(255, 0, 71);"></div>
-        <div class="pcr-hue pcr-slider" tabindex="0" aria-label="hue selection slider" role="slider"></div>
-      </div>
-      <div class="pcr-color-opacity" style="display:none" hidden="">
-        <div class="pcr-picker"></div>
-        <div class="pcr-opacity pcr-slider" tabindex="0" aria-label="opacity selection slider" role="slider"></div>
-      </div>
-    </div>
-    <div class="pcr-swatches ">
-      <button type="button" style="color: rgba(94, 114, 228, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(250, 114, 152, 1)" aria-label="color swatch" class="pcr-active"></button>
-      <button type="button" style="color: rgba(0, 150, 136, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(96, 125, 139, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(33, 150, 243, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(63, 81, 181, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(255, 151, 0, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(16, 157, 88, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(220, 68, 55, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(103, 59, 183, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(33, 33, 33, 1)" aria-label="color swatch"></button>
-      <button type="button" style="color: rgba(121, 85, 71, 1)" aria-label="color swatch"></button>
-    </div>
-    <div class="pcr-interaction">
-      <input class="pcr-result" type="text" spellcheck="false">
-      <input class="pcr-type active" data-type="HEXA" value="HEX" type="button">
-      <input class="pcr-type" data-type="RGBA" value="RGB" type="button">
-      <input class="pcr-type" data-type="HSLA" value="HSL" type="button" style="display:none" hidden="">
-      <input class="pcr-type" data-type="HSVA" value="HSV" type="button" style="display:none" hidden="">
-      <input class="pcr-type" data-type="CMYK" value="CMYK" type="button" style="display:none" hidden="">
-      <input class="pcr-save" value="确定" type="button" aria-label="save and exit">
-      <input class="pcr-cancel" value="恢复博客默认" type="button" aria-label="cancel and exit">
-      <input class="pcr-clear" value="清除" type="button" style="display:none" hidden="" aria-label="clear and exit">
-    </div>
     <script src = "/js/typed.js"></script>
     <script src = "/js/gitblog.js"></script>
   </body>
