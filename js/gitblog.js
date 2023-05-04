@@ -110,15 +110,6 @@ var gitblog = function(config) {
         }
     }
 
-    var Icon = function(options, name, left) {
-        this.icon_src = options.icon_src;
-        this.href = options.href;
-        this.hidden_img = options.hidden_img;
-        this.width = options.width;
-        this.name = name;
-        this.position = left;
-    }
-
     var Pages = function() {
         this.page = 1;
         this.pages = 1;
