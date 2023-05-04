@@ -470,48 +470,7 @@ var gitblog = function(config) {
             this.init();
         }
     }
-
-    var Article = function() {
-        this.comments = new Comment();
-        this.page = new Pages();
-        this.reaction = new Reaction();
-        this.comment_url = "";
-    }
-
-    Article.prototype = {
-        init: function() {
-            var article = this;
-            if (self.options.token != undefined && self.options.token != null) {
-                window.localStorage.clear();
-                window.localStorage.setItem("access_token", self.options.token);
-                history.replaceState(null, config.title, '/?id=' + self.options.id);
-            }
-            article.comment_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments';
-            article.page.getNum(article.comment_url);
-            $.ajax({
-                type: 'get',
-                headers: {
-                    Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
-                },
-                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id,
-                success: function(data) {
-                    document.getElementById('title').innerHTML = data.title;
-                    document.getElementsByTagName("title")[0].innerText = data.title + "|" + config.title;
-                    data.created_at = self.utc2localTime(data.created_at);
-                    document.getElementById('instruction').innerHTML = data.created_at;
-                    document.getElementById('content').innerHTML = data.body_html;
-                    var labels = document.getElementById('labels');
-                    for (var i in data.labels) {
-                        labels.innerHTML += '<a href="/?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
-                    }
-                    labels.innerHTML += '<div style="float:right;cursor:pointer" id="' + self.options.id + '"></div>';
-                    article.comments.init();
-                    article.reaction.getNum('issue', self.options.id);
-                }
-            });
-        }
-    }
-
+    
     var Issue = function() {
         this.issue_url = '';
         this.issue_perpage_url = '';
@@ -576,6 +535,48 @@ var gitblog = function(config) {
                 }
             });
         },
+        
+    var Article = function() {
+        this.comments = new Comment();
+        this.page = new Pages();
+        this.reaction = new Reaction();
+        this.comment_url = "";
+    }
+
+    Article.prototype = {
+        init: function() {
+            var article = this;
+            if (self.options.token != undefined && self.options.token != null) {
+                window.localStorage.clear();
+                window.localStorage.setItem("access_token", self.options.token);
+                history.replaceState(null, config.title, '/?id=' + self.options.id);
+            }
+            article.comment_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments';
+            article.page.getNum(article.comment_url);
+            $.ajax({
+                type: 'get',
+                headers: {
+                    Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
+                },
+                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id,
+                success: function(data) {
+                    document.getElementById('title').innerHTML = data.title;
+                    document.getElementsByTagName("title")[0].innerText = data.title + "|" + config.title;
+                    data.created_at = self.utc2localTime(data.created_at);
+                    document.getElementById('instruction').innerHTML = data.created_at;
+                    document.getElementById('content').innerHTML = data.body_html;
+                    var labels = document.getElementById('labels');
+                    for (var i in data.labels) {
+                        labels.innerHTML += '<a href="/?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
+                    }
+                    labels.innerHTML += '<div style="float:right;cursor:pointer" id="' + self.options.id + '"></div>';
+                    article.comments.init();
+                    article.reaction.getNum('issue', self.options.id);
+                }
+            });
+        }
+    }
+
         init: function() {
             if(config.filter.creator != undefined && config.filter.creator != null) {
                 if(config.filter.creator == 'all') {
