@@ -497,7 +497,7 @@ var gitblog = function(config) {
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id,
                 success: function(data) {
                     document.getElementById('title').innerHTML = data.title;
-                    document.getElementsByTagName("title")[0].innerText = data.title + "-" + config.title;
+                    document.getElementsByTagName("title")[0].innerText = data.title + "|" + config.title;
                     data.created_at = self.utc2localTime(data.created_at);
                     document.getElementById('instruction').innerHTML = data.created_at;
                     document.getElementById('content').innerHTML = data.body_html;
@@ -679,14 +679,6 @@ var gitblog = function(config) {
                     window.location.href = '/?q=' + $('.search-input').val();
                 }
             })
-
-            window.onscroll = function() {
-                if ($(document).scrollTop() >= 0.6 * document.documentElement.clientHeight) {
-                    $('.Totop').css('opacity', 1);
-                } else {
-                    $('.Totop').css('opacity', 0);
-                }
-            }
         }
     }
 
