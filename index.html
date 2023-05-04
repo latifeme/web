@@ -216,6 +216,31 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" id="jquery-core-js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js" id="jquery-migrate-js"></script>
     <script type="text/javascript">
+	document.documentElement.classList.remove("no-js");
+	var argonConfig = {
+		wp_path: "/",
+		language: "zh_CN",
+		dateFormat: "YMD",
+		zoomify: false,
+		pangu: "article|comment",
+		lazyload: {
+			threshold: 800,
+			effect: "fadeIn"
+		},
+		fold_long_comments: true,
+		disable_pjax: false,
+		pjax_animation_durtion: 600,
+		headroom: "absolute",
+		waterflow_columns: "2and3",
+		code_highlight: {
+			enable: true,
+			hide_linenumber: false,
+			transparent_linenumber: false,
+			break_line: true
+		}
+	}
+    </script>
+    <script type="text/javascript">
 		if (navigator.userAgent.indexOf("Safari") !== -1 && navigator.userAgent.indexOf("Chrome") === -1){
 			$("html").addClass("using-safari");
 		}
