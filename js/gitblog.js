@@ -119,44 +119,6 @@ var gitblog = function(config) {
         this.position = left;
     }
 
-    Icon.prototype = {
-        init: function() {
-            var icon = this;
-            if(icon.href != undefined && icon.href != null) {
-                document.getElementById("div_"+icon.name).innerHTML += '<a target="_blank" title="' + icon.name + '" id="icon_' + icon.name + '" href="' + icon.href + '"><img src="' + icon.icon_src + '" style="width:50px;margin-left:10px;margin-right:10px"></a>';
-            } else {
-                document.getElementById("div_"+icon.name).innerHTML += '<img src="' + icon.icon_src + '" title="' + icon.name + '" id="icon_' + icon.name + '" style="width:50px;margin-left:10px;margin-right:10px;cursor:pointer">';
-            }
-            if (icon.hidden_img != undefined && icon.hidden_img != null) {
-                document.getElementById("div_"+icon.name).innerHTML += '<img id="' + icon.name + '" src="' + icon.hidden_img + '" style="width: ' + icon.width + 'px; position: absolute; left: calc(50% - ' + this.position + 'px); bottom: 180px; transition: all 0.3s ease 0s; box-shadow: rgb(149, 165, 166) 0px 0px 5px; transform: translateY(-20px); z-index: -1; opacity: 0">';
-                $('#icon_' + icon.name).mouseover(function() {
-                    icon.changeIcon(icon.name, 'show');
-                });
-                $('#icon_' + icon.name).mouseout(function() {
-                    icon.changeIcon(icon.name, 'hidden');
-                });
-            }
-        },
-        changeIcon: function(id, action) {
-            if (action == 'show') {
-                $('#' + id).css('z-index', '99');
-                $('#' + id).css("opacity", "1");
-                $('#' + id).css("transform", "translateY(0)");
-            } else if (action == 'hidden') {
-                $('#' + id).css('z-index', '-1');
-                $('#' + id).css("opacity", "0");
-                $('#' + id).css("transform", "translateY(-20px)");
-            }
-        }
-    }
-
-    var Footer = function() {
-        this.page = new Pages();
-        this.icons = [];
-        this.icon_num = 0;
-        this.content = '';
-    }
-
     var Pages = function() {
         this.page = 1;
         this.pages = 1;
