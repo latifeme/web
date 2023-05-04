@@ -484,7 +484,7 @@ var gitblog = function(config) {
             if (self.options.token != undefined && self.options.token != null) {
                 window.localStorage.clear();
                 window.localStorage.setItem("access_token", self.options.token);
-                history.replaceState(null, config.title, 'content.html?id=' + self.options.id);
+                history.replaceState(null, config.title, '/?id=' + self.options.id);
             }
             article.comment_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments';
             article.page.getNum(article.comment_url);
