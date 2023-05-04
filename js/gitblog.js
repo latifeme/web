@@ -509,7 +509,6 @@ var gitblog = function(config) {
                     article.reaction.getNum('issue', self.options.id);
                 }
             });
-            this.getTags();
         }
     }
 
@@ -658,13 +657,6 @@ var gitblog = function(config) {
                     $('.search').css("transform", "translateX(-150px)");
                     $('.search-input').css("transform", "translateX(-150px)");
                 }
-            });
-
-            $('.Totop').click(function() {
-                $('html,body').animate({
-                    scrollTop: '0px'
-                },
-                600);
             });
 
             $('.search').click(function() {
