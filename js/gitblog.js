@@ -476,6 +476,7 @@ var gitblog = function(config) {
         this.page = new Pages();
         this.reaction = new Reaction();
         this.comment_url = "";
+        this.getTags();
     }
 
     Article.prototype = {
