@@ -431,9 +431,9 @@ var gitblog = function(config) {
             var preview_content = document.getElementById('preview-content');
             var comment_input = document.getElementById('comment-input').value;
             if (comment_input == "") {
-                preview_content.innerHTML = '（没有预览）';
+                preview_content.innerHTML = '（预览找不到啦）';
             } else {
-                preview_content.innerHTML = '预览加载中';
+                preview_content.innerHTML = '预览正在加载喵';
                 $.ajax({
                     type: "post",
                     url: 'https://api.github.com/markdown',
@@ -543,7 +543,7 @@ var gitblog = function(config) {
                 }
                 data[i].body = data[i].body.replace(/<.*?>/g, "");
                 data[i].created_at = self.utc2localTime(data[i].created_at);
-                document.getElementById('issue-list').innerHTML += '<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="' + data[i].number + '"><header class="post-header"></header><div class="post-content-container"><a class="post-title" href="content.html?id=' + data[i].number + '">' + data[i].title + '</a><div class="post-content">' + data[i].body + '</div><div class="post-meta"><div class="post-meta-detail post-meta-detail-time"><i class="fa fa-clock-o" aria-hidden="true"></i><time>' + data[i].created_at + '</time></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-author"><i class="fa fa-user-circle-o" aria-hidden="true"></i><a href="https://github.com/' + data[i].user.login + '" target="_blank">' + data[i].user.login + '</a></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-categories">' + labels_content + '</div></div></div></article>';
+                document.getElementById('issue-list').innerHTML += '<article class="post card bg-white shadow-sm border-0 post-preview post-preview-layout-2" id="' + data[i].number + '" style=""><header class="post-header"></header><div class="post-content-container"><a class="post-title" href="content.html?id=' + data[i].number + '">' + data[i].title + '</a><div class="post-content">' + data[i].body + '</div><div class="post-meta"><div class="post-meta-detail post-meta-detail-time"><i class="fa fa-clock-o" aria-hidden="true"></i><time>' + data[i].created_at + '</time></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-author"><i class="fa fa-user-circle-o" aria-hidden="true"></i><a href="https://github.com/' + data[i].user.login + '" target="_blank">' + data[i].user.login + '</a></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-categories">' + labels_content + '</div></div></div></article>';
             }
         },
         show: function(request_url) {
