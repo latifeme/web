@@ -535,7 +535,6 @@ var gitblog = function(config) {
                 }
             });
         },
-        
         init: function() {
             if(config.filter.creator != undefined && config.filter.creator != null) {
                 if(config.filter.creator == 'all') {
