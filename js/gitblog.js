@@ -598,6 +598,17 @@ var gitblog = function(config) {
     }
 
     Article.prototype = {
+        getTags: function() {
+            $.ajax({
+                type: 'get',
+                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/labels',
+                success: function(data) {
+                    for (var i in data) {
+                        document.getElementById('tags').innerHTML += '<li class="nav-item"><a href="/?label=' + data[i].name + '" class="nav-link"><i class="ni ni-book-bookmark d-lg-none"></i><span class="nav-link-inner--text">' + data[i].name + '</span></a></li>';
+                    }
+                },
+            });
+        },
         init: function() {
             var article = this;
             if (self.options.token != undefined && self.options.token != null) {
@@ -627,6 +638,7 @@ var gitblog = function(config) {
                     article.comments.init();
                     article.reaction.getNum('issue', self.options.id);
                 }
+                this.getTags();
             });
         }
     }
