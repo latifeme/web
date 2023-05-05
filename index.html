@@ -465,32 +465,6 @@ function aui_init_greedy_nav(){jQuery('nav.greedy').each(function(i,obj){if(jQue
 	});
     </script>
     <link rel="stylesheet" href="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/highlight/styles/github.css">
-    <script type="text/javascript">
-        (function( $, window, undefined ) {
-        jQuery(document).ready(function () {
-            jQuery(document).on('click', '.uwp_follow_btn', function(e){
-                e.preventDefault();
-                var el = jQuery(this);
-                var type = jQuery(this).data('type');
-                var nonce = jQuery(this).data('nonce');
-                var leader_id = jQuery(this).data('leader');
-                var $uwp_in_user_loop = jQuery(this).hasClass('btn-block');
-
-                var data = {
-                    'action': 'uwp_process_follow',
-                    'leader_id': leader_id,
-                    'type': type,
-                    'nonce': nonce,
-                    'in_user_loop': $uwp_in_user_loop
-                };
-
-                jQuery.post(ajaxurl, data, function(response) {
-                    el.replaceWith(response);
-                });
-            });
-            });
-        }( jQuery, window ));
-    </script>
     <style>html{font-size:16px;}</style>
     <iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
     <div class="pcr-app theme-color-picker-box" data-theme="monolith" aria-label="color picker dialog" role="form" style="left: 838px; top: 249.84375px;">
