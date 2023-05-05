@@ -638,8 +638,8 @@ var gitblog = function(config) {
                     article.comments.init();
                     article.reaction.getNum('issue', self.options.id);
                 }
-                this.getTags();
             });
+            this.getTags();
         }
     }
 
