@@ -625,11 +625,11 @@ var gitblog = function(config) {
                 },
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id,
                 success: function(data) {
-                    document.getElementById('title').innerHTML = data.title;
+                    document.getElementById('title').innerHTML = config.title;
                     document.getElementsByTagName("title")[0].innerText = data.title + "|" + config.title;
                     data.created_at = self.utc2localTime(data.created_at);
-                    document.getElementById('instruction').innerHTML = data.created_at;
-                    document.getElementById('content').innerHTML = data.body_html;
+                    document.getElementById('instruction').innerHTML = config.instruction; //data.created_at
+                    document.getElementById('issue-list').innerHTML = data.body_html;
                     var labels = document.getElementById('labels');
                     for (var i in data.labels) {
                         labels.innerHTML += '<a href="/?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
