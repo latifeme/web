@@ -494,7 +494,7 @@ var gitblog = function(config) {
             });
         },
         addItem: function(data) {
-            document.getElementById('issue-list').innerHTML = '';
+            document.getElementById('issue-list').innerHTML = '<div class="waterflow-placeholder" style="height: 0px;"></div>';
             for (var i in data) {
                 var labels_content = '';
                 for (var j in data[i].labels) {
