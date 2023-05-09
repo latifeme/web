@@ -186,7 +186,11 @@
                   <input id="navbar_search_input_mobile" class="form-control search-input" placeholder="回车搜索喵..." type="text" autocomplete="off">
                 </div>
               </div>
-              <ul class="navbar-nav navbar-nav-hover align-items-lg-center tags" id="tags"></ul>
+              <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                <li class="nav-item"><a href="https://github.com/latifeme/web/issues/new" class="nav-link" target="_blank"><i class="ni ni-book-bookmark d-lg-none"></i><span class="nav-link-inner--text">发文</span></a></li>
+		<li class="nav-item"><a href="https://github.com/orgs/latifeme/people" class="nav-link" target="_blank"><i class="ni ni-book-bookmark d-lg-none"></i><span class="nav-link-inner--text">员工</span></a></li>
+              </ul>
+              <ul class="navbar-nav navbar-nav-hover align-items-lg-center" id="tags"></ul>
               <ul class="navbar-nav navbar-nav-hover align-items-lg-center" id="menu"></ul>
               <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                 <li id="navbar_search_container" class="nav-item" data-toggle="modal">
@@ -304,18 +308,10 @@
           <ul id="leftbar_part1_menu" class="leftbar-menu">
 	    <li class="leftbar-menu-item"><a href="https://github.com/latifeme/web/issues/new" target="_blank">文章发布</a></li>
 	    <li class="leftbar-menu-item"><a href="https://github.com/orgs/latifeme/people" target="_blank">官方人员</a></li>
-	    <li class="leftbar-menu-item"><a href="">用户协议</a></li>
-	    <li class="leftbar-menu-item"><a href="">更新日志</a></li>
           </ul>
         </div>
         <div id="leftbar_part2" class="widget widget_search card bg-white shadow-sm border-0">
           <div id="leftbar_part2_inner" class="card-body">
-	    <div class="nav-wrapper" style="padding-top: 5px;">
-	      <ul class="nav nav-pills nav-fill" role="tablist">
-	        <li class="nav-item sidebar-tab-switcher"><a class="active show" id="leftbar_tab_overview_btn" data-toggle="tab" href="#leftbar_tab_overview" role="tab" aria-controls="leftbar_tab_overview" no-pjax="">站点概览</a></li>
-	        <li class="nav-item sidebar-tab-switcher"><a id="leftbar_tab_links_btn" data-toggle="tab" href="#leftbar_tab_links" role="tab" aria-controls="leftbar_tab_links" no-pjax="">友情链接</a></li>
-	      </ul>
-            </div>
             <div>
 	      <div class="tab-content" style="padding: 10px 10px 0 10px;">
                 <div class="tab-pane fade text-center active show" id="leftbar_tab_overview" role="tabpanel" aria-labelledby="leftbar_tab_overview_btn">
@@ -324,9 +320,6 @@
 	          <h6 id="leftbar_overview_author_description">蓝粉白作品网</h6>
                   <div style="height: 20px;"></div>
 	        </div>
-	        <div class="tab-pane fade" id="leftbar_tab_links" role="tabpanel" aria-labelledby="leftbar_tab_links_btn">
-	          <div id="friends" class="widget widget_block card bg-white border-0"></div>
-                </div>
               </div>
             </div>
           </div>
@@ -340,6 +333,10 @@
         <div class="widget widget_block card shadow-sm bg-white border-0">
           <h6 class="font-weight-bold text-black">IP签名图</h6>
           <center><img src="https://api.hanximeng.com/ip_sign/" alt="IP Sign" width="200" height="80"></center>
+        </div>
+        <div class="widget widget_block card shadow-sm bg-white border-0">
+          <h6 class="font-weight-bold text-black">友情链接</h6>
+          <ul class="wp-block-friends__list wp-block-friends" id="friends"></ul>
         </div>
       </aside>
       <div id="primary" class="content-area waterflow" style="transition: none;">
@@ -373,52 +370,6 @@
     </script>
     <link rel="stylesheet" href="https://testingcf.jsdelivr.net/gh/solstice23/argon-theme@1.3.5/assets/vendor/highlight/styles/github.css">
     <style>html{font-size:16px;}</style>
-    <iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
-    <div class="pcr-app theme-color-picker-box" data-theme="monolith" aria-label="color picker dialog" role="form" style="left: 838px; top: 249.84375px;">
-      <div class="pcr-selection">
-        <div class="pcr-color-preview">
-          <button type="button" class="pcr-last-color" aria-label="use previous color" style="transition: none; color: rgb(250, 114, 152);"></button>
-          <div class="pcr-current-color" style="color: rgb(250, 114, 152);"></div>
-        </div>
-	<div class="pcr-color-palette">
-          <div class="pcr-picker" style="left: calc(54.4% - 9px); top: calc(1.960784% - 9px); background: rgb(250, 114, 152);"></div>
-          <div class="pcr-palette" tabindex="0" aria-label="color selection area" role="listbox" style="background: linear-gradient(to top, rgb(0, 0, 0), transparent), linear-gradient(to left, rgb(255, 0, 71), rgb(255, 255, 255));"></div>
-        </div>
-	<div class="pcr-color-chooser">
-          <div class="pcr-picker" style="left: calc(95.343137% - 9px); background-color: rgb(255, 0, 71);"></div>
-          <div class="pcr-hue pcr-slider" tabindex="0" aria-label="hue selection slider" role="slider"></div>
-        </div>
-	<div class="pcr-color-opacity" style="display:none" hidden="">
-          <div class="pcr-picker"></div>
-          <div class="pcr-opacity pcr-slider" tabindex="0" aria-label="opacity selection slider" role="slider"></div>
-        </div>
-      </div>
-      <div class="pcr-swatches ">
-        <button type="button" style="color: rgba(94, 114, 228, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(250, 114, 152, 1)" aria-label="color swatch" class="pcr-active"></button>
-        <button type="button" style="color: rgba(0, 150, 136, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(96, 125, 139, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(33, 150, 243, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(63, 81, 181, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(255, 151, 0, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(16, 157, 88, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(220, 68, 55, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(103, 59, 183, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(33, 33, 33, 1)" aria-label="color swatch"></button>
-        <button type="button" style="color: rgba(121, 85, 71, 1)" aria-label="color swatch"></button>
-      </div>
-      <div class="pcr-interaction">
-        <input class="pcr-result" type="text" spellcheck="false">
-	<input class="pcr-type active" data-type="HEXA" value="HEX" type="button">
-        <input class="pcr-type" data-type="RGBA" value="RGB" type="button">
-        <input class="pcr-type" data-type="HSLA" value="HSL" type="button" style="display:none" hidden="">
-        <input class="pcr-type" data-type="HSVA" value="HSV" type="button" style="display:none" hidden="">
-        <input class="pcr-type" data-type="CMYK" value="CMYK" type="button" style="display:none" hidden="">
-	<input class="pcr-save" value="确定" type="button" aria-label="save and exit">
-        <input class="pcr-cancel" value="恢复博客默认" type="button" aria-label="cancel and exit">
-        <input class="pcr-clear" value="清除" type="button" style="display:none" hidden="" aria-label="clear and exit">
-      </div>
-    </div>
     <script src="https://api.hanximeng.com/hitokoto/api.php?type=js" defer></script>
     <script src = "/js/typed.js"></script>
     <script src = "/js/gitblog.js"></script>
