@@ -100,7 +100,7 @@ var gitblog = function(config) {
                 var menu_friend = document.getElementById("friends");
                 menu_friend.innerHTML = '';
                 for (var name in config.friends) {
-                    menu_friend.innerHTML += '<div><a href=' + config.friends[name] + ' target="_blank">' + name + '</a></div>';
+                    menu_friend.innerHTML += '<li><a class="wp-block-friends__friends-title" href="' + config.friends[name] + '" target="_blank">' + name + '></a></li>';
                 }
             }
             $(".search-input").on("blur",
