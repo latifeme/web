@@ -629,31 +629,7 @@ var gitblog = function(config) {
                     document.getElementsByTagName("title")[0].innerText = data.title + "|" + config.title;
                     data.created_at = self.utc2localTime(data.created_at);
                     document.getElementById('instruction').innerHTML = config.instruction;
-                    document.getElementById('issue-list').innerHTML = '<article class="post post-full card bg-white shadow-sm border-0" id="' + self.options.id + '"><header class="post-header text-center"><a class="post-title" href="/?id=' + self.options.id + '">' + data.title + '</a><div class="post-meta"><div class="post-meta-detail post-meta-detail-time"><i class="fa fa-clock-o" aria-hidden="true"></i><time title="' + data.created_at + '">' + data.created_at + '</time></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-author"><i class="fa fa-user-circle-o" aria-hidden="true"></i><a href="" target="_blank"></a></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-categories"><i class="fa fa-bookmark-o" aria-hidden="true"></i><a href="" target="_blank" class="post-meta-detail-catagory-link"></a></div></div></header>
-<div class="post-content" id="post_content">' + data.body_html + '<div class="uwp_widgets uwp_widget_author_box bsui sdel-fa446a3f">
-<div class="d-block text-center text-md-left d-md-flex p-3 bg-light" style="">
-
-<a href="https://www.latife.me/profile/misaka20002/">
-<img src="https://www.latife.me/wp-content/uploads/2022/12/9c3de6b02fee2318e3fd89f005318ce5_uwp_avatar_thumb.png" class="rounded-circle shadow border border-white border-width-4 mr-3" width="60" height="60" alt="御坂20002号?"></a>
-
-<div class="media-body">
-
-<h5 class="mt-0">Author: 
-<a href="https://www.latife.me/profile/misaka20002/">御坂 20002 号？</a></h5>
-
-<div class="uwp-button-group bsui sdel-37e9bcf5">
-<div class="bsui-button-group">
-
-<a href="https://blog.misakanetwork.site/" target="_blank" title="" class=" btn-website ml-1 mb-1 border-0 btn btn-sm btn-circle" data-toggle="tooltip" data-original-title="网站">
-<i class="fas fa-link fa-fw fa-lg"></i></a>
-</div>
-</div>
-
-<p>クトリ・ノタ・セニオリス</p>
-</div>
-</div></div> </div>
-</article>
-';
+                    document.getElementById('issue-list').innerHTML = '<article class="post post-full card bg-white shadow-sm border-0" id="' + self.options.id + '"><header class="post-header text-center"><a class="post-title" href="/?id=' + self.options.id + '">' + data.title + '</a><div class="post-meta"><div class="post-meta-detail post-meta-detail-time"><i class="fa fa-clock-o" aria-hidden="true"></i><time title="' + data.created_at + '">' + data.created_at + '</time></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-author"><i class="fa fa-user-circle-o" aria-hidden="true"></i><a href="" target="_blank"></a></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-categories"><i class="fa fa-bookmark-o" aria-hidden="true"></i><a href="" target="_blank" class="post-meta-detail-catagory-link"></a></div></div></header><div class="post-content" id="post_content">' + data.body_html + '<div class="uwp_widgets uwp_widget_author_box bsui sdel-fa446a3f"><div class="d-block text-center text-md-left d-md-flex p-3 bg-light"><a href=""><img src="" class="rounded-circle shadow border border-white border-width-4 mr-3" width="60" height="60" alt=""></a><div class="media-body"><h5 class="mt-0">Author: <a href=""></a></h5></div></div></div></div></article>';
                     var labels = document.getElementById('labels');
                     for (var i in data.labels) {
                         labels.innerHTML += '<a href="/?label=' + data.labels[i].name + '"># ' + data.labels[i].name + '</a>';
