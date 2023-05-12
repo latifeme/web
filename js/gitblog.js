@@ -337,13 +337,13 @@ var gitblog = function(config) {
                 headers: {
                     Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
                 },
-                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
+                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments',
                 success: function(data) {
                     var comment_list = ''
                     for (var i in data) {
-                        comment_list += '';
+                        comment_list += '<li class="comment-item" id="comment-'+ data[i].id +'" data-id="'+ data[i].id +'" data-use-markdown="true"></li>';
                     }
-                    document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list"></ol></div></div>';
+                    document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list">'+ comment_list +'</ol></div></div>';
                 }
             });
 
