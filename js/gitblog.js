@@ -339,7 +339,7 @@ var gitblog = function(config) {
                 },
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
                 success: function(data) {
-                    document.getElementById('issue-list').innerHTML += "1111";
+                    document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list"></ol></div></div>';
                     for (var i in data) {
                         comment.addComment(data[i]);
                     }
