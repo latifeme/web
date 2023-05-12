@@ -361,23 +361,23 @@ var gitblog = function(config) {
                 //}
             //}
 
-            var editor_content = document.getElementById('write-field');
-            if (comment.login == false) {
-                editor_content.innerHTML = '<textarea placeholder="(发表评论)" title="请登入以发表评论" disabled id="comment-input"></textarea>';
-                $('.gitment-editor-submit').attr("disabled", true);
-            } else {
-                editor_content.innerHTML = '<textarea placeholder="(发表评论)" id="comment-input"></textarea>';
-                $('.gitment-editor-submit').attr("disabled", false);
-            }
+            //var editor_content = document.getElementById('write-field');
+            //if (comment.login == false) {
+                //editor_content.innerHTML = '<textarea placeholder="(发表评论)" title="请登入以发表评论" disabled id="comment-input"></textarea>';
+                //$('.gitment-editor-submit').attr("disabled", true);
+            //} else {
+                //editor_content.innerHTML = '<textarea placeholder="(发表评论)" id="comment-input"></textarea>';
+                //$('.gitment-editor-submit').attr("disabled", false);
+            //}
 
-            $('#editComment').click(function() {
-                comment.edit();
-            });
-            $('#preview').click(function() {
-                comment.preview();
-            });
-            $('.gitment-editor-submit').click(function() {
-                comment.send();
+            //$('#editComment').click(function() {
+                //comment.edit();
+            //});
+            //$('#preview').click(function() {
+                //comment.preview();
+            //});
+            //$('.gitment-editor-submit').click(function() {
+                //comment.send();
             });
         },
         addComment: function(data) {
