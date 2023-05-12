@@ -379,7 +379,7 @@ var gitblog = function(config) {
             //$('.gitment-editor-submit').click(function() {
                 //comment.send();
             //});
-        //},
+        },
         //addComment: function(data) {
             //var comment = new commentItem();
             //data.created_at = self.utc2localTime(data.created_at);
