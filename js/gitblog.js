@@ -339,27 +339,27 @@ var gitblog = function(config) {
                 },
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
                 success: function(data) {
-                    document.getElementById('comment-list').innerHTML = "";
+                    //document.getElementById('comment-list').innerHTML = "";
                     for (var i in data) {
                         comment.addComment(data[i]);
                     }
                 }
             });
 
-            var login = document.getElementById('login');
-            if (comment.login == false) {
-                login.innerHTML = '<a class="gitment-editor-login-link" id="log">登入</a> with GitHub';
-            } else {
-                login.innerHTML = '<a class="gitment-editor-login-link" id="log">登出</a>';
-            }
+            //var login = document.getElementById('login');
+            //if (comment.login == false) {
+                //login.innerHTML = '<a class="gitment-editor-login-link" id="log">登入</a> with GitHub';
+            //} else {
+                //login.innerHTML = '<a class="gitment-editor-login-link" id="log">登出</a>';
+            //}
 
-            document.getElementById('log').onclick = function() {
-                if (comment.login == false) {
-                    comment.log();
-                } else {
-                    comment.logout();
-                }
-            }
+            //document.getElementById('log').onclick = function() {
+                //if (comment.login == false) {
+                    //comment.log();
+                //} else {
+                    //comment.logout();
+                //}
+            //}
 
             var editor_content = document.getElementById('write-field');
             if (comment.login == false) {
