@@ -323,7 +323,7 @@ var gitblog = function(config) {
                 }),
                 dataType: "json",
                 success: function(data) {
-                    var CommentsNum = '';
+                    var CommentsNum = 0;
                     if (data.id != undefined) {
                         document.getElementById('comment-input').value = "";
                         comment.addComment(data);
