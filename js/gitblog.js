@@ -381,13 +381,13 @@ var gitblog = function(config) {
                 //comment.send();
             //});
         },
-        //addComment: function(data) {
-            //var comment = new commentItem();
-            //data.created_at = self.utc2localTime(data.created_at);
+        addComment: function(data) {
+            var comment = new commentItem();
+            data.created_at = self.utc2localTime(data.created_at);
             //document.getElementById('comment-list').innerHTML += '<li class="gitment-comment">' + '<a class="gitment-comment-avatar" href=' + data.user.html_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + data.user.avatar_url + '></a>' + '<div class="gitment-comment-main"><div class="gitment-comment-header">' + '<a class="gitment-comment-name" href=' + data.user.html_url + ' target="_blank">' + data.user.login + '</a> 评论于 ' + '<span>' + data.created_at + '</span>' + '<div style="float:right;cursor:pointer" id="' + data.id + '"></div>' + '</div><div class="gitment-comment-body gitment-markdown">' + data.body_html + '</div></div>';
-            //comment.reaction.getNum('comment', data.id);
-            //this.item.push(comment);
-        //},
+            comment.reaction.getNum('comment', data.id);
+            this.item.push(comment);
+        },
         //checkIsLogin: function() {
             //var comment = this;
             //if (window.localStorage.access_token != undefined) {
