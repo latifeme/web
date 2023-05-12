@@ -133,7 +133,6 @@ var gitblog = function(config) {
                         page.itemNum = data.total_count;
                     } else if (self.options.id != null && self.options.id != undefined) {
                         page.itemNum = data.length;
-                        document.getElementById('comments-num').innerHTML = page.itemNum;
                     } else {
                         page.itemNum = data.open_issues_count;
                     }
@@ -323,11 +322,9 @@ var gitblog = function(config) {
                 }),
                 dataType: "json",
                 success: function(data) {
-                    var CommentsNum = 0;
                     if (data.id != undefined) {
                         document.getElementById('comment-input').value = "";
                         comment.addComment(data);
-                        CommentsNum ++;
                     }
                 }
             });
