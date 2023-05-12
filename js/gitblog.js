@@ -341,7 +341,7 @@ var gitblog = function(config) {
                 success: function(data) {
                     var comment_list = ''
                     for (var i in data) {
-                        comment.addComment(data[i]);
+                        comment_list += '';
                     }
                     document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list"></ol></div></div>';
                 }
