@@ -233,118 +233,118 @@ var gitblog = function(config) {
         }
     }
 
-    var Reaction = function() {
-        this.num = 0;
-        this.isLike = false;
-    }
+    //var Reaction = function() {
+        //this.num = 0;
+        //this.isLike = false;
+    //}
 
-    Reaction.prototype = {
-        like: function(type, id) {
-            var reaction = this;
-            if (reaction.isLike == true) return;
-            if (window.localStorage.access_token == undefined || window.localStorage.access_token == null) {
-                alert("请先登录！");
-                return;
-            }
-            var request_url = '';
-            if (type == 'issue') {
-                request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + id + '/reactions';
-            } else if (type == 'comment') {
-                request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
-            }
-            $.ajax({
-                type: "post",
-                url: request_url,
-                headers: {
-                    Authorization: 'Basic ' + window.localStorage.authorize,
-                    Accept: 'application/vnd.github.squirrel-girl-preview+json'
-                },
-                data: JSON.stringify({
-                    "content": "heart"
-                }),
-                success: function() {
-                    reaction.num += 1;
-                    reaction.isLike = true;
-                    reaction.show(type, id);
-                }
-            });
-        },
-        getNum: function(type, id) {
-            var reaction = this;
-            var request_url = '';
-            if (type == 'issue') {
-                request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + id + '/reactions';
-            } else if (type == 'comment') {
-                request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
-            }
-            $.ajax({
-                type: "get",
-                url: request_url + '?content=heart',
-                headers: {
-                    Accept: 'application/vnd.github.squirrel-girl-preview+json'
-                },
-                success: function(data) {
-                    for (var i in data) {
-                        if (data[i].user.login == window.localStorage.name) {
-                            reaction.isLike = true;
-                        }
-                    }
-                    reaction.num = data.length;
-                    reaction.show(type, id);
-                }
-            });
-        },
-    }
+    //Reaction.prototype = {
+        //like: function(type, id) {
+            //var reaction = this;
+            //if (reaction.isLike == true) return;
+            //if (window.localStorage.access_token == undefined || window.localStorage.access_token == null) {
+                //alert("请先登录！");
+                //return;
+            //}
+            //var request_url = '';
+            //if (type == 'issue') {
+                //request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + id + '/reactions';
+            //} else if (type == 'comment') {
+                //request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
+            //}
+            //$.ajax({
+                //type: "post",
+                //url: request_url,
+                //headers: {
+                    //Authorization: 'Basic ' + window.localStorage.authorize,
+                    //Accept: 'application/vnd.github.squirrel-girl-preview+json'
+                //},
+                //data: JSON.stringify({
+                    //"content": "heart"
+                //}),
+                //success: function() {
+                    //reaction.num += 1;
+                    //reaction.isLike = true;
+                    //reaction.show(type, id);
+                //}
+            //});
+        //},
+        //getNum: function(type, id) {
+            //var reaction = this;
+            //var request_url = '';
+            //if (type == 'issue') {
+                //request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + id + '/reactions';
+            //} else if (type == 'comment') {
+                //request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
+            //}
+            //$.ajax({
+                //type: "get",
+                //url: request_url + '?content=heart',
+                //headers: {
+                    //Accept: 'application/vnd.github.squirrel-girl-preview+json'
+                //},
+                //success: function(data) {
+                    //for (var i in data) {
+                        //if (data[i].user.login == window.localStorage.name) {
+                            //reaction.isLike = true;
+                        //}
+                    //}
+                    //reaction.num = data.length;
+                    //reaction.show(type, id);
+                //}
+            //});
+        //},
+    //}
 
-    var commentItem = function() {
-        this.reaction = new Reaction();
-    }
+    //var commentItem = function() {
+        //this.reaction = new Reaction();
+    //}
 
-    var Comment = function() {
-        this.login = false;
-        this.item = [];
-    }
+    //var Comment = function() {
+        //this.login = false;
+        //this.item = [];
+    //}
 
-    Comment.prototype = {
-        send: function() {
-            var comment = this;
-            var input = document.getElementById('comment-input').value;
-            $.ajax({
-                type: "post",
-                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments',
-                headers: {
-                    Authorization: 'Basic ' + window.localStorage.authorize,
-                    Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify({
-                    "body": input
-                }),
-                dataType: "json",
-                success: function(data) {
-                    if (data.id != undefined) {
-                        document.getElementById('comment-input').value = "";
-                        comment.addComment(data);
-                    }
-                }
-            });
-        },
-        init: function() {
-            var comment = this;
-            comment.checkIsLogin();
-            $.ajax({
-                type: 'get',
-                headers: {
-                    Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
-                },
-                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
-                success: function(data) {
+    //Comment.prototype = {
+        //send: function() {
+            //var comment = this;
+            //var input = document.getElementById('comment-input').value;
+            //$.ajax({
+                //type: "post",
+                //url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments',
+                //headers: {
+                    //Authorization: 'Basic ' + window.localStorage.authorize,
+                    //Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json',
+                    //'Content-Type': 'application/json'
+                //},
+                //data: JSON.stringify({
+                    //"body": input
+                //}),
+                //dataType: "json",
+                //success: function(data) {
+                    //if (data.id != undefined) {
+                        //document.getElementById('comment-input').value = "";
+                        //comment.addComment(data);
+                    //}
+                //}
+            //});
+        //},
+        //init: function() {
+            //var comment = this;
+            //comment.checkIsLogin();
+            //$.ajax({
+                //type: 'get',
+                //headers: {
+                    //Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
+                //},
+                //url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
+                //success: function(data) {
                     //document.getElementById('comment-list').innerHTML = "";
-                    for (var i in data) {
-                        comment.addComment(data[i]);
-                    }
-                }
-            });
+                    //for (var i in data) {
+                        //comment.addComment(data[i]);
+                    //}
+                //}
+            //});
 
             //var login = document.getElementById('login');
             //if (comment.login == false) {
@@ -379,95 +379,95 @@ var gitblog = function(config) {
             //$('.gitment-editor-submit').click(function() {
                 //comment.send();
             //});
-        },
-        addComment: function(data) {
-            var comment = new commentItem();
-            data.created_at = self.utc2localTime(data.created_at);
-            document.getElementById('comment-list').innerHTML += '<li class="gitment-comment">' + '<a class="gitment-comment-avatar" href=' + data.user.html_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + data.user.avatar_url + '></a>' + '<div class="gitment-comment-main"><div class="gitment-comment-header">' + '<a class="gitment-comment-name" href=' + data.user.html_url + ' target="_blank">' + data.user.login + '</a> 评论于 ' + '<span>' + data.created_at + '</span>' + '<div style="float:right;cursor:pointer" id="' + data.id + '"></div>' + '</div><div class="gitment-comment-body gitment-markdown">' + data.body_html + '</div></div>';
-            comment.reaction.getNum('comment', data.id);
-            this.item.push(comment);
-        },
-        checkIsLogin: function() {
-            var comment = this;
-            if (window.localStorage.access_token != undefined) {
-                this.login = true;
-            }
-            var avatar = document.getElementById('avatar');
-            if (this.login == true) {
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    headers: {
-                        Authorization: 'token ' + window.localStorage.access_token,
-                        Accept: 'application/vnd.github.squirrel-girl-preview+json'
-                    },
-                    url: 'https://api.github.com/user',
-                    success: function(data) {
-                        window.localStorage.setItem('user_avatar_url', data.avatar_url);
-                        window.localStorage.setItem('user_url', data.html_url);
-                        window.localStorage.setItem('name', data.login);
-                        avatar.innerHTML = '<a class="gitment-comment-avatar" href=' + window.localStorage.user_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + window.localStorage.user_avatar_url + '></a>';
-                        window.localStorage.setItem('authorize', btoa(data.login + ':' + window.localStorage.access_token));
-                    },
-                    error: function() {
-                        console.log("用户信息过期，退出登录状态");
-                        comment.logout();
-                    }
-                });
+        //},
+        //addComment: function(data) {
+            //var comment = new commentItem();
+            //data.created_at = self.utc2localTime(data.created_at);
+            //document.getElementById('comment-list').innerHTML += '<li class="gitment-comment">' + '<a class="gitment-comment-avatar" href=' + data.user.html_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + data.user.avatar_url + '></a>' + '<div class="gitment-comment-main"><div class="gitment-comment-header">' + '<a class="gitment-comment-name" href=' + data.user.html_url + ' target="_blank">' + data.user.login + '</a> 评论于 ' + '<span>' + data.created_at + '</span>' + '<div style="float:right;cursor:pointer" id="' + data.id + '"></div>' + '</div><div class="gitment-comment-body gitment-markdown">' + data.body_html + '</div></div>';
+            //comment.reaction.getNum('comment', data.id);
+            //this.item.push(comment);
+        //},
+        //checkIsLogin: function() {
+            //var comment = this;
+            //if (window.localStorage.access_token != undefined) {
+                //this.login = true;
+            //}
+            //var avatar = document.getElementById('avatar');
+            //if (this.login == true) {
+                //$.ajax({
+                    //type: "get",
+                    //async: false,
+                    //headers: {
+                        //Authorization: 'token ' + window.localStorage.access_token,
+                        //Accept: 'application/vnd.github.squirrel-girl-preview+json'
+                    //},
+                    //url: 'https://api.github.com/user',
+                    //success: function(data) {
+                        //window.localStorage.setItem('user_avatar_url', data.avatar_url);
+                        //window.localStorage.setItem('user_url', data.html_url);
+                        //window.localStorage.setItem('name', data.login);
+                        //avatar.innerHTML = '<a class="gitment-comment-avatar" href=' + window.localStorage.user_url + ' target="_blank">' + '<img class="gitment-comment-avatar-img" src=' + window.localStorage.user_avatar_url + '></a>';
+                        //window.localStorage.setItem('authorize', btoa(data.login + ':' + window.localStorage.access_token));
+                    //},
+                    //error: function() {
+                        //console.log("用户信息过期，退出登录状态");
+                        //comment.logout();
+                    //}
+                //});
             //} else {
                 //avatar.innerHTML = '<a class="gitment-editor-avatar" id="gitment-avatar" title="login with GitHub">' + '<img src="images/gitment-github-icon.svg" class="gitment-github-icon" style="width:44px">' + '</a></div>';
                 //document.getElementById('gitment-avatar').onclick = function() {
                     //comment.log();
                 //}
-            }
-        },
-        preview: function() {
-            $('#editComment').removeClass('gitment-selected');
-            $('#preview').addClass('gitment-selected');
-            $('.gitment-editor-write-field').addClass('gitment-hidden');
-            $('.gitment-editor-preview-field').removeClass('gitment-hidden');
-            var preview_content = document.getElementById('preview-content');
-            var comment_input = document.getElementById('comment-input').value;
-            if (comment_input == "") {
-                preview_content.innerHTML = '（预览找不到啦）';
-            } else {
-                preview_content.innerHTML = '预览正在加载喵';
-                $.ajax({
-                    type: "post",
-                    url: 'https://api.github.com/markdown',
-                    headers: {
-                        Accept: 'text/html, application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
-                        'Content-Type': 'text/html'
-                    },
-                    data: JSON.stringify({
-                        mode: 'gfm',
-                        text: comment_input
-                    }),
-                    dataType: "text/html",
-                    success: function(message) {
-                        preview_content.innerHTML = message.responseText;
-                    },
-                    error: function(message) {
-                        preview_content.innerHTML = message.responseText;
-                    }
-                });
-            }
-        },
-        edit: function() {
-            $('#editComment').addClass('gitment-selected');
-            $('#preview').removeClass('gitment-selected');
-            $('.gitment-editor-write-field').removeClass('gitment-hidden');
-            $('.gitment-editor-preview-field').addClass('gitment-hidden');
-        },
-        log: function() {
-            window.location.href = 'https://github.com/login/oauth/authorize?client_id=' + config.client_id + '&scope=public_repo&state=' + window.location.href;
-        },
-        logout: function() {
-            this.login = false;
-            window.localStorage.clear();
-            this.init();
-        }
-    }
+            //}
+        //},
+        //preview: function() {
+            //$('#editComment').removeClass('gitment-selected');
+            //$('#preview').addClass('gitment-selected');
+            //$('.gitment-editor-write-field').addClass('gitment-hidden');
+            //$('.gitment-editor-preview-field').removeClass('gitment-hidden');
+            //var preview_content = document.getElementById('preview-content');
+            //var comment_input = document.getElementById('comment-input').value;
+            //if (comment_input == "") {
+                //preview_content.innerHTML = '（预览找不到啦）';
+            //} else {
+                //preview_content.innerHTML = '预览正在加载喵';
+                //$.ajax({
+                    //type: "post",
+                    //url: 'https://api.github.com/markdown',
+                    //headers: {
+                        //Accept: 'text/html, application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
+                        //'Content-Type': 'text/html'
+                    //},
+                    //data: JSON.stringify({
+                        //mode: 'gfm',
+                        //text: comment_input
+                    //}),
+                    //dataType: "text/html",
+                    //success: function(message) {
+                        //preview_content.innerHTML = message.responseText;
+                    //},
+                    //error: function(message) {
+                        //preview_content.innerHTML = message.responseText;
+                    //}
+                //});
+            //}
+        //},
+        //edit: function() {
+            //$('#editComment').addClass('gitment-selected');
+            //$('#preview').removeClass('gitment-selected');
+            //$('.gitment-editor-write-field').removeClass('gitment-hidden');
+            //$('.gitment-editor-preview-field').addClass('gitment-hidden');
+        //},
+        //log: function() {
+            //window.location.href = 'https://github.com/login/oauth/authorize?client_id=' + config.client_id + '&scope=public_repo&state=' + window.location.href;
+        //},
+        //logout: function() {
+            //this.login = false;
+            //window.localStorage.clear();
+            //this.init();
+        //}
+    //}
     
     var Issue = function() {
         this.issue_url = '';
