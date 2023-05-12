@@ -249,8 +249,8 @@ var gitblog = function(config) {
             var request_url = '';
             if (type == 'issue') {
                 request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + id + '/reactions';
-            //} else if (type == 'comment') {
-                //request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
+            } else if (type == 'comment') {
+                request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
             }
             $.ajax({
                 type: "post",
@@ -274,8 +274,8 @@ var gitblog = function(config) {
             var request_url = '';
             if (type == 'issue') {
                 request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + id + '/reactions';
-            //} else if (type == 'comment') {
-                //request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
+            } else if (type == 'comment') {
+                request_url = 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/comments/' + id + '/reactions';
             }
             $.ajax({
                 type: "get",
@@ -290,7 +290,7 @@ var gitblog = function(config) {
                         }
                     }
                     reaction.num = data.length;
-                    //reaction.show(type, id);
+                    reaction.show(type, id);
                 }
             });
         },
