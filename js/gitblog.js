@@ -265,7 +265,7 @@ var gitblog = function(config) {
                 success: function() {
                     reaction.num += 1;
                     //reaction.isLike = true;
-                    reaction.show(type, id);
+                    //reaction.show(type, id);
                 }
             });
         },
@@ -290,7 +290,7 @@ var gitblog = function(config) {
                         //}
                     //}
                     reaction.num = data.length;
-                    reaction.show(type, id);
+                    //reaction.show(type, id);
                 }
             });
         },
