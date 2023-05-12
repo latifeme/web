@@ -290,7 +290,7 @@ var gitblog = function(config) {
                         }
                     }
                     reaction.num = data.length;
-                    reaction.show(type, id);
+                    //reaction.show(type, id);
                 }
             });
         },
