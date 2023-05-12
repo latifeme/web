@@ -415,7 +415,7 @@ var gitblog = function(config) {
                     }
                 });
             } else {
-                avatar.innerHTML = '<a class="gitment-editor-avatar" id="gitment-avatar" title="login with GitHub">' + '<img src="images/gitment-github-icon.svg" class="gitment-github-icon" style="width:44px">' + '</a></div>';
+                //avatar.innerHTML = '<a class="gitment-editor-avatar" id="gitment-avatar" title="login with GitHub">' + '<img src="images/gitment-github-icon.svg" class="gitment-github-icon" style="width:44px">' + '</a></div>';
                 document.getElementById('gitment-avatar').onclick = function() {
                     comment.log();
                 }
