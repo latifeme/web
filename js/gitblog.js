@@ -241,7 +241,7 @@ var gitblog = function(config) {
     Reaction.prototype = {
         like: function(type, id) {
             var reaction = this;
-            if (reaction.isLike == true) return;
+            //if (reaction.isLike == true) return;
             //if (window.localStorage.access_token == undefined || window.localStorage.access_token == null) {
                 //alert("请先登录！");
                 //return;
@@ -264,7 +264,7 @@ var gitblog = function(config) {
                 }),
                 success: function() {
                     reaction.num += 1;
-                    reaction.isLike = true;
+                    //reaction.isLike = true;
                     reaction.show(type, id);
                 }
             });
@@ -284,11 +284,11 @@ var gitblog = function(config) {
                     Accept: 'application/vnd.github.squirrel-girl-preview+json'
                 },
                 success: function(data) {
-                    for (var i in data) {
-                        if (data[i].user.login == window.localStorage.name) {
-                            reaction.isLike = true;
-                        }
-                    }
+                    //for (var i in data) {
+                        //if (data[i].user.login == window.localStorage.name) {
+                            //reaction.isLike = true;
+                        //}
+                    //}
                     reaction.num = data.length;
                     reaction.show(type, id);
                 }
