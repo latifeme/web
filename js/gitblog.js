@@ -296,16 +296,16 @@ var gitblog = function(config) {
         },
     }
 
-    //var commentItem = function() {
-        //this.reaction = new Reaction();
-    //}
+    var commentItem = function() {
+        this.reaction = new Reaction();
+    }
 
-    //var Comment = function() {
-        //this.login = false;
-        //this.item = [];
-    //}
+    var Comment = function() {
+        this.login = false;
+        this.item = [];
+    }
 
-    //Comment.prototype = {
+    Comment.prototype = {
         //send: function() {
             //var comment = this;
             //var input = document.getElementById('comment-input').value;
@@ -329,22 +329,22 @@ var gitblog = function(config) {
                 //}
             //});
         //},
-        //init: function() {
-            //var comment = this;
+        init: function() {
+            var comment = this;
             //comment.checkIsLogin();
-            //$.ajax({
-                //type: 'get',
-                //headers: {
-                    //Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
-                //},
-                //url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
-                //success: function(data) {
-                    //document.getElementById('comment-list').innerHTML = "";
-                    //for (var i in data) {
-                        //comment.addComment(data[i]);
-                    //}
-                //}
-            //});
+            $.ajax({
+                type: 'get',
+                headers: {
+                    Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
+                },
+                url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments?page=' + self.options.page + '&per_page=10',
+                success: function(data) {
+                    document.getElementById('issue-list').innerHTML = "1111";
+                    for (var i in data) {
+                        comment.addComment(data[i]);
+                    }
+                }
+            });
 
             //var login = document.getElementById('login');
             //if (comment.login == false) {
@@ -467,7 +467,7 @@ var gitblog = function(config) {
             //window.localStorage.clear();
             //this.init();
         //}
-    //}
+    }
     
     var Issue = function() {
         this.issue_url = '';
@@ -632,7 +632,7 @@ var gitblog = function(config) {
                       labels_content += '<i class="fa fa-bookmark-o" aria-hidden="true"></i><a href=/?label=' + data.labels[j].name + ' class="post-meta-detail-catagory-link">' + data.labels[j].name + '</a>';
                     }
                     document.getElementById('issue-list').innerHTML = '<article class="post post-full card bg-white shadow-sm border-0" id="' + self.options.id + '"><header class="post-header text-center"><a class="post-title" href="/?id=' + self.options.id + '">' + data.title + '</a><div class="post-meta"><div class="post-meta-detail post-meta-detail-time"><i class="fa fa-clock-o" aria-hidden="true"></i><time title="' + data.created_at + '">' + data.created_at + '</time></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-author"><i class="fa fa-user-circle-o" aria-hidden="true"></i><a href="https://github.com/' + data.user.login + '" target="_blank">' + data.user.login + '</a></div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-comments"><i class="fa fa-comments-o" aria-hidden="true"></i>' + data.comments +'</div><div class="post-meta-devide">|</div><div class="post-meta-detail post-meta-detail-categories">'+ labels_content +'</div></div></header><div class="post-content" id="post_content">' + data.body_html + '<div class="uwp_widgets uwp_widget_author_box bsui sdel-fa446a3f"><div class="d-block text-center text-md-left d-md-flex p-3 bg-light"><a href="https://github.com/' + data.user.login + '" target="_blank"><img src="' + data.user.avatar_url + '&size=80" class="rounded-circle shadow border border-white border-width-4 mr-3" width="60" height="60" alt="' + data.user.login + '"></a><div class="media-body"><h5 class="mt-0">Author: <a href="https://github.com/' + data.user.login + '">' + data.user.login + '</a></h5></div></div></div></div></article>';
-                    //article.comments.init();
+                    article.comments.init();
                     article.reaction.getNum('issue', self.options.id);
                 }
             });
