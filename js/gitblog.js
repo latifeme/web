@@ -332,9 +332,7 @@ var gitblog = function(config) {
         init: function() {
             var comment = this;
             //comment.checkIsLogin();
-            fetch('https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments', {
-                headers: {Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded'}
-            })
+            fetch('https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments')
             .then(response => response.json())
             .then(data => {
                 var comment_list = '';
@@ -343,7 +341,6 @@ var gitblog = function(config) {
                 }
                 document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list">'+ comment_list +'</ol></div></div>';
             })
-            .catch(error => console.error(error));
 
             //var login = document.getElementById('login');
             //if (comment.login == false) {
