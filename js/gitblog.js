@@ -348,7 +348,6 @@ var gitblog = function(config) {
                   }
                   document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list">'+ comment_list +'</ol></div></div>';
               }
-
           })
           .catch(error => console.error(error));
 
