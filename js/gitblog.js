@@ -341,7 +341,8 @@ var gitblog = function(config) {
                 success: function(data) {
                     var comment_list = ''
                     for (var i in data) {
-                        comment_list += '<li class="comment-item" id="comment-'+ data[i].id +'" data-id="'+ data[i].id +'" data-use-markdown="true"></li>';
+                        comment_list += '<li class="comment-item" id="comment-'+ data[i].id +'" data-id="'+ data[i].id +'" data-use-markdown="true">
+                        <div class="comment-item-left-wrapper"><div class="comment-item-avatar"><img alt="avatar" src="'+ data[i].avatar_url +'&size=40" class="avatar avatar-40 photo" height="40" width="40" loading="lazy" decoding="async"></div></div><div class="comment-item-inner" id="comment-inner-'+ data[i].id +'"><div class="comment-item-title"><div class="comment-name"><div class="comment-author"><a target="_blank" href="https://github.com/'+ data[i].user.login +'" rel="external nofollow" class="url">'+ data[i].user.login +'</a></div></div><div class="comment-info"><div class="comment-time"><span class="human-time">'+ data[i].created_at +'</span><div class="comment-time-details">'+ data[i].created_at +'</div></div></div></div><div class="comment-item-text"><p>'+ data[i].body +'</p></div><div class="comment-item-source" style="display: none;" aria-hidden="true">'+ data[i].body +'</div></div></li>';
                     }
                     document.getElementById('issue-list').innerHTML += '<div id="comments" class="comments-area card shadow-sm"><div class="card-body"><h2 class="comments-title"><i class="fa fa-comments"></i>评论</h2><ol class="comment-list">'+ comment_list +'</ol></div></div>';
                 }
