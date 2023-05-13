@@ -335,7 +335,8 @@ var gitblog = function(config) {
             fetch('https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments', {
                 headers: {
                     Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
-                },
+                    'Content-Type': 'application/json;charset=utf-8'
+                }
             })
             .then(response => response.json())
             .then(data => {
