@@ -337,6 +337,7 @@ var gitblog = function(config) {
                 headers: {
                     Accept: 'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json, application/x-www-form-urlencoded',
                 },
+                dataType: 'json',
                 url: 'https://api.github.com/repos/' + config.name + '/' + config.repo + '/issues/' + self.options.id + '/comments',
                 success: function(data) {
                     var comment_list = '';
